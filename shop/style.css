@@ -1,3 +1,159 @@
-h1 {
-    color:red;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+
+html, body{
+    margin: 0;
+    padding: 0;
+    background-color: #030328;
+}
+
+body{
+    
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.app {
+	width: 100%;
+	max-width: 1000px;
+	margin: 40px auto 100px auto;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 40px;
+}
+
+.app .pelicula {
+    transition: all 0.25s;
+}
+
+.app .pelicula:hover{
+	transform: translateY(-15px);
+}
+
+.app .pelicula .titulo {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.app .pelicula .poster {
+	width: 100%;
+	margin-bottom: 10px;
+	border-radius: 15px;
+}
+
+.paginacion {
+	position: fixed;
+	bottom: 0;
+	background: #100a1f;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	padding: 10px;
+}
+
+.paginacion button {
+	cursor: pointer;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 50px;
+	width: 200px;
+	background: #241744;
+	color: #fff;
+	border-radius: 100px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	transition: .3s ease all;
+}
+
+.paginacion button:hover {
+	background: #7B2ABF;
+}
+
+.buscar{
+    padding: 20px;
+    font-size: 16px;
+    color: #C7C7C7;
+    width: 360px;
+    height: 47px;
+    border: none;
+    border-radius: 10px;
+    border-color: #7B2ABF;
+    background-color: #110E35;
+}
+
+.filtros{
+    margin-left: 143px;
+    margin-top: 50px;
+    display: flex;
+}
+
+.img{
+    background-color: #110E35;
+}
+
+.order{
+    font-weight: bold;
+    margin-left: 15px;
+    color: #7B2ABF;
+}
+
+.list-order{
+    border-style: none;
+    background-color: #030328;
+    margin-left: 15px;
+    color: #D8D8D8;
+}
+
+.list-categories{
+    border-style: none;
+    background-color: #02021C;
+    margin-left: 10px;
+    color: #D8D8D8;
+}
+
+.nav li:last-of-type{
+    /* border: 2px solid red; */
+    margin-top:-1px;
+}
+
+header{
+    color: white;
+    background-color: #02021C;
+    padding: 1.5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav ul{
+    display: flex;
+    gap: 30px;
+}
+
+.categorias{
+    display: flex;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: red;
+    transition: 0.5s;
+}
+
+li {
+    display: inline;
+    list-style: none;
+    margin: 1%;
+    font-size: 18px;
 }
