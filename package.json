@@ -11,6 +11,7 @@
     "vite": "^2.9.9"
   },
   "dependencies": {
+    "glider-js": "^1.7.7",
     "normalize.css": "^8.0.1"
   }
 }
