@@ -8,7 +8,6 @@ html, body{
 }
 
 body{
-    
     width: 100%;
     height: 100%;
     font-family: sans-serif;
@@ -30,6 +29,11 @@ body{
 
 .pelicula {
     transition: all 0.25s;
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    height: 400px;
+    margin-bottom: 50px;
+
 }
 
 .pelicula:hover{
@@ -44,18 +48,22 @@ body{
     font-size: 12px;
     font-weight: 700;
     padding: 2px 10px;
-    right: 10px;
-    position: relative;
 }
 .app .pelicula .titulo {
 	font-size: 16px;
 	font-weight: 600;
 }
 
-.app .pelicula .poster {
+.app .pelicula .arr{
+    height: 300px;
+}
+
+.app .pelicula .arr .poster {
 	width: 100%;
-	margin-bottom: 10px;
-	border-radius: 15px;
+    height: 100%;
+	/* margin-bottom: 10px; */
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
 }
 
 .paginacion {
@@ -90,29 +98,23 @@ body{
 	background: #7B2ABF;
 }
 
-.form{
-    display: flex;
-}
-
-.search{
-    padding: 11px;
+.buscar{
+    padding: 20px;
     font-size: 16px;
     color: #C7C7C7;
     width: 360px;
-    height: 34px;
+    height: 47px;
     border: none;
     border-radius: 10px;
     border-color: #7B2ABF;
     background-color: #110E35;
 }
 
-
-.filtros {
-	width: 100%;
-	max-width: 1000px;
-	margin: 40px auto 100px auto;
+.filtros{
+    margin-left: 143px;
+    margin-top: 50px;
+    display: flex;
 }
-
 
 .img{
     background-color: #110E35;
@@ -138,8 +140,12 @@ body{
     color: #D8D8D8;
 }
 
+.categoria{
+    margin-left: 10px;
+    color: #D8D8D8;
+}
+
 .nav li:last-of-type{
-    /* border: 2px solid red; */
     margin-top:-1px;
 }
 
@@ -166,13 +172,60 @@ a {
 }
 
 a:hover{
-    color: red;
-    transition: 0.5s;
+    transition: 0.2s;
+    color: #7B2ABF;
+    cursor: pointer;
 }
+
+/* .seleccionado{
+    border: 1px solid #7B2ABF;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 5px;
+    color: #7B2ABF;
+    padding-right: 5px;
+} */
 
 li {
     display: inline;
     list-style: none;
     margin: 1%;
     font-size: 18px;
+}
+
+
+
+
+.title_poster{
+    color: #f9f9f9;
+}
+
+
+.aba{
+    background-color: #02021C;
+    border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #f9f9f9;
+}
+
+.carrito{
+    width: 196px;
+    height: 40px;
+    background: #7B2ABF;
+    border-radius: 10px;
+    color: #f9f9f9;
+    border: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+
 }

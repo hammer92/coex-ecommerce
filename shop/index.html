@@ -20,19 +20,19 @@
     <div class="categorias">
       <nav class="nav">
         <ul>
-          <a href="#">
+          <a href="#" value="0">
             <li>All</li>
           </a>
-          <a href="#">
+          <a href="#" value="1">
             <li>Action</li>
           </a>
-          <a href="#">
+          <a href="#" value="2">
             <li>Adventure</li>
           </a>
-          <a href="#">
+          <a href="#" value="3">
             <li>Animation</li>
           </a>
-          <a href="#">
+          <a href="#" value="4">
             <li>Comedy</li>
           </a>
 
@@ -44,49 +44,49 @@
                     <option value="">-Select-</option>
                   </li>
                   <li>
-                    <option value="">Crime</option>
+                    <option href="#" value="">Crime</option>
                   </li>
                   <li>
-                    <option value="">Documentary</option>
+                    <option href="#" value="">Documentary</option>
                   </li>
                   <li>
-                    <option value="">Drama</option>
+                    <option href="#" value="">Drama</option>
                   </li>
                   <li>
-                    <option value="">Family</option>
+                    <option href="#" value="">Family</option>
                   </li>
                   <li>
-                    <option value="">Fantasy</option>
+                    <option href="#" value="">Fantasy</option>
                   </li>
                   <li>
-                    <option value="">History</option>
+                    <option href="#" value="">History</option>
                   </li>
                   <li>
-                    <option value="">Horror</option>
+                    <option href="#" value="">Horror</option>
                   </li>
                   <li>
-                    <option value="">Music</option>
+                    <option href="#" value="">Music</option>
                   </li>
                   <li>
-                    <option value="">Mistery</option>
+                    <option href="#" value="">Mistery</option>
                   </li>
                   <li>
-                    <option value="">Romance</option>
+                    <option href="#" value="">Romance</option>
                   </li>
                   <li>
-                    <option value="">Fiction</option>
+                    <option href="#" value="">Fiction</option>
                   </li>
                   <li>
-                    <option value="">TV Movie</option>
+                    <option href="#" value="">TV Movie</option>
                   </li>
                   <li>
-                    <option value="">Thriller</option>
+                    <option href="#" value="">Thriller</option>
                   </li>
                   <li>
-                    <option value="">War</option>
+                    <option href="#" value="">War</option>
                   </li>
                   <li>
-                    <option value="">Western</option>
+                    <option href="#" value="">Western</option>
                   </li>
                 </ul>
               </nav>
@@ -103,7 +103,25 @@
 
   </header>
 
-  <div class="filtros" id="filtros"></div>
+  <div class="filtros">
+    <!--<img class="img" src="../assets/icons/icon_search.svg" alt=""> ESTO YA ESTABA COMENTADO-->
+    <input type="search" class="buscar" id="gsearch" name="gsearch" placeholder="Buscar">
+    <p class="order">Order:</p>
+    <select class="list-order" name="" id="">
+      <ul>
+        <li class="list-order">
+          <option value="">Mas reciente</option>
+        </li>
+        <li class="list-order">
+          <option value="">Mas vistas</option>
+        </li>
+        <li class="list-order">
+          <option value="">Mas populares</option>
+        </li>
+      </ul>
+    </select>
+
+  </div>
 
   <div class="app" id="app"></div>
 
