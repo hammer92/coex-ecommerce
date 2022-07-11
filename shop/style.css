@@ -90,23 +90,29 @@ body{
 	background: #7B2ABF;
 }
 
-.buscar{
-    padding: 20px;
+.form{
+    display: flex;
+}
+
+.search{
+    padding: 11px;
     font-size: 16px;
     color: #C7C7C7;
     width: 360px;
-    height: 47px;
+    height: 34px;
     border: none;
     border-radius: 10px;
     border-color: #7B2ABF;
     background-color: #110E35;
 }
 
-.filtros{
-    margin-left: 143px;
-    margin-top: 50px;
-    display: flex;
+
+.filtros {
+	width: 100%;
+	max-width: 1000px;
+	margin: 40px auto 100px auto;
 }
+
 
 .img{
     background-color: #110E35;

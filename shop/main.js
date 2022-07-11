@@ -4,6 +4,7 @@ import './style.css'
 const Url = new URL(window.location)
 const urlParams = new URLSearchParams(Url.searchParams);
 const app = document.getElementById('app');
+const filtros = document.getElementById('filtros');
 //paginacion
 let pagina = 1;
 const btnAnterior = document.getElementById('btnAnterior');
@@ -24,6 +25,37 @@ btnAnterior.addEventListener('click', () => {
 		cargarPeliculas();
 	}
 });
+
+const cargarFiltros = async () => {
+	try {
+		let filt = '';
+
+		filt += `	
+	<form id="form" class="form">	
+		<input type="text" class="search" id="search" name="gsearch" placeholder="Buscar">
+    	<p class="order">Order:</p>
+    <select class="list-order" name="" id="">
+      <ul>
+        <li class="list-order">
+          <option value="">Mas reciente</option>
+        </li>
+        <li class="list-order">
+          <option value="">Mas vistas</option>
+        </li>
+        <li class="list-order">
+          <option value="">Mas populares</option>
+        </li>
+      </ul>
+    </select>
+	</form>
+	`;
+	filtros.innerHTML = filt;
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+
 
 const cargarPeliculas = async () => {
 	try {
@@ -63,6 +95,7 @@ const cargarPeliculas = async () => {
 
 }
 
+cargarFiltros();
 cargarPeliculas();
 
 
