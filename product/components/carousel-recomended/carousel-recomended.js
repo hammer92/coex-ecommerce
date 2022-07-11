@@ -13,7 +13,7 @@ class CarouselRecomended
             <div class="carousel">
                 <h2 class="titulo">Recomendado</h2>
                 <div class="carousel__contenedor">
-                    <div id="oli" class=".carousel__lista">
+                    <div id="lista" class=".carousel__lista">
                         <div class="carousel__elemento">
                             <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
                             <div class="contenedor__elemento">
@@ -120,7 +120,7 @@ class CarouselRecomended
     }
     move(){
         this.ventana.addEventListener('load', ()=>{
-            new Glider(document.getElementById('oli'), {
+            new Glider(document.getElementById('lista'), {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				draggable: true,
