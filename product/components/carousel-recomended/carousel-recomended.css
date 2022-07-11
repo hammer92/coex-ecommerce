@@ -8,7 +8,7 @@ body {
 }
 
 .contenedor {
-	max-width: 1200px;
+	width: 1200px;
 	width: 90%;
 	margin: auto;
 }
@@ -89,6 +89,7 @@ body {
 	width: 250px;
 	height: 350px;
 	border-radius: 20px;
+	position: relative;
 	
 }
 
