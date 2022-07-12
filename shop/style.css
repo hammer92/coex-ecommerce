@@ -7,11 +7,6 @@ button{
     border-color: transparent;
 }
 
-button:hover{
-    color: red;
-    transition: 0.5s;
-}
-
 html, body{
     margin: 0;
     padding: 0;
@@ -234,4 +229,13 @@ li {
     font-weight: bold;
     margin-bottom: 20px;
 
+}
+
+.seleccionado{
+    border: 1px solid #7B2ABF;
+    border-radius: 10px;
+    /* padding: 5px; */
+    padding-left: 5px;
+    color: #7B2ABF;
+    padding-right: 5px;
 }

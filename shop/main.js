@@ -47,6 +47,14 @@ let getByCategory = "";
 let categorySelected = document.querySelectorAll("#categorySelected");
 categorySelected.forEach(element => {
 	element.addEventListener("click", async () => {
+
+		categorySelected.forEach(minCategory =>{
+			if(minCategory.getAttribute('value') != element.getAttribute('value')){
+				minCategory.classList.remove("seleccionado");
+			}
+		})
+
+		element.classList.add("seleccionado");
 		getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&page=${pagina}&with_genres=${element.value}`;
 		console.log("Seleccionaste: " + element.value);
 		cargarPeliculas(getByCategory);
