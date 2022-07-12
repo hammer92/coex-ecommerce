@@ -1,6 +1,6 @@
 import "../style.css";
 import "./style.css";
-import CartBtn from './components/cart-btn/cart-btn.js'
+import CarruselCasting  from "./components/casting/casting";
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
@@ -12,11 +12,19 @@ const template = `
   <button id="accion">Cambio</button>
   <a href="/index.html">Home</a>
   <div id='btn-container' ></div>
+  <div id='carruselCasting'></div>
 `;
 app.innerHTML = template;
-const btn = document.querySelector('#btn-container')
-const buttn = new CartBtn('clickme')
-btn.innerHTML = buttn.template
+
+
+
+const divCasting = document.querySelector('#carruselCasting');
+
+const casting = new CarruselCasting(window);
+divCasting.innerHTML = casting.templateClass
+casting.move();
+
+
 
 const button = document.getElementById("accion");
 button.addEventListener("click", () => {
