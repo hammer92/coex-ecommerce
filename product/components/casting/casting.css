@@ -1,0 +1,105 @@
+h4, small {
+    margin:0;
+    padding:0;
+}
+
+.carrusel{
+    width: 750px;
+    padding: 10px;
+	/* width: 90%; */
+	margin: auto;
+}
+
+.slick-list{
+    position:relative;
+    display:flex;
+    align-items: center; 
+    padding:10px 10px;
+    margin:0px auto;
+    width: 80%;
+    overflow:hidden;
+}
+
+
+
+.slick{
+    position:relative;
+    width:275px;
+    padding: 10px 18px;
+    float:left;
+    box-sizing:border-box;
+    display:flex;
+   
+}
+
+.slick h4{
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    font-size:22px;
+    line-height: 23px;
+    color:#fff;
+    padding: 15px;
+    top:70%;
+}
+.slick h4 small{
+    font-size:15px;
+    display: flex;
+   
+}
+.slick img{
+    object-position: 50% 0%;
+    object-fit: cover;
+    border-radius: 10px;
+    width: 124px;
+    height: 194px;
+
+    
+}
+.slick img:hover{
+    opacity:.85;
+}
+
+
+ .images img{
+    height: 100%;
+    width: 100%;
+ }
+ .btn-slider{
+    position:absolute;
+    bottom: 20px;
+    left:50%;
+    display: flex;
+    transform:translate(-50%);
+ }
+
+ .btn-slider span{
+    height: 15px;
+    width:50px;
+    border:2px solid black;
+    margin:0 3px;
+    cursor:pointer;
+ }
+ 
+ .btn-slider span:hover{
+    background:white;
+ }
+
+ .carrusel-ind .glider-dot{
+	background-color: rgb(117, 56, 117);
+	transition: all 0.2s ease-out;
+}
+.carrusel-ind .glider-dot:hover{
+	background-color: rgb(117, 56, 117);
+	transform: scale(1.5);
+}
+
+.carrusel-ind .active{
+	background-color: rgb(168, 0, 168);
+	transform: scale(1.5);
+	transition: all 0.2s ease-out;
+}
+.carrusel-ind .active:hover{
+	background-color: rgb(168, 0, 168);
+	
+}
