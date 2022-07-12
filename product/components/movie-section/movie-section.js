@@ -1,4 +1,4 @@
-import './movie-section.css'
+//import './movie-section.css'
 
 class MovieSection{
     constructor(window){
@@ -7,7 +7,7 @@ class MovieSection{
     get templateClass(){
         return 
         `
-        <div class="contenedor">
+        <div>
             <div class="section" id="content">
                 <h1>Synopsis</h1>
                 <a href="#trailer"><span></span>Trailer</a>

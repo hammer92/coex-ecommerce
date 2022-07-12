@@ -67,10 +67,3 @@ class CarouselRecomended
 }
 
 export default CarouselRecomended
-
-movie.getRecommended().then(value =>{
-    value.forEach(e=>{
-        container.innerHTML += `<img src=${e.image_link}> <br>`
-    })
-
-})
