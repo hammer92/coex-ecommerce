@@ -1,11 +1,11 @@
 import "../style.css";
 import "./style.css";
 import CartBtn from './components/cart-btn/cart-btn.js'
+import MovieController from "./controllers/movie/movieController";
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
 const app = document.querySelector("#app");
-
 const template = `
   <h1>Hello world! Product Page</h1>
   ${urlParams.get("product")}
