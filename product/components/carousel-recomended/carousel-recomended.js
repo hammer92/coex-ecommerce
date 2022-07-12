@@ -2,9 +2,8 @@ import './carousel-recomended.css'
 
 class CarouselRecomended
 {
-    constructor(window, elemento){
+    constructor(window){
         this.ventana = window
-        this.query = elemento
     }
     get templateClass()
     {
@@ -20,96 +19,8 @@ class CarouselRecomended
                                 <p class="carousel__titulo" >Nombre pelicula</p>
                             </div>
                         </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002.jpg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/003.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/004.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002_p.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                            <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002.jpg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002_p.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/004.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/1.png" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                            <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002_p.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                            <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/003.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/004.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002_p.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
+                        
+                        
                     </div>
                 </div>
                 <div role="tablist" class="carousel__indicadores"></div>
@@ -156,3 +67,10 @@ class CarouselRecomended
 }
 
 export default CarouselRecomended
+
+movie.getRecommended().then(value =>{
+    value.forEach(e=>{
+        container.innerHTML += `<img src=${e.image_link}> <br>`
+    })
+
+})

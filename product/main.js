@@ -11,5 +11,3 @@ const carouselInstance = new CarouselRecomended(window)
 carousel.innerHTML = carouselInstance.templateClass
 carouselInstance.move()
 
-
-
