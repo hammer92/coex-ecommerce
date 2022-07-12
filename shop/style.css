@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
 
 
 html, body{
@@ -103,13 +103,11 @@ body{
     font-size: 16px;
     color: #C7C7C7;
     width: 360px;
-    height: 47px;
     border: none;
     border-radius: 10px;
     border-color: #7B2ABF;
     background-color: #110E35;
 }
-
 
 .filtros {
 	width: 100%;
@@ -122,6 +120,11 @@ body{
     background-color: #110E35;
 }
 
+.order{
+    font-weight: bold;
+    margin-left: 15px;
+    color: #7B2ABF;
+}
 .list-order{
     border-style: none;
     background-color: #030328;
