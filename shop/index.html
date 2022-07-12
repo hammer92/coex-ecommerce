@@ -10,118 +10,65 @@
 <body>
 
   <header class="header">
+    <div class="izHeader">
+      <div class="logo">
+        <img src="../assets/icons/logo_coexbuster.svg" width="80px" alt="">
+      </div>
 
-    <div class="logo">
-      <img
-        src="https://play-lh.googleusercontent.com/ahJtMe0vfOlAu1XJVQ6rcaGrQBgtrEZQefHy7SXB7jpijKhu1Kkox90XDuH8RmcBOXNn"
-        width="80px" alt="">
+      <div class="categorias">
+        <nav class="nav">
+          <ul>
+            <a id="categoryMovie" value="0">
+              <li>All</li>
+            </a>
+            <a id="categoryMovie" value="28">
+              <li>Action</li>
+            </a>
+            <a id="categoryMovie" value="12">
+              <li>Adventure</li>
+            </a>
+            <a id="categoryMovie" value="16">
+              <li>Animation</li>
+            </a>
+            <a id="categoryMovie" value="35">
+              <li>Comedy</li>
+            </a>
+
+            <li>
+              <select class="list-categories" name="categoryMovie" id="categoryMovie">
+                      <option value="">-Select-</option>
+                      <option value="80">Crime</option>
+                      <option value="99">Documentary</option>
+                      <option value="18">Drama</option>
+                      <option value="10751">Family</option>
+                      <option value="14">Fantasy</option>
+                      <option value="36">History</option>
+                      <option value="27">Horror</option>
+                      <option value="10402">Music</option>
+                      <option value="9648">Mistery</option>
+                      <option value="10749">Romance</option>
+                      <option value="878">Fiction</option>
+                      <option value="10770">TV Movie</option>
+                      <option value="53">Thriller</option>
+                      <option value="10752">War</option>
+                      <option value="37">Western</option>
+              </select>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
     </div>
-
-    <div class="categorias">
-      <nav class="nav">
-        <ul>
-          <a href="#" value="0">
-            <li>All</li>
-          </a>
-          <a href="#" value="1">
-            <li>Action</li>
-          </a>
-          <a href="#" value="2">
-            <li>Adventure</li>
-          </a>
-          <a href="#" value="3">
-            <li>Animation</li>
-          </a>
-          <a href="#" value="4">
-            <li>Comedy</li>
-          </a>
-
-          <li>
-            <select class="list-categories" name="" id="">
-              <nav>
-                <ul>
-                  <li>
-                    <option value="">-Select-</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Crime</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Documentary</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Drama</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Family</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Fantasy</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">History</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Horror</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Music</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Mistery</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Romance</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Fiction</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">TV Movie</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Thriller</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">War</option>
-                  </li>
-                  <li>
-                    <option href="#" value="">Western</option>
-                  </li>
-                </ul>
-              </nav>
-            </select>
-          </li>
-        </ul>
-      </nav>
-
-    </div>
-
-    <div class="list">
-      <a href="#"><img src="list-icon.png" alt="" width="80px"></a>
+    <div class="derHeader">
+      <p>Sign in</p>
+      <a href="#"><img src="../assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27"></a>
     </div>
 
   </header>
 
-  <div class="filtros">
-    <!--<img class="img" src="../assets/icons/icon_search.svg" alt=""> ESTO YA ESTABA COMENTADO-->
-    <input type="search" class="buscar" id="gsearch" name="gsearch" placeholder="Buscar">
-    <p class="order">Order:</p>
-    <select class="list-order" name="" id="">
-      <ul>
-        <li class="list-order">
-          <option value="">Mas reciente</option>
-        </li>
-        <li class="list-order">
-          <option value="">Mas vistas</option>
-        </li>
-        <li class="list-order">
-          <option value="">Mas populares</option>
-        </li>
-      </ul>
-    </select>
-
-  </div>
+  <form class="filtros" id="filtros">
+    
+  </form>
 
   <div class="app" id="app"></div>
 
