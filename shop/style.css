@@ -90,10 +90,6 @@ body{
 	background: #7B2ABF;
 }
 
-.form{
-    display: flex;
-}
-
 .search{
     padding: 11px;
     font-size: 16px;
@@ -111,17 +107,12 @@ body{
 	width: 100%;
 	max-width: 1000px;
 	margin: 40px auto 100px auto;
+    display: flex;
 }
 
 
 .img{
     background-color: #110E35;
-}
-
-.order{
-    font-weight: bold;
-    margin-left: 15px;
-    color: #7B2ABF;
 }
 
 .list-order{

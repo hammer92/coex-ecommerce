@@ -5,11 +5,13 @@ const Url = new URL(window.location)
 const urlParams = new URLSearchParams(Url.searchParams);
 const app = document.getElementById('app');
 const filtros = document.getElementById('filtros');
+
 //paginacion
 let pagina = 1;
 const btnAnterior = document.getElementById('btnAnterior');
 const btnSiguiente = document.getElementById('btnSiguiente');
 const key = 'd2b1df9d64af7fb2a0342bd9d23e1449'
+const searchURL = "https://api.themoviedb.org/3/search/movie?api_key=d2b1df9d64af7fb2a0342bd9d23e1449";
 
 //Paginacion
 btnSiguiente.addEventListener('click', () => {
@@ -31,31 +33,14 @@ const cargarFiltros = async () => {
 		let filt = '';
 
 		filt += `	
-	<form id="form" class="form">	
-		<input type="text" class="search" id="search" name="gsearch" placeholder="Buscar">
-    	<p class="order">Order:</p>
-    <select class="list-order" name="" id="">
-      <ul>
-        <li class="list-order">
-          <option value="">Mas reciente</option>
-        </li>
-        <li class="list-order">
-          <option value="">Mas vistas</option>
-        </li>
-        <li class="list-order">
-          <option value="">Mas populares</option>
-        </li>
-      </ul>
-    </select>
-	</form>
+	
+		<input type="text" class="search" id="search" name="search" placeholder="Buscar">
 	`;
-	filtros.innerHTML = filt;
+		filtros.innerHTML = filt;
 	} catch (error) {
 		console.log(error);
 	}
 }
-
-
 
 const cargarPeliculas = async () => {
 	try {
@@ -95,8 +80,45 @@ const cargarPeliculas = async () => {
 
 }
 
+function getMovies(url) {
+
+	fetch(url).then(res => res.json()).then(data => {
+		console.log(data.results)
+		if (data.results.length !== 0) {
+			showMovies(data.results);
+		}
+	})
+}
+
+function showMovies(data) {
+
+	let peliculas = '';
+	data.forEach(pelicula => {
+		peliculas += `
+				
+					<div class="pelicula">
+					<span class="circulo">${pelicula.vote_average}</span>	
+					<img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">	
+					</div>
+				`;
+	});
+
+	app.innerHTML = peliculas;
+}
+
+filtros.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const searchTerm = search.value;
+	console.log(searchTerm);
+	
+	if (searchTerm) {
+		getMovies(searchURL + '&query=' + searchTerm);
+	} else {
+		cargarPeliculas();
+	}
+
+});
+
 cargarFiltros();
 cargarPeliculas();
-
-
-
