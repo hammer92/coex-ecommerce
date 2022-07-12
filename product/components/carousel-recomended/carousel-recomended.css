@@ -1,0 +1,116 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #1D1D1F;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.contenedor {
+	width: 1200px;
+	width: 90%;
+	margin: auto;
+}
+
+.titulo{
+	margin-left: 20px;
+    color: #fff;
+}
+
+/* --- --- CAROUSEL --- --- */
+.carousel__contenedor {
+	position: relative;
+}
+
+.carousel__anterior,
+.carousel__siguiente {
+	position: absolute;
+	display: block;
+	width: 30px;
+	height: 30px;
+	border: none;
+	top: calc(50% - 35px);
+	cursor: pointer;
+	line-height: 30px;
+	text-align: center;
+	background: none;
+	color: #fff;
+	opacity: 20%;
+	transition: all 0.2s ease-out;
+}
+
+.carousel__anterior:hover,
+.carousel__siguiente:hover{
+	opacity: 100%;
+	transform: scale(1.5);
+}
+
+.carousel__anterior{
+	left: -30px;
+}
+.carousel__siguiente{
+	right: -30px;
+}
+
+.lista{
+	overflow: hidden;
+}
+
+.carousel__elemento{
+	position: relative;
+	text-align: center;
+	display: flex;
+	margin-left: 10px;
+}
+
+.carousel__indicadores .glider-dot{
+	background-color: rgb(117, 56, 117);
+	transition: all 0.2s ease-out;
+}
+.carousel__indicadores .glider-dot:hover{
+	background-color: rgb(117, 56, 117);
+	transform: scale(1.5);
+}
+
+.carousel__indicadores .active{
+	background-color: rgb(168, 0, 168);
+	transform: scale(1.5);
+	transition: all 0.2s ease-out;
+}
+.carousel__indicadores .active:hover{
+	background-color: rgb(168, 0, 168);
+	
+}
+
+.carousel__img{
+	object-position: 50% 0%;
+	object-fit: cover;
+	width: 250px;
+	height: 350px;
+	border-radius: 20px;
+	position: relative;
+	
+}
+
+.contenedor__elemento{
+	display: flex;
+	width: 100%;
+	height: 20%;
+	background: linear-gradient(transparent,black, black);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border-radius: 0 0 20px 20px;
+}
+
+.contenedor__elemento .carousel__titulo{
+	display: block;
+	position: absolute;
+    bottom: 5%;
+	text-align: center;
+	overflow: hidden;
+	left: calc(50% - 30%) ;
+    color: #fff;
+
+}
