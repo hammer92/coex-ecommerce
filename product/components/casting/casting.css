@@ -4,8 +4,10 @@ h4, small {
 }
 
 .carrusel{
-    width:50%;
-    margin:0px 60px;
+    width: 750px;
+    padding: 10px;
+	/* width: 90%; */
+	margin: auto;
 }
 
 .slick-list{
@@ -78,6 +80,26 @@ h4, small {
     margin:0 3px;
     cursor:pointer;
  }
+ 
  .btn-slider span:hover{
     background:white;
  }
+
+ .carrusel-ind .glider-dot{
+	background-color: rgb(117, 56, 117);
+	transition: all 0.2s ease-out;
+}
+.carrusel-ind .glider-dot:hover{
+	background-color: rgb(117, 56, 117);
+	transform: scale(1.5);
+}
+
+.carrusel-ind .active{
+	background-color: rgb(168, 0, 168);
+	transform: scale(1.5);
+	transition: all 0.2s ease-out;
+}
+.carrusel-ind .active:hover{
+	background-color: rgb(168, 0, 168);
+	
+}
