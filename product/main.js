@@ -1,12 +1,18 @@
 import "../style.css";
 import "./style.css";
-import CarouselRecomended from './components/carousel-recomended/carousel-recomended.js'
-import CarruselCasting  from "./components/casting/casting";
+import CartBtn from './components/cart-btn/cart-btn.js'
+import MovieController from "./controllers/movie/movieController";
+const Url = new URL(window.location);
+const urlParams = new URLSearchParams(Url.searchParams);
 
 const app = document.querySelector("#app");
-
-const template = `<div id="carousel-recomended"></div>
-<div id="carruselCasting"></div>`;
+const template = `
+  <h1>Hello world! Product Page</h1>
+  ${urlParams.get("product")}
+  <button id="accion">Cambio</button>
+  <a href="/index.html">Home</a>
+  <div id='btn-container' ></div>
+`;
 app.innerHTML = template;
 const carousel = document.querySelector('#carousel-recomended')
 const carouselInstance = new CarouselRecomended(window)
