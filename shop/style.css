@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
 
+
+button{
+    background-color: transparent;
+    color: white;
+    border-color: transparent;
+}
+
+button:hover{
+    color: red;
+    transition: 0.5s;
+}
+
 html, body{
     margin: 0;
     padding: 0;
@@ -24,8 +36,6 @@ body{
 	gap: 40px;
 }
 
-
-
 .pelicula {
     transition: all 0.25s;
 }
@@ -33,6 +43,7 @@ body{
 .pelicula:hover{
 	transform: translateY(-15px);
 }
+
 .circulo{
     background-color: #7B2ABF;
     border-radius: 15px;

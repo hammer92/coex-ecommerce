@@ -8,7 +8,7 @@ const app = document.getElementById('app');
 let pagina = 1;
 const btnAnterior = document.getElementById('btnAnterior');
 const btnSiguiente = document.getElementById('btnSiguiente');
-const key = 'd2b1df9d64af7fb2a0342bd9d23e1449'
+const key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
 
 //Paginacion
 btnSiguiente.addEventListener('click', () => {
@@ -25,9 +25,29 @@ btnAnterior.addEventListener('click', () => {
 	}
 });
 
-const cargarPeliculas = async () => {
+let getByCategory = "";
+let categorySelected = document.querySelectorAll("#categorySelected");
+categorySelected.forEach(element => {
+	element.addEventListener("click", async () => {
+		getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&page=${pagina}&with_genres=${element.value}`;
+		console.log("Seleccionaste: "+element.value );
+		cargarPeliculas(getByCategory);
+	});
+});
+
+
+const cargarPeliculas = async (category) => {
+
+	let allMovies = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=es-MX&page=${pagina}`;
+	if (category == "") {
+		console.log("No hay categoría seleccionada");
+	}else{
+		allMovies = category;
+	}
+
+	console.log(`Has seleccionado categorías en URL: ${allMovies}`);
 	try {
-		const respuesta = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=es-MX&page=${pagina}`);
+		const respuesta = await fetch(allMovies);
 
 		console.log(respuesta);
 
@@ -41,8 +61,8 @@ const cargarPeliculas = async () => {
 				peliculas += `
 				
 					<div class="pelicula">
-					<span class="circulo">${pelicula.vote_average}</span>	
-					<img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">	
+						<span class="circulo">${pelicula.vote_average}</span>	
+						<img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">	
 					</div>
 				`;
 			});
@@ -61,9 +81,10 @@ const cargarPeliculas = async () => {
 		console.log(error);
 	}
 
+	
 }
 
-cargarPeliculas();
+cargarPeliculas(getByCategory);
 
 
 
