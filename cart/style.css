@@ -1,11 +1,96 @@
-h1 {
-    color:red;
+:root {
+    --white: #fff;
+    --purple: #7b2abf;
+    --purple-dark: #02021C;
+    --purple-bg: #030328;
+    --purple-input: #110E35;
+    --red-warning: #E45871;
+    --gray-primary: #C7C7C7;
+    --gray-secondary: #797979;
+    --purple-fil: invert(22%) sepia(83%) saturate(2189%) hue-rotate(260deg) brightness(87%) contrast(102%);
+    --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
 }
+
+* {
+    background-color: var(--purple-bg);
+    /* border: 1px solid red; */
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Quicksand';
+}
+
+h1 {
+    color: white;
+}
+
 /*  MY ORDER*/
 
 
 /*  HISTORY */
+.history__nav {
+    background-color: var(--purple-dark);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
 
+.history__nav__logo {
+    padding-left: 40px;
+    background-color: var(--purple-dark);
+}
+
+.history__nav__email {
+    padding-right: 60px;
+    color: #6E25AD;
+    background-color: var(--purple-dark);
+    font-size: 15px;
+    margin: auto 0px;
+}
+
+.history__nav__flecha {
+    padding-left: 10px;
+}
+
+.history__flecha__retroceso {
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+.history__section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 50px 0px;
+}
+
+.history__section__orders {
+    background-color: var(--purple-input);
+    color: white;
+    width: 400px;
+    height: 400px;
+    padding: 30px 20px 30px;
+    overflow-y: auto;
+    border-radius: 15px;
+}
+
+.history__section__orders__word {
+    background-color: var(--purple-input);
+    float: inherit;
+}
+
+.history__section__orders__shopping {
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 10px;
+    margin: 40px 0px;
+}
+
+.history__section__orders__items {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 
 /*  LOGIN */
 
