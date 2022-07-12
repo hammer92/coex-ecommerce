@@ -21,7 +21,7 @@ carouselInstance.move()
 // divCasting.innerHTML = Casting.templateClass
 // Casting.move(); 
 
-const movie = new MovieController(550);
+const movie = new MovieController(570);
 document.addEventListener('DOMContentLoaded', () =>{
   const container = document.getElementById('lista');
   

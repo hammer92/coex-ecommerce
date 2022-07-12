@@ -13,12 +13,7 @@ class CarouselRecomended
                 <h2 class="titulo">Recomendado</h2>
                 <div class="carousel__contenedor">
                     <div id="lista" class=".carousel__lista">
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
+                        
                         
                         
                     </div>

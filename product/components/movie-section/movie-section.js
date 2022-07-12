@@ -1,4 +1,4 @@
-//import './movie-section.css'
+import './movie-section.css'
 
 class MovieSection {
   constructor(window) {
