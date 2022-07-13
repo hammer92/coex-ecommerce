@@ -1,3 +1,4 @@
+import 'normalize.css'
 import '../style.css'
 import './style.css'
 const Url = new URL(window.location)
@@ -7,8 +8,8 @@ const app = document.querySelector('#app');
 
 
 const template = `
-<h1>Hello world! Cart Page</h1>
-${urlParams.get("product")}
+<h1>Hello world! Cart Page ${urlParams.get("product")}</h1>
+
 <button id="accion"> Cambio </button>
 <a href="/index.html">Home</a>
 `;
