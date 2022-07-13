@@ -1,4 +1,4 @@
-/* h4, small {
+h4, small {
     margin:0;
     padding:0;
 }
@@ -102,8 +102,8 @@
 .carrusel-ind .active:hover{
 	background-color: rgb(168, 0, 168);
 	
-} */
-.contenedor2 {
+}
+/* .contenedor2 {
 	max-width: 1200px;
 	width: 90%;
 	margin: auto;
@@ -112,10 +112,10 @@
 .titulo2{
 	margin-left: 20px;
     color: #fff;
-}
+} */
 
 /* --- --- CAROUSEL --- --- */
-.carousel__contenedor2 {
+/* .carousel__contenedor2 {
 	position: relative;
 }
 
@@ -208,4 +208,4 @@
 	left: calc(50% - 30%) ;
     color: #fff;
 
-}
+} */

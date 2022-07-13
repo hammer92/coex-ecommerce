@@ -8,23 +8,20 @@ import CarruselCasting from "./components/casting/casting";
 const urlParams = new URLSearchParams(Url.searchParams); */
 
 
-/* const carousel = document.querySelector('#carousel-recomended')
+ const carousel = document.querySelector('#carousel-recomended')
 const carouselInstance = new CarouselRecomended()
 carousel.innerHTML = carouselInstance.templateClass
 const gliderCarousel = carouselInstance.move()
- */
-
-const divCasting = document.querySelector('#carruselCasting');
-const casting = new CarruselCasting();
-divCasting.innerHTML = casting.templateClass;
-const gliderCasting = casting.move();
+ 
 
 
 
 
 
 
-/* const movie = new MovieController(570);
+
+
+ const movie = new MovieController(570);
 
 document.addEventListener('DOMContentLoaded', () =>{ 
   movie.getRecommended().then(value => {
@@ -41,24 +38,35 @@ document.addEventListener('DOMContentLoaded', () =>{
       gliderCarousel.addItem(newElement)
     })
   })
-}) */
- 
+}) 
+
+
+const divCasting = document.querySelector('#carruselCasting');
+const casting = new CarruselCasting();
+divCasting.innerHTML = casting.templateClass;
+const gliderCasting = casting.move();
+
 
 document.addEventListener('DOMContentLoaded', () =>{ 
   movie.getCasting().then(value => {
     console.log(value);
     value.forEach(e=>{
-      const newElement2 = document.createElement("div")
-      newElement2.innerHTML = 
-      `<div class="carousel__elemento2">
-        <img class="carousel__img2" src="${e.image_link}" alt="${e.name}">
-        <div class="contenedor__elemento2">
-          <p class="carousel__titulo2" >${e.name}</p>
-        </div>
-      </div>`
-    gliderCasting.addItem(newElement2)
+      const newElement = document.createElement("div")
+      newElement.innerHTML = 
+      `<div class="slick">
+      
+            
+              <img src="${e.image_link}" alt="${e.name}">
+              <h4> <small> ${e.name} </small></h4>
+          
+      
+      
+  </div>`
+  gliderCasting.addItem(newElement)
     })
+    
   })
+  
 })
 
 
