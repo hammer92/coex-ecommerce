@@ -2,9 +2,8 @@ import './carousel-recomended.css'
 
 class CarouselRecomended
 {
-    constructor(window, elemento){
+    constructor(window){
         this.ventana = window
-        this.query = elemento
     }
     get templateClass()
     {

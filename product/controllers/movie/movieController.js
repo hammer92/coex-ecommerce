@@ -78,7 +78,6 @@ class MovieController{
             const objCast = await response.json();
             let arr = objCast.cast;
             for(let i = 0; i < arr.length; i++){
-               
                 if(objCast.cast[i].profile_path != null){
                     actors.push({'name':objCast.cast[i].name,
                                 'image_link':'https://image.tmdb.org/t/p/w500'+objCast.cast[i].profile_path});
