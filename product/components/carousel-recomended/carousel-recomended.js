@@ -2,8 +2,8 @@ import './carousel-recomended.css'
 
 class CarouselRecomended
 {
-    constructor(window){
-        this.ventana = window
+    constructor(){
+        
     }
     get templateClass()
     {
@@ -23,8 +23,7 @@ class CarouselRecomended
     `
     }
     move(){
-        this.ventana.addEventListener('load', ()=>{
-            new Glider(document.getElementById('lista'), {
+        return new Glider(document.getElementById('lista'), {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				draggable: true,
@@ -55,7 +54,6 @@ class CarouselRecomended
 						duration: 0.25}
 						}]
 			})
-        })
     }
 }
 
