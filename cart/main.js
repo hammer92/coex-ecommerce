@@ -1,5 +1,6 @@
 import '../style.css'
 import './style.css'
+import templatelogin from "./views/login.js"
 const Url = new URL(window.location)
 const urlParams = new URLSearchParams(Url.searchParams);
 
@@ -10,7 +11,13 @@ const template = `
 ${urlParams.get("product")}
 <button id="accion"> Cambio </button>
 <a href="/index.html">Home</a>
+<button id="login">Log in </button>
 `;
+
+const templateprueba = `
+<h1>Login</h1>
+`;
+
 app.innerHTML = template
 
 const button = document.getElementById('accion');
@@ -22,3 +29,39 @@ button.addEventListener("click",() =>{
     else
         h1.style.color = "blue";
 })
+/// Render del login
+const buttonlogin = document.getElementById('login');
+buttonlogin.addEventListener("click",() =>{
+    app.innerHTML = templatelogin;
+    var iniciosesion=false;
+    localStorage.setItem('iniciosesion', iniciosesion);
+    var user = new Object ();
+    user.email= 'admin@admin.com';
+    user.password= 'admin'; 
+    const form = document.getElementById('form_login');
+    form.onsubmit = () => {
+        const mail = document.getElementById('email');
+        const con = document.getElementById('password');
+        const correo = mail.value;
+        const contra = con.value;
+
+        
+        if (correo == ""  || contra ==""){
+            alert("Debe llenar todos los campos");
+        }else{if(correo == user.email  && contra == user.password){
+            alert("inicio de sesion correcto");
+            iniciosesion=true;
+            localStorage.setItem('iniciosesion', iniciosesion);
+            app.innerHTML = templateprueba
+        }else{
+            alert("Credenciales invalidas");
+        }   
+        console.log(correo, contra);
+            
+        }
+    }
+
+})
+
+
+
