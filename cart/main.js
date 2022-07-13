@@ -1,6 +1,7 @@
-//import '../style.css'
+import '../style.css'
 import './style.css'
-import templatelogin from "./views/login.js"
+import './lib/conection.js'
+
 const Url = new URL(window.location)
 const urlParams = new URLSearchParams(Url.searchParams);
 
@@ -18,12 +19,9 @@ ${urlParams.get("product")}
 <button id="myorder">myOrder</button>
 `;
 
-const templateprueba = `
-<h1>Login</h1>
-`;
+app.innerHTML = template;
 
-app.innerHTML = template
-
+ 
 const button = document.getElementById('accion');
 button.addEventListener("click",() =>{
     const h1 = document.querySelector("h1")
