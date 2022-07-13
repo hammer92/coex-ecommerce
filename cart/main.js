@@ -1,7 +1,6 @@
 import '../style.css'
 import './style.css'
 import './lib/conection.js'
-
 const Url = new URL(window.location)
 const urlParams = new URLSearchParams(Url.searchParams);
 
@@ -22,6 +21,8 @@ ${urlParams.get("product")}
 app.innerHTML = template;
 
  
+
+
 const button = document.getElementById('accion');
 button.addEventListener("click",() =>{
     const h1 = document.querySelector("h1")
