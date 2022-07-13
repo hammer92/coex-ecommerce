@@ -1,4 +1,4 @@
-h4, small {
+/* h4, small {
     margin:0;
     padding:0;
 }
@@ -6,7 +6,7 @@ h4, small {
 .carrusel{
     width: 750px;
     padding: 10px;
-	/* width: 90%; */
+	
 	margin: auto;
 }
 
@@ -102,4 +102,110 @@ h4, small {
 .carrusel-ind .active:hover{
 	background-color: rgb(168, 0, 168);
 	
+} */
+.contenedor2 {
+	max-width: 1200px;
+	width: 90%;
+	margin: auto;
+}
+
+.titulo2{
+	margin-left: 20px;
+    color: #fff;
+}
+
+/* --- --- CAROUSEL --- --- */
+.carousel__contenedor2 {
+	position: relative;
+}
+
+.carousel__anterior,
+.carousel__siguiente {
+	position: absolute;
+	display: block;
+	width: 30px;
+	height: 30px;
+	border: none;
+	top: calc(50% - 35px);
+	cursor: pointer;
+	line-height: 30px;
+	text-align: center;
+	background: none;
+	color: #fff;
+	opacity: 20%;
+	transition: all 0.2s ease-out;
+}
+
+.carousel__anterior:hover,
+.carousel__siguiente:hover{
+	opacity: 100%;
+	transform: scale(1.5);
+}
+
+.carousel__anterior2{
+	left: -30px;
+}
+.carousel__siguiente2{
+	right: -30px;
+}
+
+.lista2{
+	overflow: hidden;
+}
+
+.carousel__element2o{
+	position: relative;
+	text-align: center;
+	display: flex;
+	margin-left: 10px;
+}
+
+.carousel__indicadores2 .glider-dot2{
+	background-color: rgb(117, 56, 117);
+	transition: all 0.2s ease-out;
+}
+.carousel__indicadores2 .glider-dot2:hover{
+	background-color: rgb(117, 56, 117);
+	transform: scale(1.5);
+}
+
+.carousel__indicadores2 .active{
+	background-color: rgb(168, 0, 168);
+	transform: scale(1.5);
+	transition: all 0.2s ease-out;
+}
+.carousel__indicadores2 .active:hover{
+	background-color: rgb(168, 0, 168);
+	
+}
+
+.carousel__img2{
+	object-position: 50% 0%;
+	object-fit: cover;
+	width: 100%;
+	height: 350px;
+	border-radius: 20px;
+	
+}
+
+.contenedor__elemento2{
+	display: flex;
+	width: 100%;
+	height: 20%;
+	background: linear-gradient(transparent,black, black);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border-radius: 0 0 20px 20px;
+}
+
+.contenedor__elemento2 .carousel__titulo2{
+	display: block;
+	position: absolute;
+    bottom: 5%;
+	text-align: center;
+	overflow: hidden;
+	left: calc(50% - 30%) ;
+    color: #fff;
+
 }

@@ -1,54 +1,56 @@
 import './casting.css'
 class CarruselCasting {
-    constructor(window, elemento){
-        this.ventana = window
-        this.query = elemento
+    constructor(){
+       
     }
     get templateClass(){
         return `
-       
-        <div class="carrusel">
-        <div class="slick-list" id="slick-prev">
-            <div class="slick-track" id="track">
-
-                <div class="slick">
-                    <div>
-                    
-                          <picture>
-                            <img src="./components/casting/img/image1.webp" alt="Image">
-                            <h4> <small> Robert D j </small></h4>
-                        </picture>
+        <div class="contenedor2">
+            <div class="carousel2">
+                <h2 class="titulo2">Recomendado</h2>
+                <div class="carousel__contenedor2">
+                    <div id="lista" class=".carousel__lista2">
+					
                     </div>
-                    
                 </div>
-
-               
-                
-                
-                
-                
+                <div role="tablist" class="carousel__indicadores2"></div>
             </div>
-            
+
         </div>
-        <div role="tabList" class="carrusel-ind"></div>
-    </div>
- 
-  
-        `
+    `
     }
     move(){
-        this.ventana.addEventListener('load', () => {
-            new Glider(document.querySelector('.slick-track'), {
-                duration: 3.5,
-                slidesToShow: 4,
-                slidesToScroll: 4,
-                draggable: true,
-                dots: '.carrusel-ind',
-                
-        
-            });
-        
-         });
+        return new Glider(document.getElementById('lista2'), {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				draggable: true,
+				dots: '.carousel__indicadores2',
+				arrows: {
+					prev: '.carousel__anterior',
+					next: '.carousel__siguiente'
+				},
+				responsive: [
+					{
+					  // screens greater than >= 775px
+						breakpoint: 450,
+						settings: {
+						// Set to `auto` and provide item width to adjust to viewport
+						slidesToShow: 2,
+						slidesToScroll: 2,
+						draggable: true,
+						itemWidth: 150,
+						duration: 0.25}
+					},{
+					  // screens greater than >= 1024px
+						breakpoint: 800,
+						settings: {
+						slidesToShow: 4,
+						draggable: true,
+						slidesToScroll: 4,
+						itemWidth: 150,
+						duration: 0.25}
+						}]
+			})
     }
 }
 export default CarruselCasting;
