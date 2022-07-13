@@ -40,17 +40,27 @@ document.getElementById("history").addEventListener("click", () => {
 
         // let add_date = document.getElementById("history__section__orders__date");
 
-        let capa = document.getElementsByClassName("history__section--orders--items");
+        let capa = document.getElementsByClassName("history__section--orders--shopping");
+
+        let tag_div = document.createElement("div");
+        tag_div.setAttribute("id", "history__section--orders--items");
+
+        for (let i = 0; i < capa.length; i++) {
+            capa[i].appendChild(tag_div);
+        }
+
         let tag_h1 = document.createElement("h1");
         let tag_img = document.createElement("img");
 
+        let capa_2 = document.getElementsByClassName("history__section--orders--items");
+
         tag_h1.innerHTML = output;
-        tag_img.setAttribute('src', '/assets/icons/angle-small-right-free-icon-font.svg')
+        tag_img.setAttribute('src', '/assets/icons/angle-small-right-free-icon-font.svg');
+        tag_img.style.width = "20px";
 
-        for (let i = 0; i < capa.length; i++) {
-
-            capa[i].appendChild(tag_h1);
-
+        for (let j = 0; j < capa.length; j++) {
+            capa[j].appendChild(tag_h1);
+            capa[j].appendChild(tag_img);
         };
     }
 
