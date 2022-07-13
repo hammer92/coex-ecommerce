@@ -2,6 +2,7 @@
 import './style.css'
 import templatelogin from "./views/login.js"
 const Url = new URL(window.location)
+const urlParams = new URLSearchParams(Url.searchParams);
 
 import myorderView from './views/myorderView.js';
 const UNIQUE_USER_TOKEN = 'ABC';
@@ -14,6 +15,7 @@ ${urlParams.get("product")}
 <button id="accion"> Cambio </button>
 <a href="/index.html">Home</a>
 <button id="login">Log in </button>
+<button id="myorder">myOrder</button>
 `;
 
 const templateprueba = `
