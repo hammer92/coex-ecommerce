@@ -1,5 +1,18 @@
  @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
 
+ :root {
+     --white: #fff;
+     --purple: #7b2abf;
+     --purple-dark: #02021C;
+     --purple-dark-shadow: rgba(2, 2, 28, .5);
+     --purple-bg: #030328;
+     --purple-input: #110E35;
+     --red-warning: #E45871;
+     --gray-primary: #C7C7C7;
+     --gray-secondary: #797979;
+     --purple-fil: invert(22%) sepia(83%) saturate(2189%) hue-rotate(260deg) brightness(87%) contrast(102%);
+     --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
+ }
 
 button{
     background-color: transparent;
