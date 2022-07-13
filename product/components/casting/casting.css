@@ -1,4 +1,4 @@
-h4, small {
+/* h4, small {
     margin:0;
     padding:0;
 }
@@ -6,7 +6,6 @@ h4, small {
 .carrusel{
     width: 750px;
     padding: 10px;
-	
 	margin: auto;
 }
 
@@ -102,69 +101,47 @@ h4, small {
 .carrusel-ind .active:hover{
 	background-color: rgb(168, 0, 168);
 	
-}
-/* .contenedor2 {
-	max-width: 1200px;
-	width: 90%;
-	margin: auto;
-}
-
-.titulo2{
-	margin-left: 20px;
-    color: #fff;
 } */
 
+.container {
+	max-width: 780px;
+	width: 90%;
+	margin: auto;
+    padding: 10px;
+}
+
+.titulo{
+	margin-left: 20px;
+    color: #fff;
+}
+
 /* --- --- CAROUSEL --- --- */
-/* .carousel__contenedor2 {
+.carousel__container {
 	position: relative;
+    
+   
 }
 
-.carousel__anterior,
-.carousel__siguiente {
-	position: absolute;
-	display: block;
-	width: 30px;
-	height: 30px;
-	border: none;
-	top: calc(50% - 35px);
-	cursor: pointer;
-	line-height: 30px;
-	text-align: center;
-	background: none;
-	color: #fff;
-	opacity: 20%;
-	transition: all 0.2s ease-out;
-}
-
-.carousel__anterior:hover,
-.carousel__siguiente:hover{
-	opacity: 100%;
-	transform: scale(1.5);
-}
-
-.carousel__anterior2{
-	left: -30px;
-}
-.carousel__siguiente2{
-	right: -30px;
-}
-
-.lista2{
+.lista{
 	overflow: hidden;
+    
 }
 
-.carousel__element2o{
+.carousel__element{
 	position: relative;
 	text-align: center;
 	display: flex;
-	margin-left: 10px;
+    /* width:275px; */
+	margin:0px auto;
+    width: 80%;
+
 }
 
-.carousel__indicadores2 .glider-dot2{
+.carousel__indicadores2 .glider-dot{
 	background-color: rgb(117, 56, 117);
 	transition: all 0.2s ease-out;
 }
-.carousel__indicadores2 .glider-dot2:hover{
+.carousel__indicadores2 .glider-dot:hover{
 	background-color: rgb(117, 56, 117);
 	transform: scale(1.5);
 }
@@ -181,16 +158,16 @@ h4, small {
 
 .carousel__img2{
 	object-position: 50% 0%;
-	object-fit: cover;
-	width: 100%;
-	height: 350px;
-	border-radius: 20px;
+    object-fit: cover;
+    border-radius: 10px;
+    width: 124px;
+    height: 194px;
 	
 }
 
-.contenedor__elemento2{
+.container__element{
 	display: flex;
-	width: 100%;
+	width: 124px;
 	height: 20%;
 	background: linear-gradient(transparent,black, black);
 	position: absolute;
@@ -199,13 +176,14 @@ h4, small {
 	border-radius: 0 0 20px 20px;
 }
 
-.contenedor__elemento2 .carousel__titulo2{
+.container__element .carousel__tit{
 	display: block;
 	position: absolute;
     bottom: 5%;
 	text-align: center;
 	overflow: hidden;
-	left: calc(50% - 30%) ;
+    padding:2px 20px;
     color: #fff;
+    font-size: 15px;
 
-} */
+}

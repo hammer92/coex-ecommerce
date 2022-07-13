@@ -4,40 +4,54 @@ class CarruselCasting {
         
     }
     get templateClass(){
+
         return `
-       
-        <div class="carrusel">
-        <div class="slick-list" id="slick-prev">
-            <div class="slick-track2" id="track">
-                <div class="slick">
-                    
-                       
-                        <img src="./components/casting/img/image1.webp" alt="Image">
-                        <h4> <small> Robert D j </small></h4>
+        <div class="container">
+            <div class="carousel">
+                <h2 class="titulo"> Casting</h2>
+                <div class="carousel__container">
+                    <div id="lista2" class="carousel__list">
                         
-                   
-      
+                    </div>
                 </div>
+                <div role="tablist" class="carousel__indicadores2"></div>
             </div>
+
         </div>
-        <div role="tabList" class="carrusel-ind"></div>
-    </div>
- 
-  
-        `
+
+    `
     }
     move(){
         
-         return  new Glider(document.querySelector('#track'), {
-                duration: 3.5,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                draggable: true,
-                dots: '.carrusel-ind',
-                
-            });
-        
-        
-    }
+            return new Glider(document.getElementById('lista2'), {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    draggable: true,
+                    dots: '.carousel__indicadores2',
+                    
+                    responsive: [
+                        {
+                          // screens greater than >= 775px
+                            breakpoint: 450,
+                            settings: {
+                            // Set to `auto` and provide item width to adjust to viewport
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                            draggable: true,
+                            itemWidth: 100,
+                            duration: 0.25}
+                        },{
+                          // screens greater than >= 1024px
+                            breakpoint: 800,
+                            settings: {
+                            slidesToShow: 4,
+                            draggable: true,
+                            slidesToScroll: 4,
+                            itemWidth: 100,
+                            duration: 0.25}
+                            }]
+                })
+        }
 }
+
 export default CarruselCasting;
