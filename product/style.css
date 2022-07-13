@@ -1,3 +1,25 @@
-h1 {
-    color:red;
+.product-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.header {
+    height: 10%;
+    max-height: 50px;
+    background-color: #02021C;
+}
+.search-bar{
+    height: 20%;
+    max-height: 70px;
+    background-color: white;
+}
+.main-card-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+.main-card{
+    height: 90%;
+    width: 80%;
 }

@@ -1,15 +1,27 @@
-import "../style.css";
-import "./style.css";
-import CarouselRecomended from './components/carousel-recomended/carousel-recomended.js'
+import 'normalize.css'
+import '../style.css'
+import './style.css'
 
-const app = document.querySelector("#app");
+const Url = new URL(window.location)
+const urlParams = new URLSearchParams(Url.searchParams);
+const id = urlParams.get("product")
 
-const template = `<div id="carousel-recomended"></div>`;
-app.innerHTML = template;
-const carousel = document.querySelector('#carousel-recomended')
-const carouselInstance = new CarouselRecomended(window)
-carousel.innerHTML = carouselInstance.templateClass
-carouselInstance.move()
+const app = document.querySelector('#app');
 
+const template =`
+<h1>Hello world! Cart Page</h1>
+<button id="accion"> Cambio </button>
+<a href="./testfile.html">Tests</a>
+`
+app.innerHTML = template
 
+const button = document.getElementById('accion');
+button.addEventListener("click",() =>{
+    const h1 = document.querySelector("h1")
+    console.log("click", h1.style.color)
+    if(h1.style.color === "blue")
+        h1.style.color = "red";
+    else
+        h1.style.color = "blue";
+})
 
