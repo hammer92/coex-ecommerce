@@ -18,16 +18,18 @@ const template = `
 ${urlParams.get('product')}
 <button id="accion"> Cambio </button>
 <a href="/index.html" >Home</a>
-<a href="#history" id="history">History</a>
+<button id="history2">History</button>
 <button id="login">Log in </button>
 <button id="myorder">myOrder</button>
 `;
 
 // app.innerHTML = templateHistory;
 app.innerHTML = template;
-
-document.getElementById("history").addEventListener("click", () => {
+const history = document.getElementById("history2");
+history.addEventListener("click", () => {
+    console.log("Hola mundo");
     app.innerHTML = templateHistory;
+
 
     const boton_g = document.getElementById("boton_guardar");
 
@@ -85,7 +87,7 @@ document.getElementById("history").addEventListener("click", () => {
 //         h1.style.color = "blue";
 // })
 
-app.innerHTML = template;
+
 
 const button = document.getElementById('accion');
 button.addEventListener('click', () => {
