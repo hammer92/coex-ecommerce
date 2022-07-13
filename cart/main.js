@@ -1,5 +1,5 @@
-// import '../style.css'
-// import './style.css'
+import '../style.css'
+import './style.css'
 
 import templateHistory from "./views/history.js";
 const Url = new URL(window.location);
