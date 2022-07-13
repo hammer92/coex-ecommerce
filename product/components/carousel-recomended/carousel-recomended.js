@@ -2,8 +2,8 @@ import './carousel-recomended.css'
 
 class CarouselRecomended
 {
-    constructor(window){
-        this.ventana = window
+    constructor(){
+        
     }
     get templateClass()
     {
@@ -13,13 +13,6 @@ class CarouselRecomended
                 <h2 class="titulo">Recomendado</h2>
                 <div class="carousel__contenedor">
                     <div id="lista" class=".carousel__lista">
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        
                         
                     </div>
                 </div>
@@ -30,8 +23,7 @@ class CarouselRecomended
     `
     }
     move(){
-        this.ventana.addEventListener('load', ()=>{
-            new Glider(document.getElementById('lista'), {
+        return new Glider(document.getElementById('lista'), {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				draggable: true,
@@ -62,7 +54,6 @@ class CarouselRecomended
 						duration: 0.25}
 						}]
 			})
-        })
     }
 }
 

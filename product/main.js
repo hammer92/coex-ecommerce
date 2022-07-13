@@ -11,7 +11,7 @@ const urlParams = new URLSearchParams(Url.searchParams); */
 const carousel = document.querySelector('#carousel-recomended')
 const carouselInstance = new CarouselRecomended(window)
 carousel.innerHTML = carouselInstance.templateClass
-carouselInstance.move()
+const gliderCarousel = carouselInstance.move()
 
 
 
@@ -23,19 +23,19 @@ carouselInstance.move()
 
 const movie = new MovieController(550);
 document.addEventListener('DOMContentLoaded', () =>{
-  const container = document.getElementById('lista');
   
   movie.getRecommended().then(value => {
     console.log(value);
     value.forEach(e=>{
-      let ejemplo = 
+      const newElement = document.createElement("div")
+      newElement.innerHTML = 
       `<div class="carousel__elemento">
           <img class="carousel__img" src="${e.image_link}" alt="${e.name}">
           <div class="contenedor__elemento">
-              <p class="carousel__titulo" >${e.name}</p>
-          </div>
-      </div>`
-      container.innerHTML += ejemplo
+          <p class="carousel__titulo" >${e.name}</p>
+      </div>
+  </div>`
+      gliderCarousel.addItem(newElement)
     })
   })
 })
