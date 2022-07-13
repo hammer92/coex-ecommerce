@@ -5,9 +5,8 @@ const urlParams = new URLSearchParams(Url.searchParams);
 
 const app = document.querySelector('#app');
 
-
 const template = `
-<h1>Hello world! Cart Page</h1>
+<h1>Hello world! Product Page</h1>
 ${urlParams.get("product")}
 <button id="accion"> Cambio </button>
 <a href="/index.html">Home</a>
