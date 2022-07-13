@@ -14,11 +14,11 @@ const prev = document.getElementById('prev')
 const next = document.getElementById('next')
 const current = document.getElementById('current')
 
-var currentPage = 1;
-var nextPage = 2;
-var prevPage = 3;
-var lastUrl = '';
-var totalPages = 100;
+let currentPage = 1;
+let nextPage = 2;
+let prevPage = 3;
+let lastUrl = '';
+let totalPages = 100;
 
 const cargarFiltros = async () => {
 	try {
@@ -36,6 +36,7 @@ const cargarFiltros = async () => {
 
 let getByCategory = "";
 let categorySelected = document.querySelectorAll("#categorySelected");
+
 categorySelected.forEach(element => {
 	element.addEventListener("click", async () => {
 
@@ -56,7 +57,7 @@ categorySelected.forEach(element => {
 const cargarPeliculas = async (category) => {
 	lastUrl = category;
 	let allMovies = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
-	
+
 	if (category == "") {
 		console.log("No hay categoría seleccionada");
 	} else {
@@ -71,7 +72,6 @@ const cargarPeliculas = async (category) => {
 		console.log(error);
 	}
 }
-
 
 function getMovies(url) {
 	lastUrl = url;
@@ -125,8 +125,8 @@ const showMovies = async (data) => {
 			peliculas += `
 			<div class="pelicula">
             <div class="arr">
-            <img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">
-                <!-- <p class="title_poster">${pelicula.original_title}</p>--!>
+			<img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">
+            <!-- <p class="title_poster">${pelicula.original_title}</p>--!>
             </div>
             <div class="aba">
                 <div class="info">
