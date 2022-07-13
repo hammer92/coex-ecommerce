@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () =>{
       gliderCarousel.addItem(newElement)
     })
   })
+
+  
   movie.getCasting().then(value => {
     console.log(value);
     value.forEach(e=>{
