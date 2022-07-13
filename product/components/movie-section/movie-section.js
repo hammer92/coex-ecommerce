@@ -1,9 +1,6 @@
 import './movie-section.css'
 
 class MovieSection {
-  constructor(window) {
-    this.ventana = window;
-  }
   get templateClass() {
     return;
     `

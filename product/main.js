@@ -9,9 +9,16 @@ const urlParams = new URLSearchParams(Url.searchParams); */
 
 
 const carousel = document.querySelector('#carousel-recomended')
-const carouselInstance = new CarouselRecomended(window)
+const carouselInstance = new CarouselRecomended()
 carousel.innerHTML = carouselInstance.templateClass
 const gliderCarousel = carouselInstance.move()
+
+const divCasting = document.querySelector('#carruselCasting');
+const casting = new CarruselCasting();
+divCasting.innerHTML = casting.templateClass;
+const gliderCasting = casting.move(); 
+
+
 
 
 const movie = new MovieController(550);
@@ -26,24 +33,12 @@ document.addEventListener('DOMContentLoaded', () =>{
       `<div class="carousel__elemento">
           <img class="carousel__img" src="${e.image_link}" alt="${e.name}">
           <div class="contenedor__elemento">
-          <p class="carousel__titulo" >${e.name}</p>
-      </div>
-  </div>`
+            <p class="carousel__titulo" >${e.name}</p>
+          </div>
+      </div>`
       gliderCarousel.addItem(newElement)
     })
   })
-})
-
-
-const divCasting = document.querySelector('#carruselCasting');
-const casting = new CarruselCasting();
-divCasting.innerHTML = casting.templateClass;
-  // casting.move();
-
-const gliderCasting = casting.move(); 
-
-document.addEventListener('DOMContentLoaded', () =>{
-
   movie.getCasting().then(value => {
     console.log(value);
     value.forEach(e=>{
@@ -52,15 +47,18 @@ document.addEventListener('DOMContentLoaded', () =>{
       `<div class="carousel__element">
           <img class="carousel__img2" src="${e.image_link}" alt="${e.name}">
           <div class="container__element">
-          <p class="carousel__tit" >${e.name}</p>
-      </div>
-  </div>`
+            <p class="carousel__tit" >${e.name}</p>
+          </div>
+      </div>`
   
       gliderCasting.addItem(newElement2)
-
+  
     })
   })
 })
+
+
+
 
 
 
