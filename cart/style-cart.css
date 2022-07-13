@@ -4,9 +4,11 @@
 
 .cart-container {
     background: var(--purple-input);
+    box-sizing: border-box;
     border-radius: 10px 0 0 10px;
     max-height: 92vh;
     overflow: auto;
+    overflow-x: hidden;
     padding: 15px;
     position: fixed;
     right: -30%;

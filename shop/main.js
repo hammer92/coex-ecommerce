@@ -75,6 +75,7 @@ const cargarPeliculas = async (category) => {
 }
 
 
+
 function getMovies(url) {
 	lastUrl = url;
 	fetch(url).then(res => res.json()).then(data => {
@@ -140,7 +141,7 @@ const showMovies = async (data) => {
 					</div>
 					</div>
 					<div>
-						<button class ="carrito" onclick="addToCart()" id="carrito">Add to card</button>
+						<button class ="carrito" onclick="addToCart(${pelicula.id})" id="carrito">Add to card</button>
 					</div>
             	</div>
 			</div>
@@ -154,21 +155,6 @@ const showMovies = async (data) => {
 	}
 }
 
-const addToCart = (id) => {
-    const movie = listMovies.find(movie => movie.id === id) 
-    const indexMovies = moviesInCart.map(movie => movie.id);
-    //comprobamos que la pelicula seleccionada no este repetida en moviesCart
-    if(!indexMovies.includes(movie.id)){
-        moviesInCart.push(movie);
-        renderMovieInCart(moviesInCart) 
-        showCheckoutButton(moviesInCart.length)
-        openCart()   
-        localStorage.setItem('shoppingCart', JSON.stringify(moviesInCart))
-    }else {
-        console.log('peli repetida');
-        return
-    }
-}
 
 filtros.addEventListener('submit', (e) => {
 	e.preventDefault();

@@ -47,60 +47,14 @@ window.onload = () => {
 }
 
 //Obtengo las pelis de la lista numero 1
-const getMovies = async () => {
-    const listId = 1
-    const response = await fetch(`https://api.themoviedb.org/4/list/${listId}?page=1&api_key=dde722cb807472090076a60be85c0010`).then(r => r.json()).catch(err => console.log(err));
-    const moviesArr = response.results
-    moviesArr.forEach( movie => {
-    let movieObj = {
-        title: movie.title,
-        id: movie.id,
-        genre: movie.genre_ids,
-        poster: movie.poster_path,
-        vote: movie.vote_average,
-    }
-    listMovies.push(movieObj)
-    })
-    renderListMovies(listMovies)
-}
 
-getMovies()
-
-//reenderizo la lista de pelis
-const renderListMovies = (list) => {
-    let template = ''
-
-    list.map(movie => { 
-        let url = imageUrl + movie.poster
-        const cart = `
-        <div class="cart-list">
-            <div class="cart">
-                <div class="movie-image">
-                    <img src="${url}" width="200" height="300" alt="imageMovie">
-                </div>
-                <div class="movie-title">
-                    <h4>${movie.title}</h4>
-                </div>
-                <div class="movie-genre">
-                    <span>Genero</span>
-                </div>
-                <div class="movie-value">
-                    <span>${movie.vote}</span>
-                </div>
-        </div>
-        <button onclick="addToCart(${movie.id})" type="button">Add to cart</button>
-        </div>    
-        `
-        template += cart
-    })
-
-    cartListContainer.innerHTML = template
-}
 
 
 //funcion para añadir una peli al shopping cart
-const addToCart = (id) => {
-    const movie = listMovies.find(movie => movie.id === id) 
+const addToCart = async(id) => {
+    // const movie = listMovies.find(movie => movie.id === id) 
+    const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`).then(r=> r.json()).catch(e=> console.log(e))
+    console.log(movie)
     const indexMovies = moviesInCart.map(movie => movie.id);
     //comprobamos que la pelicula seleccionada no este repetida en moviesCart
     if(!indexMovies.includes(movie.id)){
@@ -122,7 +76,7 @@ const renderMovieInCart = (moviesArray) => {
     console.log(moviesArray);
     let template = ``
     moviesArray.map(movie => {
-        let url = imageUrl + movie.poster
+        let url = imageUrl + movie.poster_path
         const cart = `
             <div class="cart-item">
                 <div class="cart-item-img">
@@ -131,7 +85,7 @@ const renderMovieInCart = (moviesArray) => {
                 <div class="cart-info-container">
                     <h2>${movie.title}</h2>
                     <span>genero</span>
-                    <span>${movie.vote}</span>
+                    <span>${movie.vote_average}</span>
                 </div>
             </div>
             <div class="delete-button" onclick="deleteMovieInCart(${movie.id})">X</div>
