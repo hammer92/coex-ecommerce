@@ -124,11 +124,13 @@ const showMovies = async (data) => {
 
 			peliculas += `
 			<div class="pelicula">
-            <div class="arr">
+            <div class="arr"> <!-- parte donde va la imagen de la pelicula--!>
+            <div class="hover"><p>${pelicula.overview}</p>  </div>
             <img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">
                 <!-- <p class="title_poster">${pelicula.original_title}</p>--!>
+            
             </div>
-            <div class="aba">
+            <div class="aba"> <!-- parte donde va el genero de la pelicula y el boton--!>
                 <div class="info">
 					<div>
 						${generoName}
