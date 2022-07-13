@@ -54,7 +54,7 @@ body{
 }
 
 .pelicula:hover{
-	transform: translateY(-15px);
+	/* transform: translateY(-15px); */
 }
 
 .circulo{
@@ -141,8 +141,8 @@ header{
     justify-content: space-between;
     align-items: center;
     height: 54px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .izHeader{
@@ -151,6 +151,7 @@ header{
     align-items: center;
     gap: 10px;
 }
+
 
 .logo{
     width: 168px;
@@ -166,7 +167,11 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
+}
+
+.sesion{
+    color:#7B2ABF;
 }
 
 li,option{
@@ -307,4 +312,32 @@ li {
     color:white;
 }
 
+.izHeader li{
+    cursor: pointer;
+}
 
+#categorySelected{
+    font-size: 16px;
+}
+
+.hover{
+    position: absolute;
+    color: white;
+    background-color: rgba(0,0,0,0.95);
+    height: 300px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 220px;
+    overflow: hidden;
+    text-align: justify;
+    font-size: 12px;
+    opacity: 0;
+}
+
+.hover:hover{
+    opacity: 1;
+}
+
+.hover *{
+    margin: 10px;
+}
