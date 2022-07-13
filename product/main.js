@@ -46,47 +46,5 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
 
-const movie = new MovieController(155);
-document.addEventListener('DOMContentLoaded', () =>{
-  const container = document.getElementById('lista');
-  movie.getRecommended().then(value => {
-    console.log(value);
-    value.forEach(e=>{
-      let ejemplo = 
-      `<div class="carousel__elemento">
-          <img class="carousel__img" src="${e.image_link}" alt="${e.name}">
-          <div class="contenedor__elemento">
-              <p class="carousel__titulo" >${e.name}</p>
-          </div>
-      </div>`
-      container.innerHTML += ejemplo
-    })
-  })
-})
 
 
-document.addEventListener('DOMContentLoaded', () =>{
-  const container = document.getElementById('track');
-  movie.getCasting().then(value => {
-    console.log(value);
-
-    value.forEach(e=>{
-      let ejemplo = 
-      
-      `
-      
-  <div class="slick">
-      <div>
-            <picture>
-              <img src="${e.image_link}" alt="Image">
-               <h4> <small> </small></h4>
-          </picture>
-      </div>
-  </div>
-
-
-      `
-      container.innerHTML += ejemplo
-    })
-  })
-})
