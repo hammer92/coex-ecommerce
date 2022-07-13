@@ -167,7 +167,7 @@ filtros.addEventListener('submit', (e) => {
 });
 
 //Paginacion
-current.addEventListener('click', () => {
+prev.addEventListener('click', () => {
 	if (prevPage > 0) {
 		pageCall(prevPage);
 	}
