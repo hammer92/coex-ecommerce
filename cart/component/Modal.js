@@ -1,158 +1,152 @@
-class Modal extends HTMLElement {
-    constructor(){
-        super()
-        this.attachShadow({mode: 'open'})
-    }
-    getTemplate(){
-        const template = document.createElement("template")
-        template.innerHTML = `
-        <section>
-            <div class="cart-slider">
-                <div class="cart-container">
-                    <div class="title-container">
-                        <h2 class="title-cart">Shopping Cart</h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" onclick="closeCart()" width="30px" viewBox="0 0 448 512"><path d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z"/></svg>
-                    </div>
-                    <div class="cart-list"></div>
-                    <div class="checkout-button-container">
-                        <a href="#" class="checkout-button">CHECKOUT</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        `
-        return template
-    }
-    getStyles(){
-        return `
-        <style>
-            :host{
-                --gray-primary: #C7C7C7;
-                --gray-secondary: #797979;
-                --purple-bg: #030328;
-                --purple-dark: #02021C;
-                --purple-fil: invert(22%) sepia(83%) saturate(2189%) hue-rotate(260deg) brightness(87%) contrast(102%);
-                --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
-                --purple-input: #110E35;
-                --purple: #7b2abf;
-                --red-warning: #E45871;
-                --white: #fff;
-            }
+//ARIR CARRITO
+const cartContainer = document.querySelector('.cart-container');
+const checkoutButton = document.querySelector('.checkout-button-container');
 
-            .nav-bar-container {
-                width: 100%;
-            }
+const openCart = () => {
+    cartContainer.style.right = `0`
+    // cartContainer.style.display = `block`
+}
 
-            .nav-bar{
-                align-items: center;
-                background: var(--purple-dark);
-                display: flex;
-                height: 54px;
-                justify-content: flex-end;
-                top: 10px;
-            }
+const closeCart = () => {
+    cartContainer.style.right = `-30%`
+    // cartContainer.style.display = `none`
+}
 
-            .nav-bar-button {
-                height: 30px;
-            }
+const showCheckoutButton = (arrLength) => {  
+    if(arrLength > 0) { 
+        checkoutButton.style.display = 'block'
+    }else{
+        checkoutButton.style.display = 'none'
 
-            .cart-slider {
-                position: relative;
-            }
-
-            .cart-container{
-                background: var(--purple-input);
-                border-radius: 10px 0 0 10px;
-                max-height: 92vh;
-                overflow:auto;
-                padding: 15px;
-                position: fixed;
-                right: -30%;
-                transition: right .5s ease-in-out;
-                width: 30%;
-            }
-
-            .title-container {
-                display: flex;
-                font-weight: bold;
-                justify-content: space-between;
-            }
-
-            .title-container > svg {
-                cursor: pointer;
-                fill: var(--white);
-                transform: rotate(180deg);
-            }
-
-            .cart-item {
-                align-items: center;
-                display: flex;
-                justify-content: space-between;
-                margin: 5px 0;
-            }
-
-            .cart-item-img {
-                display: flex;
-            }
-
-            .cart-item-img > img {
-                height: 80px;
-                min-height: 80px;
-                min-width: 80px;
-                object-fit: cover;
-                object-position: top;
-                width: 80px;
-            }
-
-            .cart-info-container {
-                padding-left: 10px;
-            }
-
-            .cart-info-container > h2 {
-                font-size: 14px;
-            }
-
-            .cart-info-container > span {
-                display: block;
-            }
-
-            .delete-button {
-                color: var(--gray-primary);
-                cursor: pointer;
-                font-size: 16px;
-                margin-left: 10px;
-            }
-
-            .checkout-button-container {
-                background: var(--purple);
-                border-radius: 10px;
-                border: 2px solid var(--purple);
-                cursor: pointer;
-                margin: 10px 0;
-                padding: 10px;
-                transition: background .3s;
-                width: 100%;
-            }
-
-            .checkout-button-container:hover {
-                background: transparent;
-            }
-
-            .checkout-button{
-                display: block;
-                text-align: center;
-                width: 100%;
-            }
-
-        </style>
-        `
-    }
-    render(){
-        this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true))
-    }
-    connectedCallback(){
-        this.render()
     }
 }
 
-customElements.define("shopping-cart", Modal)
+//URL LISTADO DE PELIS
+//https://api.themoviedb.org/4/list/${list_id}?page=1&api_key=dde722cb807472090076a60be85c0010
+//https://api.themoviedb.org/3/discover/movie?with_genres=878&api_key=d2b1df9d64af7fb2a0342bd9d23e1449&language=es-MX&page=2
+
+//URL PELIS POR ID
+//https://api.themoviedb.org/3/movie/${movie_id}?api_key=dde722cb807472090076a60be85c0010&language=en-US
+
+const imageUrl = `https://image.tmdb.org/t/p/w500/`
+const cartListContainer = document.querySelector('.cart-list-container');
+const listMovies = []
+const moviesInCart = []
+
+
+//cargar los datos del localStorage a moviesInCart para luego renderizar las movies del shoppingCart
+window.onload = () => {
+    const moviesLocalStorage = localStorage.getItem('shoppingCart') || []
+    const moviesArr = JSON.parse(moviesLocalStorage)
+    console.log(moviesArr);
+        moviesArr.forEach( movie => {
+            console.log(movie);
+            moviesInCart.push(movie)
+        })
+        renderMovieInCart(moviesInCart)
+}
+
+//Obtengo las pelis de la lista numero 1
+const getMovies = async () => {
+    const listId = 1
+    const response = await fetch(`https://api.themoviedb.org/4/list/${listId}?page=1&api_key=dde722cb807472090076a60be85c0010`).then(r => r.json()).catch(err => console.log(err));
+    const moviesArr = response.results
+    moviesArr.forEach( movie => {
+    let movieObj = {
+        title: movie.title,
+        id: movie.id,
+        genre: movie.genre_ids,
+        poster: movie.poster_path,
+        vote: movie.vote_average,
+    }
+    listMovies.push(movieObj)
+    })
+    renderListMovies(listMovies)
+}
+
+getMovies()
+
+//reenderizo la lista de pelis
+const renderListMovies = (list) => {
+    let template = ''
+
+    list.map(movie => { 
+        let url = imageUrl + movie.poster
+        const cart = `
+        <div class="cart-list">
+            <div class="cart">
+                <div class="movie-image">
+                    <img src="${url}" width="200" height="300" alt="imageMovie">
+                </div>
+                <div class="movie-title">
+                    <h4>${movie.title}</h4>
+                </div>
+                <div class="movie-genre">
+                    <span>Genero</span>
+                </div>
+                <div class="movie-value">
+                    <span>${movie.vote}</span>
+                </div>
+        </div>
+        <button onclick="addToCart(${movie.id})" type="button">Add to cart</button>
+        </div>    
+        `
+        template += cart
+    })
+
+    cartListContainer.innerHTML = template
+}
+
+
+//funcion para añadir una peli al shopping cart
+const addToCart = (id) => {
+    const movie = listMovies.find(movie => movie.id === id) 
+    const indexMovies = moviesInCart.map(movie => movie.id);
+    //comprobamos que la pelicula seleccionada no este repetida en moviesCart
+    if(!indexMovies.includes(movie.id)){
+        moviesInCart.push(movie);
+        renderMovieInCart(moviesInCart) 
+        showCheckoutButton(moviesInCart.length)
+        openCart()   
+        localStorage.setItem('shoppingCart', JSON.stringify(moviesInCart))
+    }else {
+        console.log('peli repetida');
+        return
+    }
+}
+
+const cartList = document.querySelector('.cart-list')
+
+//renderizar moviesInCart
+const renderMovieInCart = (moviesArray) => {
+    console.log(moviesArray);
+    let template = ``
+    moviesArray.map(movie => {
+        let url = imageUrl + movie.poster
+        const cart = `
+            <div class="cart-item">
+                <div class="cart-item-img">
+                    <img 
+                    src="${url}" alt="movie-img">
+                <div class="cart-info-container">
+                    <h2>${movie.title}</h2>
+                    <span>genero</span>
+                    <span>${movie.vote}</span>
+                </div>
+            </div>
+            <div class="delete-button" onclick="deleteMovieInCart(${movie.id})">X</div>
+        </div>
+        `
+        template += cart
+    })
+    cartList.innerHTML = template
+}
+
+//funcion de eliminar elemento de shopping cart
+const deleteMovieInCart = (id) => {   
+    let indexMovie = moviesInCart.findIndex(movie => movie.id === id)
+    moviesInCart.splice(indexMovie, 1)
+    showCheckoutButton(moviesInCart.length)
+    localStorage.setItem('shoppingCart', JSON.stringify(moviesInCart))
+    renderMovieInCart(moviesInCart)
+}
