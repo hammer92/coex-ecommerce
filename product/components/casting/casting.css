@@ -1,4 +1,4 @@
-h4, small {
+/* h4, small {
     margin:0;
     padding:0;
 }
@@ -6,7 +6,6 @@ h4, small {
 .carrusel{
     width: 750px;
     padding: 10px;
-	/* width: 90%; */
 	margin: auto;
 }
 
@@ -102,4 +101,89 @@ h4, small {
 .carrusel-ind .active:hover{
 	background-color: rgb(168, 0, 168);
 	
+} */
+
+.container {
+	max-width: 780px;
+	width: 90%;
+	margin: auto;
+    padding: 10px;
+}
+
+.titulo{
+	margin-left: 20px;
+    color: #fff;
+}
+
+/* --- --- CAROUSEL --- --- */
+.carousel__container {
+	position: relative;
+    background-color: #fff;
+   
+}
+
+.lista{
+	overflow: hidden;
+    
+}
+
+.carousel__element{
+	position: relative;
+	text-align: center;
+	display: flex;
+    /* width:275px; */
+	margin:0px auto;
+    width: 80%;
+
+}
+
+.carousel__indicadores2 .glider-dot{
+	background-color: rgb(117, 56, 117);
+	transition: all 0.2s ease-out;
+}
+.carousel__indicadores2 .glider-dot:hover{
+	background-color: rgb(117, 56, 117);
+	transform: scale(1.5);
+}
+
+.carousel__indicadores2 .active{
+	background-color: rgb(168, 0, 168);
+	transform: scale(1.5);
+	transition: all 0.2s ease-out;
+}
+.carousel__indicadores2 .active:hover{
+	background-color: rgb(168, 0, 168);
+	
+}
+
+.carousel__img2{
+	object-position: 50% 0%;
+    object-fit: cover;
+    border-radius: 10px;
+    width: 124px;
+    height: 194px;
+	
+}
+
+.container__element{
+	display: flex;
+	width: 124px;
+	height: 20%;
+	background: linear-gradient(transparent,black, black);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border-radius: 0 0 20px 20px;
+}
+
+.container__element .carousel__tit{
+	display: block;
+	position: absolute;
+    bottom: 5%;
+	text-align: center;
+	overflow: hidden;
+    padding:2px 20px;
+    color: #fff;
+    font-size: 15px;
+
 }
