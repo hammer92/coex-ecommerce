@@ -70,38 +70,6 @@ body{
 	border-top-left-radius: 15px;
 }
 
-.paginacion {
-	position: fixed;
-	bottom: 0;
-	background: #100a1f;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	gap: 20px;
-	padding: 10px;
-}
-
-.paginacion button {
-	cursor: pointer;
-	border: none;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	height: 50px;
-	width: 200px;
-	background: #241744;
-	color: #fff;
-	border-radius: 100px;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 600;
-	transition: .3s ease all;
-}
-
-.paginacion button:hover {
-	background: #7B2ABF;
-}
-
 .search{
     padding: 11px;
     font-size: 16px;
@@ -275,3 +243,79 @@ li {
     color: #7B2ABF;
     padding-right: 5px;
 }
+
+.pagination{
+    display:flex;
+    margin:10px 30px;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    margin-top: -80px;
+}
+.pagination1{
+    margin: auto;
+    display:flex;
+    margin:10px 30px;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    
+}
+
+.page{ 
+    border: 1px solid #7B2ABF;
+    background-color: #02021C;
+    /* padding: 5px; */
+    padding-left: 5px;
+    color: white;
+    padding-right: 5px;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    cursor:pointer;
+    margin:5px;
+}
+
+.page.disabled{
+    cursor:not-allowed;
+    color:gray;
+}
+
+.current{
+    border: 1px solid #7B2ABF;
+    background-color: #02021C;
+    /* padding: 5px; */
+    padding-left: 5px;
+    color: gray;
+    padding-right: 5px;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    cursor:pointer;
+    margin:5px;
+}
+
+.no-results{
+    color:white;
+}
+
+.information{
+    border: 1px solid #7B2ABF;
+    background-color: #02021C;
+    /* padding: 5px; */
+    padding-left: 5px;
+    color: white;
+    padding-right: 5px;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 40px;
+    padding-left: 40px;
+    margin-right: 15px;
+}
+
+
