@@ -1,8 +1,10 @@
-import '../style.css'
+//import '../style.css'
 import './style.css'
 import templatelogin from "./views/login.js"
 const Url = new URL(window.location)
-const urlParams = new URLSearchParams(Url.searchParams);
+
+import myorderView from './views/myorderView.js';
+const UNIQUE_USER_TOKEN = 'ABC';
 
 const app = document.querySelector('#app');
 
@@ -63,5 +65,20 @@ buttonlogin.addEventListener("click",() =>{
 
 })
 
+// ------------------------
+// MyOrder View
 
+const myorder = document.getElementById('myorder');
+myorder.addEventListener('click', () => {
+	if (UNIQUE_USER_TOKEN === 'ABC') {
+		app.innerHTML = myorderView;
+		const BACK = document.getElementById('back-arrow');
+		BACK.addEventListener('click', () => {
+			window.location.reload();
+		});
+	} else {
+		console.log('denegado');
+	}
+});
 
+// ------------------------
