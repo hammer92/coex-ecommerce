@@ -53,6 +53,7 @@ const myorderView = `
         <a href="../../index.html" class="topbar__link" type="button">
             <img src="${IconSrc}/logo_coexbuster.svg" alt="logo_coexbuster" class="logo">
         </a>
+		
     </header>
     <main class="myorder-container">
         ${BTN_BACK}

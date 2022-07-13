@@ -16,6 +16,7 @@ ${urlParams.get("product")}
 <button id="accion"> Cambio </button>
 <a href="/index.html">Home</a>
 <button id="login">Log in </button>
+<button id="myorder">myOrder</button>
 `;
 
 app.innerHTML = template;
