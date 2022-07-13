@@ -1,3 +1,4 @@
+import 'normalize.css'
 import '../style.css'
 import './style.css'
 const Url = new URL(window.location)
