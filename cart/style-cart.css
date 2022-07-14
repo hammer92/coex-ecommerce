@@ -84,18 +84,20 @@
     background: var(--purple);
     border-radius: 10px;
     border: 2px solid var(--purple);
+    color: var(--white);
     cursor: pointer;
     margin: 10px 0;
     padding: 10px;
     transition: background .3s;
     width: 100%;
 }
-
+/* 
 .checkout-button-container:hover {
     background: transparent;
-}
+} */
 
 .checkout-button {
+    color: var;
     display: block;
     text-align: center;
     width: 100%;
