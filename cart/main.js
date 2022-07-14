@@ -56,8 +56,8 @@ ${urlParams.get('product')}
 
 if (sesion === 'false') {
 	Login();
-} else {
-	app.innerHTML = template;
+} else  {
+	renderHistory()
 }
 
 
@@ -68,7 +68,9 @@ if (sesion === 'false') {
 
 const history = document.getElementById('history2');
 history.addEventListener('click', () => {
-	console.log('Hola mundo');
+});
+
+function renderHistory() {
 	app.innerHTML = templateHistory;
 
 	const boton_g = document.getElementById('boton_guardar');
@@ -121,7 +123,8 @@ history.addEventListener('click', () => {
 	}
 
 	boton_g.addEventListener('click', call_date);
-});
+
+}
 
 const button = document.getElementById('accion');
 button.addEventListener('click', () => {
