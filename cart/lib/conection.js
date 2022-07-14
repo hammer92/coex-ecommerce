@@ -3,20 +3,12 @@ let indexDB = window.indexedDB;
 let db;
 let dbConection = indexDB.open('movies', 1);
 
-
-let arrayMovie;
-
-const getData = async ()=>{
-    let data = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=d2b1df9d64af7fb2a0342bd9d23e1449&language=en-US&page=1')
-                .then(res=>res.json())
-                .then(res=>{
-                    return res.results
-                });
-    return data
+export const getData = ()=>{
+    let key = localStorage.key('shoppingCart');
+    let getItem = localStorage.getItem(key);
+    let data = JSON.parse(getItem);
+    return data;
 }
-
-arrayMovie = getData()
-console.log(arrayMovie)
 
 dbConection.onsuccess = ()=>{
     db = dbConection.result;
@@ -30,7 +22,7 @@ dbConection.onupgradeneeded = (e)=>{
    })
 };
 
-const addMovieList = (object)=>{
+export const addMovieList = (object)=>{
     db = dbConection.result;
     let IDBtransaction = db.transaction('movies', 'readwrite');
     let objectStore = IDBtransaction.objectStore('movies');
