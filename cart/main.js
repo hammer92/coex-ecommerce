@@ -23,21 +23,43 @@ ${urlParams.get('product')}
 <button id="myorder">myOrder</button>
 `;
 
+const MOVIES = [
+    {
+        title: 'Saw',
+        genre: 'Thriller',
+        poster_path: '/harQifr8kpIVqlLP41kTR058LZB.jpg',
+        vote_average: 7.4,
+    },
+    {
+        title: 'Avengers: Endgame',
+        genre: 'Action',
+        poster_path: '/or06FN3Dka5tukK1e9sl16pB3iy.jpg',
+        vote_average: 8.3,
+    },
+    {
+        title: 'Joker',
+        genre: 'Action',
+        poster_path: '/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg',
+        vote_average: 8.2,
+    },
+];
+
 // app.innerHTML = templateHistory;
 app.innerHTML = template;
 const history = document.getElementById("history2");
 history.addEventListener("click", () => {
-    console.log("Hola mundo");
     app.innerHTML = templateHistory;
 
 
     const boton_g = document.getElementById("boton_guardar");
 
-    function call_date() {
+    function call_date(movies) {
 
         let array_date = [];
-
+        let contador = 0;
         const date = new Date();
+        let longitud_movies = movies.length;
+        console.log(longitud_movies);
 
         let output =
             String(date.getDate()).padStart(2, "0") +
@@ -50,31 +72,39 @@ history.addEventListener("click", () => {
 
         // let add_date = document.getElementById("history__section__orders__date");
 
-        let capa = document.getElementsByClassName("history__section--orders--shopping");
+        let capa_contenedor = document.getElementsByClassName("history__section--orders--shopping");
 
         let tag_div = document.createElement("div");
-        tag_div.setAttribute("id", "history__section--orders--items");
-
-        for (let i = 0; i < capa.length; i++) {
-            capa[i].appendChild(tag_div);
-        }
+        tag_div.setAttribute("class", "history__section--orders--items");
 
         let tag_h1 = document.createElement("h1");
         let tag_img = document.createElement("img");
+        let tag_h2 = document.createElement("h2");
 
-        let capa_2 = document.getElementsByClassName("history__section--orders--items");
+        let capa = document.getElementsByClassName("history__section--orders--items");
 
         tag_h1.innerHTML = output;
+        tag_h1.style.color = "white";
         tag_img.setAttribute('src', '/assets/icons/angle-small-right-free-icon-font.svg');
         tag_img.style.width = "20px";
+        tag_h2.innerHTML = longitud_movies;
+        tag_h2.style.color = "white";
+        tag_h2.innerHTML += " movies";
 
-        for (let j = 0; j < capa.length; j++) {
-            capa[j].appendChild(tag_h1);
-            capa[j].appendChild(tag_img);
-        };
+        for (let i = 0; i < capa_contenedor.length; i++) {
+            capa_contenedor[i].appendChild(tag_div);
+            for (let j = 0; j < capa.length; j++) {
+                contador = contador + 1;
+                tag_div.setAttribute('id', contador);
+                capa[j].appendChild(tag_h1);
+                capa[j].appendChild(tag_img);
+
+            };
+            capa_contenedor[i].appendChild(tag_h2);
+        }
     }
 
-    boton_g.addEventListener("click", call_date);
+    boton_g.addEventListener("click", call_date(MOVIES));
 });
 
 // const button = document.getElementById('accion');
