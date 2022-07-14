@@ -149,14 +149,13 @@ const showMovies = async (data) => {
 			</div>
 				`;
 		});
-
+		
 		app.innerHTML = peliculas;
-
+		
 	} catch (error) {
 		console.log(error);
 	}
 }
-
 
 filtros.addEventListener('submit', (e) => {
 	e.preventDefault();
