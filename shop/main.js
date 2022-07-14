@@ -75,8 +75,6 @@ const cargarPeliculas = async (category) => {
 	}
 }
 
-
-
 function getMovies(url) {
 	lastUrl = url;
 	fetch(url).then(res => res.json()).then(data => {
