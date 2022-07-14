@@ -59,7 +59,7 @@ class CarruselCasting {
     }
     async renderItems(){
 		const gliderCarousel = this.move()
-		const images = await this.apiController.getRecommended()
+		const images = await this.apiController.getCasting()
         
 		images.forEach( img => {
 			const newElement = document.createElement("div")
