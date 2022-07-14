@@ -49,7 +49,7 @@ const template = `
 ${urlParams.get('product')}
 <button id="accion"> Cambio </button>
 <a href="/index.html" >Home</a>
-<button id="history2">History</button>
+<button id="history">History</button>
 <button id="login">Log in </button>
 <button id="myorder">myOrder</button>
 `;
@@ -66,56 +66,9 @@ if (sesion === 'false') {
 
 // History
 
-<<<<<<< HEAD
-    const boton_g = document.getElementById("boton_guardar");
-
-    function call_date() {
-
-        let array_date = [];
-
-        const date = new Date();
-
-        let output =
-            String(date.getDate()).padStart(2, "0") +
-            "." +
-            String(date.getMonth() + 1).padStart(2, "0") +
-            "." +
-            date.getFullYear();
-
-        array_date.push(output);
-
-        // let add_date = document.getElementById("history__section__orders__date");
-
-        let capa = document.getElementsByClassName("history__section--orders--shopping");
-
-        let tag_div = document.createElement("div");
-        tag_div.setAttribute("id", "history__section--orders--items");
-
-        for (let i = 0; i < capa.length; i++) {
-            capa[i].appendChild(tag_div);
-        }
-
-        let tag_h1 = document.createElement("h1");
-        let tag_img = document.createElement("img");
-
-        let capa_2 = document.getElementsByClassName("history__section--orders--items");
-
-        tag_h1.innerHTML = output;
-        tag_img.setAttribute('src', '/assets/icons/angle-small-right-free-icon-font.svg');
-        tag_img.style.width = "20px";
-
-        for (let j = 0; j < capa.length; j++) {
-            capa[j].appendChild(tag_h1);
-            capa[j].appendChild(tag_img);
-        };
-    }
-
-    boton_g.addEventListener("click", call_date); });
-=======
-const history = document.getElementById('history2');
+const history = document.getElementById('history');
 history.addEventListener('click', () => {
 });
->>>>>>> b795e138e17f80c4e446da91c2b891fe89f6a260
 
 function renderHistory() {
 	app.innerHTML = templateHistory;
