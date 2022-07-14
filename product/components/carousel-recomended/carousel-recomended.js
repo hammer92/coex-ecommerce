@@ -59,23 +59,21 @@ class CarouselRecomended
 				]
 		})
     }
-	renderItems(){
+	async renderItems(){
 		const gliderCarousel = this.move()
-
-		this.apiController.getRecommended().then(images => {
-			// console.log(images);
-			images.forEach( img => {
-				const newElement = document.createElement("div")
-				newElement.innerHTML = `
-					<div class="carousel__elemento">
-						<img class="carousel__img" src="${img.image_link}" alt="${img.name}">
-						<div class="contenedor__elemento">
-							<p class="carousel__titulo" >${e.name}</p>
-						</div>
+		const images = await this.apiController.getRecommended()
+		
+		images.forEach( img => {
+			const newElement = document.createElement("div")
+			newElement.innerHTML = `
+				<div class="carousel__elemento">
+					<img class="carousel__img" src="${img.image_link}" alt="${img.name}">
+					<div class="contenedor__elemento">
+						<p class="carousel__titulo" >${img.name}</p>
 					</div>
-					`
-				gliderCarousel.addItem(newElement)
-			})
+				</div>
+				`
+			gliderCarousel.addItem(newElement)
 		})
 	}
 }

@@ -36,10 +36,13 @@ class MovieSection {
         ]
         return content
     }
-    createInnerElements(){
+    async createInnerElements(){
         const commonClass = 'movie-section'
         const sections = this.sections
         const elements = []
+
+        const movie = await this.apiController.getInfo()
+        const trailer = await this.apiController.getTrailer()
 
         sections.forEach(section => {
             let element = document.createElement('div')
@@ -52,17 +55,12 @@ class MovieSection {
 
             switch(section.text){
                 case 'Synopsis':
-                    this.apiController.getInfo().then(movie => {
-                        content.innerText = movie.synopsis
-                    })
+                    content.innerText = movie.synopsis
                     break;
                 case 'Trailer':
                     let frame = document.createElement('iframe')
-                    this.apiController.getTrailer().then(trailer => {
-                        let embed = trailer.embed_trailer
-                        frame.src = embed
-                        content.append(frame)
-                    })
+                    frame.src = trailer.embed_trailer
+                    content.append(frame)
                     break;
                 case 'Casting':
                     content.innerHTML = this.carCast.template
@@ -84,8 +82,9 @@ class MovieSection {
         })
         return elements
     }
-    get template() {
-        let elements = this.createInnerElements()
+    async template() {
+        const elements = await this.createInnerElements()
+        console.log(elements)
         let template = elements.map(element => element.outerHTML).join('')
 
         console.log(template)
