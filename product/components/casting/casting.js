@@ -28,6 +28,7 @@ class CarruselCasting {
                     slidesToScroll: 1,
                     draggable: true,
                     dots: '.carousel__indicadores2',
+                    duration:4.5,
                     
                     responsive: [
                         {
@@ -39,7 +40,7 @@ class CarruselCasting {
                             slidesToScroll: 2,
                             draggable: true,
                             itemWidth: 100,
-                            duration: 0.25}
+                            duration: 3.5}
                         },{
                           // screens greater than >= 1024px
                             breakpoint: 800,
@@ -48,7 +49,7 @@ class CarruselCasting {
                             draggable: true,
                             slidesToScroll: 4,
                             itemWidth: 100,
-                            duration: 0.25}
+                            duration: 3.5}
                             }]
                 })
         }

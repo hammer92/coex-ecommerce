@@ -13,7 +13,7 @@ class CarouselRecomended
                 <h2 class="titulo">Recomendado</h2>
                 <div class="carousel__contenedor">
                     <div id="lista" class=".carousel__lista">
-                        
+					
                     </div>
                 </div>
                 <div role="tablist" class="carousel__indicadores"></div>
