@@ -40,22 +40,24 @@ document.getElementById("history").addEventListener("click", () => {
 
         // let add_date = document.getElementById("history__section__orders__date");
 
-        let capa = document.getElementsByClassName("history__section--orders--items");
-        let tag_h1 = document.createElement("h1");
-        let tag_img = document.createElement("img");
+        let capa = document.getElementsByClassName("history__section--orders--shopping");
+        let div = document.createElement("div");
 
-        tag_h1.innerHTML = output;
+        div.setAttribute('class', 'history__section--orders--item');
+        let tag_img = document.createElement("img");
+        tag_img.style.width = "20px";
         tag_img.setAttribute('src', '/assets/icons/angle-small-right-free-icon-font.svg')
 
         for (let i = 0; i < capa.length; i++) {
 
-            capa[i].appendChild(tag_h1);
-
+            array_date.forEach(element => {
+                div.innerHTML = "<h1>"+element+"<img src='/assets/icons/angle-small-right-free-icon-font.svg' style='display:flex;' width='20px'>"+"</h1>";
+                capa[i].appendChild(div);
+            });
         };
     }
 
-    boton_g.addEventListener("click", call_date);
-});
+    boton_g.addEventListener("click", call_date); });
 
 // const button = document.getElementById('accion');
 // button.addEventListener("click", async () => {

@@ -84,12 +84,13 @@ h1 {
     padding: 5px;
     font-size: 10px;
     margin: 40px 0px;
-}
-
-.history__section--orders--items {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+}
+
+.history__section--orders--items {
+
 }
 
 /*  LOGIN */

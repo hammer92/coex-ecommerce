@@ -16,9 +16,8 @@ const templateHistory = `
         <div class="history__section--orders">
             <span class="history__section--orders--word">My orders</span>
             <div class="history__section--orders--shopping">
-
                 <div class="history__section--orders--items">
-                                    
+                    
                 </div>              
             </div>
         </div>
