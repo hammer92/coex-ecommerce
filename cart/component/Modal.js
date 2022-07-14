@@ -40,35 +40,33 @@ window.onload = () => {
 	renderMovieInCart(moviesInCart);
 };
 
+
+const renderCart = () => {
+	window.location = '/cart/index.html';
+}
+
 //Obtengo las pelis de la lista numero 1
 
 //funcion para añadir una peli al shopping cart
 const addToCart = async (id) => {
-	const sesion = localStorage.getItem('iniciosesion');
-	if (sesion === 'true') {
-		const movie = await fetch(
-			`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`
+	const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`
 		)
-			.then((r) => r.json())
-			.catch((e) => console.log(e));
-		const indexMovies = moviesInCart.map((movie) => movie.id);
-		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
-		if (!indexMovies.includes(movie.id)) {
-			moviesInCart.push(movie);
-			renderMovieInCart(moviesInCart);
-			showCheckoutButton(moviesInCart.length);
-			openCart();
-			localStorage.setItem(
-				'shoppingCart',
-				JSON.stringify(moviesInCart)
-			);
-		} else {
-			console.log('peli repetida');
-			return;
-		}
+		.then((r) => r.json())
+		.catch((e) => console.log(e));
+	const indexMovies = moviesInCart.map((movie) => movie.id);
+	//comprobamos que la pelicula seleccionada no este repetida en moviesCart
+	if (!indexMovies.includes(movie.id)) {
+		moviesInCart.push(movie);
+		renderMovieInCart(moviesInCart);
+		showCheckoutButton(moviesInCart.length);
+		openCart();
+		localStorage.setItem(
+			'shoppingCart',
+			JSON.stringify(moviesInCart)
+		);
 	} else {
-		console.log('no has iniciado sesion', sesion);
-		window.location = '/cart/index.html';
+		console.log('peli repetida');
+		return;
 	}
 };
 
