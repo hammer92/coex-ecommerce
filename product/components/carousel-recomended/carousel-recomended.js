@@ -12,7 +12,6 @@ class CarouselRecomended
         return `
         <div class="contenedor">
             <div class="carousel">
-                <h2 class="titulo">Recomendado</h2>
                 <div class="carousel__contenedor">
                     <div id="lista" class=".carousel__lista">
                     </div>
@@ -44,7 +43,7 @@ class CarouselRecomended
 						slidesToScroll: 2,
 						draggable: true,
 						itemWidth: 150,
-						duration: 0.25}
+						duration: 2.5}
 					},
 					{
 					  // screens greater than >= 1024px
@@ -54,7 +53,7 @@ class CarouselRecomended
 						draggable: true,
 						slidesToScroll: 4,
 						itemWidth: 150,
-						duration: 0.25}
+						duration: 2.5}
 					}
 				]
 		})

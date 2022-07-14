@@ -49,17 +49,28 @@ class MovieSection {
             let h1 = document.createElement('h1')
             let a = document.createElement('a')
             let span = document.createElement('span')
-            let content = document.createElement('div')
+            let content = document.createElement('div');
+
+            let synopsisContent = document.createElement('p');
             
+
+
             h1.innerText = section.text
 
             switch(section.text){
                 case 'Synopsis':
-                    content.innerText = movie.synopsis
+                    element.setAttribute('class', 'synopsis');
+                    synopsisContent.innerText = movie.synopsis;
+                    content.appendChild(synopsisContent);
                     break;
                 case 'Trailer':
+                    content.setAttribute('class', 'container-video');
                     let frame = document.createElement('iframe')
                     frame.src = trailer.embed_trailer
+                    frame.frameBorder = 0
+                    frame.width = 550
+                    frame.height = 450
+                    frame.allow = 'fullscreen'
                     content.append(frame)
                     break;
                 case 'Casting':

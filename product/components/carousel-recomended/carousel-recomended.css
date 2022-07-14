@@ -2,11 +2,6 @@
 	box-sizing: border-box;
 }
 
-body {
-	background: #1D1D1F;
-	font-family: 'Montserrat', sans-serif;
-}
-
 .contenedor {
 	max-width: 1200px;
 	width: 90%;
@@ -23,35 +18,6 @@ body {
 	position: relative;
 }
 
-.carousel__anterior,
-.carousel__siguiente {
-	position: absolute;
-	display: block;
-	width: 30px;
-	height: 30px;
-	border: none;
-	top: calc(50% - 35px);
-	cursor: pointer;
-	line-height: 30px;
-	text-align: center;
-	background: none;
-	color: #fff;
-	opacity: 20%;
-	transition: all 0.2s ease-out;
-}
-
-.carousel__anterior:hover,
-.carousel__siguiente:hover{
-	opacity: 100%;
-	transform: scale(1.5);
-}
-
-.carousel__anterior{
-	left: -30px;
-}
-.carousel__siguiente{
-	right: -30px;
-}
 
 .lista{
 	overflow: hidden;
@@ -62,6 +28,7 @@ body {
 	text-align: center;
 	display: flex;
 	margin-left: 10px;
+	height: auto;
 }
 
 .carousel__indicadores .glider-dot{
@@ -87,9 +54,8 @@ body {
 	object-position: 50% 0%;
 	object-fit: cover;
 	width: 100%;
-	height: 350px;
+	height: 380px;
 	border-radius: 20px;
-	
 }
 
 .contenedor__elemento{
@@ -109,7 +75,9 @@ body {
     bottom: 5%;
 	text-align: center;
 	overflow: hidden;
-	left: calc(50% - 30%) ;
+	left: calc(50%-70%) ;
     color: #fff;
+	width: 100%;
+	margin: 0;
 
 }
