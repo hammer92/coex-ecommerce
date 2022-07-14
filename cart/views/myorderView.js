@@ -35,12 +35,6 @@ MOVIES.forEach((movie) => {
 });
 const MoviesTag = TAGS.join('');
 
-// const LINK_BACK = `
-// <a href="../../cart/index.html" class="icon-arrow" type="button">
-//     <img src="${IconSrc}/back-arrow-comb-white.svg" alt="back-arrow" class="icon">
-// </a>
-// `;
-
 const BTN_BACK = `
 <button id="back-arrow" class="icon-arrow" type="button">
     <img src="${IconSrc}/back-arrow-comb-white.svg" alt="back-arrow" class="icon">

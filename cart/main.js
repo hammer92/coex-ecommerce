@@ -9,8 +9,6 @@ import myorderView from './views/myorderView.js';
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
-const UNIQUE_USER_TOKEN = 'ABC';
-
 const app = document.querySelector('#app');
 const sesion = localStorage.getItem('iniciosesion');
 
@@ -44,31 +42,13 @@ function Login() {
 	};
 }
 
-const template = `
-<h1>Hello world! Product Page</h1>
-${urlParams.get('product')}
-<button id="accion"> Cambio </button>
-<a href="/index.html" >Home</a>
-<button id="history2">History</button>
-<button id="login">Log in </button>
-<button id="myorder">myOrder</button>
-`;
-
-if (sesion === 'false') {
-	Login();
-} else  {
-	renderHistory()
+function RenderMyOrder() {
+	app.innerHTML = myorderView;
+	const BACK = document.getElementById('back-arrow');
+	BACK.addEventListener('click', () => {
+		window.location.reload();
+	});
 }
-
-
-// app.innerHTML = templateHistory;
-// app.innerHTML = template;
-
-// History
-
-const history = document.getElementById('history2');
-history.addEventListener('click', () => {
-});
 
 function renderHistory() {
 	app.innerHTML = templateHistory;
@@ -123,38 +103,54 @@ function renderHistory() {
 	}
 
 	boton_g.addEventListener('click', call_date);
-
 }
 
-const button = document.getElementById('accion');
-button.addEventListener('click', () => {
-	const h1 = document.querySelector('h1');
-	console.log('click', h1.style.color);
-	if (h1.style.color === 'blue') h1.style.color = 'red';
-	else h1.style.color = 'blue';
-});
+const template = `
+<h1>Hello world! Product Page</h1>
+${urlParams.get('product')}
+<button id="accion"> Cambio </button>
+<a href="/index.html" >Home</a>
+<button id="history2">History</button>
+<button id="login">Log in </button>
+<button id="myorder">myOrder</button>
+`;
+
+if (sesion === 'false') {
+	Login();
+} else {
+	renderHistory();
+}
+
+// app.innerHTML = templateHistory;
+// app.innerHTML = template;
+
+// History
+
+// const history = document.getElementById('history2');
+// history.addEventListener('click', () => {});
+
+// const button = document.getElementById('accion');
+// button.addEventListener('click', () => {
+// 	const h1 = document.querySelector('h1');
+// 	console.log('click', h1.style.color);
+// 	if (h1.style.color === 'blue') h1.style.color = 'red';
+// 	else h1.style.color = 'blue';
+// });
 
 /// Render del login
-const buttonlogin = document.getElementById('login');
+// const buttonlogin = document.getElementById('login');
 
-buttonlogin.addEventListener('click', () => {
-	Login();
-});
+// buttonlogin.addEventListener('click', () => {
+// 	Login();
+// });
 
 // ------------------------
 // Render My Order
 
 const myorder = document.getElementById('myorder');
 myorder.addEventListener('click', () => {
-	if (UNIQUE_USER_TOKEN === 'ABC') {
-		app.innerHTML = myorderView;
-		const BACK = document.getElementById('back-arrow');
-		BACK.addEventListener('click', () => {
-			window.location.reload();
-		});
-	} else {
-		console.log('denegado');
-	}
+	// console.log('myorder');
+	RenderMyOrder();
 });
 
 // ------------------------
