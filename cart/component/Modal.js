@@ -1,15 +1,14 @@
+
 //ARIR CARRITO
 const cartContainer = document.querySelector('.cart-container');
 const checkoutButton = document.querySelector('.checkout-button-container');
 
 const openCart = () => {
     cartContainer.style.right = `0`
-    // cartContainer.style.display = `block`
 }
 
 const closeCart = () => {
     cartContainer.style.right = `-30%`
-    // cartContainer.style.display = `none`
 }
 
 const showCheckoutButton = (arrLength) => {  
@@ -29,10 +28,7 @@ const showCheckoutButton = (arrLength) => {
 //https://api.themoviedb.org/3/movie/${movie_id}?api_key=dde722cb807472090076a60be85c0010&language=en-US
 
 const imageUrl = `https://image.tmdb.org/t/p/w500/`
-const cartListContainer = document.querySelector('.cart-list-container');
-const listMovies = []
 const moviesInCart = []
-
 
 //cargar los datos del localStorage a moviesInCart para luego renderizar las movies del shoppingCart
 window.onload = () => {
@@ -48,34 +44,42 @@ window.onload = () => {
 
 //Obtengo las pelis de la lista numero 1
 
-
-
 //funcion para añadir una peli al shopping cart
 const addToCart = async(id) => {
-    // const movie = listMovies.find(movie => movie.id === id) 
-    const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`).then(r=> r.json()).catch(e=> console.log(e))
-    console.log(movie)
-    const indexMovies = moviesInCart.map(movie => movie.id);
-    //comprobamos que la pelicula seleccionada no este repetida en moviesCart
-    if(!indexMovies.includes(movie.id)){
-        moviesInCart.push(movie);
-        renderMovieInCart(moviesInCart) 
-        showCheckoutButton(moviesInCart.length)
-        openCart()   
-        localStorage.setItem('shoppingCart', JSON.stringify(moviesInCart))
-    }else {
-        console.log('peli repetida');
-        return
+    const sesion = localStorage.getItem('iniciosesion')
+    if(sesion === 'true'){
+        const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`).then(r=> r.json()).catch(e=> console.log(e))
+        const indexMovies = moviesInCart.map(movie => movie.id);
+        //comprobamos que la pelicula seleccionada no este repetida en moviesCart
+        if(!indexMovies.includes(movie.id)){
+            moviesInCart.push(movie);
+            renderMovieInCart(moviesInCart) 
+            showCheckoutButton(moviesInCart.length)
+            openCart()   
+            localStorage.setItem('shoppingCart', JSON.stringify(moviesInCart))
+        }else {
+            console.log('peli repetida');
+            return
+        }    
+    }else{
+        console.log('no has iniciado sesion', sesion)
     }
+
 }
 
 const cartList = document.querySelector('.cart-list')
 
 //renderizar moviesInCart
-const renderMovieInCart = (moviesArray) => {
-    console.log(moviesArray);
+const renderMovieInCart = async(moviesArray) => {
+    const genres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=dde722cb807472090076a60be85c0010&language=en-US`).then(r=> r.json()).catch(e=> console.log(e))
     let template = ``
     moviesArray.map(movie => {
+        let genreMovie = ''
+        genres.genres.forEach(genero => {
+            if(genero.id === movie.genres[0].id){
+                genreMovie = genero.name
+            }
+        })
         let url = imageUrl + movie.poster_path
         const cart = `
             <div class="cart-item">
@@ -84,8 +88,8 @@ const renderMovieInCart = (moviesArray) => {
                     src="${url}" alt="movie-img">
                 <div class="cart-info-container">
                     <h2>${movie.title}</h2>
-                    <span>genero</span>
-                    <span>${movie.vote_average}</span>
+                    <span>${genreMovie}</span>
+                    <star-rating rating="${movie.vote_average}"></star-rating>
                 </div>
             </div>
             <div class="delete-button" onclick="deleteMovieInCart(${movie.id})">X</div>

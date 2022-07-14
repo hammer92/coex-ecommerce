@@ -2,6 +2,7 @@ import 'normalize.css'
 import '../cart/style-cart.css'
 import '../style.css'
 import './style.css'
+import '../cart/component/starsComponent.js';
 
 
 const Url = new URL(window.location)
@@ -149,14 +150,13 @@ const showMovies = async (data) => {
 			</div>
 				`;
 		});
-
+		
 		app.innerHTML = peliculas;
-
+		
 	} catch (error) {
 		console.log(error);
 	}
 }
-
 
 filtros.addEventListener('submit', (e) => {
 	e.preventDefault();
