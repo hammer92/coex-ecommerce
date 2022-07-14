@@ -46,7 +46,6 @@ window.onload = () => {
 
 //funcion para añadir una peli al shopping cart
 const addToCart = async(id) => {
-    localStorage.setItem('iniciosesion', false)
     const sesion = localStorage.getItem('iniciosesion')
     if(sesion === 'true'){
         const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`).then(r=> r.json()).catch(e=> console.log(e))
@@ -64,7 +63,6 @@ const addToCart = async(id) => {
         }    
     }else{
         console.log('no has iniciado sesion', sesion)
-        window.location = '../cart/views/login.js'
     }
 
 }
