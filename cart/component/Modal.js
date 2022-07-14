@@ -1,4 +1,3 @@
-// import './starsComponent'
 
 //ARIR CARRITO
 const cartContainer = document.querySelector('.cart-container');
@@ -87,7 +86,7 @@ const renderMovieInCart = async(moviesArray) => {
                 <div class="cart-info-container">
                     <h2>${movie.title}</h2>
                     <span>${genreMovie}</span>
-                    <span>${movie.vote_average}</span>
+                    <star-rating rating="${movie.vote_average}"></star-rating>
                 </div>
             </div>
             <div class="delete-button" onclick="deleteMovieInCart(${movie.id})">X</div>
