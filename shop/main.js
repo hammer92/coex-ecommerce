@@ -2,6 +2,7 @@ import 'normalize.css'
 import '../cart/style-cart.css'
 import '../style.css'
 import './style.css'
+import '../cart/component/starsComponent.js';
 
 
 const Url = new URL(window.location)
@@ -74,8 +75,6 @@ const cargarPeliculas = async (category) => {
 	}
 }
 
-
-
 function getMovies(url) {
 	lastUrl = url;
 	fetch(url).then(res => res.json()).then(data => {
@@ -127,11 +126,13 @@ const showMovies = async (data) => {
 
 			peliculas += `
 			<div class="pelicula">
-            <div class="arr">
+            <div class="arr"> <!-- parte donde va la imagen de la pelicula--!>
+            <div class="hover"><p>${pelicula.overview}</p>  </div>
             <img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">
                 <!-- <p class="title_poster">${pelicula.original_title}</p>--!>
+            
             </div>
-            <div class="aba">
+            <div class="aba"> <!-- parte donde va el genero de la pelicula y el boton--!>
                 <div class="info">
 					<div>
 						${generoName}
@@ -147,14 +148,13 @@ const showMovies = async (data) => {
 			</div>
 				`;
 		});
-
+		
 		app.innerHTML = peliculas;
-
+		
 	} catch (error) {
 		console.log(error);
 	}
 }
-
 
 filtros.addEventListener('submit', (e) => {
 	e.preventDefault();
