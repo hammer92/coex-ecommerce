@@ -1,5 +1,6 @@
 import "./main-card.css";
 import '../sec-info-card/sec-info-card.js'
+import '../../../cart/component/starsComponent.js'
 
 class MainCard {
     constructor( resJson ){
@@ -33,13 +34,13 @@ class MainCard {
                         <span class="main-info-title">
                             ${this.name}
                         </span>
-                        <span class='cart-btn' >add2cart</span>
+                        <div class="cart-btn" ></div>
                     </div>
                     <div class="main-info-subtitle">
                         <span>
                             ${this.genres[0] + ' | ' + this.genres[1]}
                         </span>
-                        <!-- stars icons-->
+                        <star-rating rating="${this.calification}"></star-rating>
                     </div>
                     <div class="main-info-slot">
 
