@@ -33,7 +33,7 @@ function Login() {
 				alert('inicio de sesion correcto');
 				iniciosesion = true;
 				localStorage.setItem('iniciosesion', iniciosesion);
-				app.innerHTML = templateprueba;
+				// app.innerHTML = templateprueba;
 			} else {
 				alert('Credenciales invalidas');
 			}
@@ -101,10 +101,15 @@ ${urlParams.get('product')}
 `;
 
 if (sesion){
+	console.log('sesion: ', sesion)
 	if (sesion === 'false') {
 		Login();
 	} else {
-		renderHistory();
+		if(localStorage.getItem('statusback', 'cart')){
+			renderHistory();
+		} else {
+			window.location = '../shop/index.html';
+		}
 	}
 } else {
 	localStorage.setItem('iniciosesion', false);
