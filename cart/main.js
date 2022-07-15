@@ -3,6 +3,7 @@ import './style.css';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
 import myorderView from './views/myorderView.js';
+import { readMovieList } from './lib/conection.js';
 import './lib/conection.js';
 
 const Url = new URL(window.location);
@@ -91,57 +92,8 @@ function renderHistory() {
 
     const boton_g = document.getElementById('boton_guardar');
 
-    function call_date(movies) {
-
-        let array_date = [];
-        let contador = 0;
-        const date = new Date();
-        let longitud_movies = movies.length;
-        console.log(longitud_movies);
-
-        let output =
-            String(date.getDate()).padStart(2, '0') +
-            '.' +
-            String(date.getMonth() + 1).padStart(2, '0') +
-            '.' +
-            date.getFullYear();
-
-        array_date.push(output);
-
-        // let add_date = document.getElementById("history__section__orders__date");
-
-        let capa_contenedor = document.getElementsByClassName("history__section--orders--shopping");
-
-        let tag_div = document.createElement("div");
-        tag_div.setAttribute("class", "history__section--orders--items");
-
-        let tag_h1 = document.createElement("h1");
-        let tag_img = document.createElement("img");
-        let tag_h2 = document.createElement("h2");
-
-        let capa = document.getElementsByClassName("history__section--orders--items");
-
-        tag_h1.innerHTML = output;
-        tag_h1.style.color = "white";
-        tag_img.setAttribute('src', '/assets/icons/angle-small-right-free-icon-font.svg');
-        tag_img.style.width = "20px";
-        tag_h2.innerHTML = longitud_movies;
-        tag_h2.style.color = "white";
-        tag_h2.innerHTML += " movies";
-
-        for (let i = 0; i < capa_contenedor.length; i++) {
-            capa_contenedor[i].appendChild(tag_div);
-            for (let j = 0; j < capa.length; j++) {
-                contador = contador + 1;
-                tag_div.setAttribute('id', contador);
-                capa[j].appendChild(tag_h1);
-                capa[j].appendChild(tag_img);
-
-            };
-            capa_contenedor[i].appendChild(tag_h2);
-        }
-    }
-    boton_g.addEventListener("click", call_date(MOVIES));
+    
+    boton_g.addEventListener("click", readMovieList());
 
 }
 

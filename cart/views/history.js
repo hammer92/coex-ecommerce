@@ -14,8 +14,8 @@ const templateHistory = `
     <a href="http://localhost:3000/shop/index.html"><img src="/assets/icons/back-arrow-comb2.svg" alt="flecha_retroceso" class="history__flecha--retroceso"></a>
         <div class="history__section--orders">
             <span class="history__section--orders--word">My orders</span>
-            <div class="history__section--orders--shopping">
-            
+            <div class="history__section--orders--shopping" id="historyShopping">
+
             </div>
         </div>
     </section>
