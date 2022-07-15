@@ -55,26 +55,6 @@ ${urlParams.get('product')}
 <button id="myorder">myOrder</button>
 `;
 
-const MOVIES = [
-    {
-        title: 'Saw',
-        genre: 'Thriller',
-        poster_path: '/harQifr8kpIVqlLP41kTR058LZB.jpg',
-        vote_average: 7.4,
-    },
-    {
-        title: 'Avengers: Endgame',
-        genre: 'Action',
-        poster_path: '/or06FN3Dka5tukK1e9sl16pB3iy.jpg',
-        vote_average: 8.3,
-    },
-    {
-        title: 'Joker',
-        genre: 'Action',
-        poster_path: '/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg',
-        vote_average: 8.2,
-    },
-];
 if (sesion === 'false') {
     Login();
 } else {
@@ -93,7 +73,7 @@ function renderHistory() {
     const boton_g = document.getElementById('boton_guardar');
 
     
-    boton_g.addEventListener("click", readMovieList());
+    document.addEventListener("load", readMovieList());
 
 }
 

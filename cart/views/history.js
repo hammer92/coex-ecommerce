@@ -19,7 +19,6 @@ const templateHistory = `
             </div>
         </div>
     </section>
-    <button id="boton_guardar" style="color:white;"> Try it </button>
 </div>
 `;
 
