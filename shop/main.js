@@ -17,6 +17,7 @@ document.getElementById('checkButton').addEventListener('click', ()=>{
 	let data = getData();
 	addMovieList(data);
 	localStorage.setItem('shoppingCart', []);
+	localStorage.setItem('statusback', 'cart')
 	window.location = '../cart/index.html'
 })
 //paginacion
