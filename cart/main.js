@@ -16,11 +16,6 @@ const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
-const ORDER_LIST = document.getElementsByClassName('myorderDirection');
-for (let element of ORDER_LIST) {
-    element.addEventListener('click', renderOrder);
- }
-
 
 export function RenderMyOrder() {
 	const order = new OrderList(data);
