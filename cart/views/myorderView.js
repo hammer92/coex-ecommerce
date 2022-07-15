@@ -7,33 +7,17 @@ const TAGS = [];
 
 // const ORDER_DATE = '13.07.2022';
 
-const MOVIES = [
-	{
-		title: 'Saw',
-		genre: 'Thriller',
-		poster_path: '/harQifr8kpIVqlLP41kTR058LZB.jpg',
-		vote_average: 7.4,
-	},
-	{
-		title: 'Avengers: Endgame',
-		genre: 'Action',
-		poster_path: '/or06FN3Dka5tukK1e9sl16pB3iy.jpg',
-		vote_average: 8.3,
-	},
-	{
-		title: 'Joker',
-		genre: 'Action',
-		poster_path: '/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg',
-		vote_average: 8.2,
-	},
-];
+function getData(data){
 
-MOVIES.forEach((movie) => {
-	TAGS.push(
-		`<cart-product title="${movie.title}" genre="${movie.genre}" cover="${ImageUrl}${movie.poster_path}" rating="${movie.vote_average}"></cart-product>`
-	);
-});
-const MoviesTag = TAGS.join('');
+	data.forEach((movie) => {
+		TAGS.push(
+			`<cart-product title="${movie.title}" genre="${movie.genre}" cover="${ImageUrl}${movie.poster_path}" rating="${movie.vote_average}"></cart-product>`
+		);
+	});
+	const MoviesTag = TAGS.join('');
+	return MoviesTag
+
+}
 
 const BTN_BACK = `
 <button id="back-arrow" class="icon-arrow" type="button">
@@ -41,7 +25,8 @@ const BTN_BACK = `
 </button>
 `;
 
-function OrderList(id, date) {
+function OrderList( data, date) {
+	const movies = getData(data)
 	this.myorderView = `
 	<div class="myorder-view">
 		<header class="topbar">
@@ -55,10 +40,10 @@ function OrderList(id, date) {
 				<h1 class="order__title">My order</h1>
 				<div class="order__info">
 					<h2 class="info__date">${date}</h2>
-					<h3 class="info__articles">${MOVIES.length} movies</h3>
+					<h3 class="info__articles">${data.length} movies</h3>
 				</div>
 				<div class="order__list">
-					${MoviesTag}
+					${movies}
 				</div>
 			</section>
 		</main>

@@ -31,7 +31,35 @@ export const addMovieList = (object)=>{
     })
 }
 
+export const readMovie = (id)=>{
+    dbConection.addEventListener('success', ()=>{
+        let db = dbConection.result;
+        let IDBtransaction = db.transaction('movies', 'readonly');
+        let objectStore = IDBtransaction.objectStore('movies');
+        let cursor = objectStore.get(id)
+        let data;
+        cursor.addEventListener('success', ()=>{
+            data = cursor.result;
+        })
+
+        IDBtransaction.oncomplete = ()=> {
+            sessionStorage.setItem('dbTransferens', JSON.stringify(data));
+        }
+    })
+}
+
+export const exportData = () =>{
+    let getItem = sessionStorage.getItem('dbTransferens');
+    let data = JSON.parse(getItem);
+    return data
+}
+
 //Integracion entre la base de datos con la vista del historial de compras
+export const renderOrder = (e) => {
+    let id = e.target.id;
+    readMovie(id);
+    let data = exportData();
+};
 
 function call_date(movies, keys) {
 
@@ -62,17 +90,6 @@ function call_date(movies, keys) {
 
         capa_contenedor.innerHTML += templateCart;
     }
-
-    const renderOrder = (e) => {
-        let id = e.target.id;
-        
-    };
-    
-    const ORDER_LIST = document.getElementsByClassName('myorderDirection');
-    console.log(ORDER_LIST)
-    for (let element of ORDER_LIST) {
-        element.addEventListener('click', renderOrder);
-    }
 }
 
 export const readMovieList = ()=>{
@@ -102,28 +119,6 @@ export const readMovieList = ()=>{
     })
 }
 
-export const readMovie = (id)=>{
-    dbConection.addEventListener('success', ()=>{
-        let db = dbConection.result;
-        let IDBtransaction = db.transaction('movies', 'readonly');
-        let objectStore = IDBtransaction.objectStore('movies');
-        let cursor = objectStore.get(id)
-        let data;
-        cursor.addEventListener('success', ()=>{
-            data = cursor.result;
-        })
-
-        IDBtransaction.oncomplete = ()=> {
-            sessionStorage.setItem('dbTransferens', JSON.stringify(data));
-        }
-    })
-}
-export const exportData = () =>{
-    let getItem = sessionStorage.getItem('dbTransferens');
-    let data = JSON.parse(getItem);
-    return data
-}
-exportData()
 export const getData = ()=>{
     let getItem = localStorage.getItem('shoppingCart');
     let data = JSON.parse(getItem);

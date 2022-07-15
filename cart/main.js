@@ -3,17 +3,35 @@ import './style.css';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
 import { OrderList } from './views/myorderView.js';
-import { readMovieList } from './lib/conection.js';
+import { readMovieList, exportData, renderOrder } from './lib/conection.js';
 import './lib/conection.js';
 
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
 const app = document.querySelector('#app');
+const data = exportData()
 const sesion = localStorage.getItem('iniciosesion');
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
+
+const ORDER_LIST = document.getElementsByClassName('myorderDirection');
+for (let element of ORDER_LIST) {
+    element.addEventListener('click', renderOrder);
+ }
+
+
+export function RenderMyOrder() {
+	const order = new OrderList(data);
+	app.innerHTML = order.myorderView;
+	const BACK = document.getElementById('back-arrow');
+	BACK.addEventListener('click', () => {
+		window.location.reload();
+	});
+}
+
+
 
 function Login() {
 	app.innerHTML = templatelogin;
@@ -42,14 +60,7 @@ function Login() {
 	};
 }
 
-function RenderMyOrder(id, date) {
-	const order = new OrderList(id, date);
-	app.innerHTML = order.myorderView;
-	const BACK = document.getElementById('back-arrow');
-	BACK.addEventListener('click', () => {
-		window.location.reload();
-	});
-}
+
 
 function renderHistory() {
     app.innerHTML = templateHistory;
@@ -110,6 +121,9 @@ if (sesion){
 	localStorage.setItem('iniciosesion', false);
 	Login();
 }
+
+
+
 
 // app.innerHTML = templateHistory;
 // app.innerHTML = template;
