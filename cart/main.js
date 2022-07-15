@@ -1,4 +1,4 @@
-// import '../style.css'
+//import '../style.css'
 import './style.css';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
@@ -9,11 +9,12 @@ import './lib/conection.js';
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
-const app = document.querySelector('#app');
+const app = document.querySelector('#app') ;
 const sesion = localStorage.getItem('iniciosesion');
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
+
 
 function Log() {
 	if (sesion) {
@@ -29,25 +30,27 @@ function Log() {
 }
 
 
-function Login() {
-	app.innerHTML = templatelogin;
-	var iniciosesion = false;
-	localStorage.setItem('iniciosesion', iniciosesion);
+var iniciosesion = false;
+localStorage.setItem('iniciosesion', iniciosesion);
+
+function login(){
+    app.innerHTML = templatelogin;
 	const form = document.getElementById('form_login');
 	form.onsubmit = () => {
 		const mail = document.getElementById('email');
 		const con = document.getElementById('password');
 		const correo = mail.value;
 		const contra = con.value;
+        console.log('entra a en submit')
 
 		if (correo == '' || contra == '') {
 			alert('Debe llenar todos los campos');
 		} else {
 			if (correo == user.email && contra == user.password) {
-				alert('inicio de sesion correcto');
-				iniciosesion = true;
+                iniciosesion = true
 				localStorage.setItem('iniciosesion', iniciosesion);
-				app.innerHTML = templateprueba;
+                alert('inicio de sesion correcto');
+				window.location.href ='../shop/index.html';
 			} else {
 				alert('Credenciales invalidas');
 			}
@@ -55,6 +58,8 @@ function Login() {
 		}
 	};
 }
+
+
 
 function RenderMyOrder(id, date) {
 	const order = new OrderList(id, date);
@@ -104,6 +109,17 @@ function renderHistory() {
 	document.addEventListener("load", readMovieList());
 }
 
+const verifyRender = ()=>{
+    console.log(localStorage.getItem('iniciosesion'))
+    if (localStorage.getItem('iniciosesion') == true) {
+        renderHistory();
+    } else {
+        login();
+    }
+}
+
+document.addEventListener('load', verifyRender())
+
 const template = `
 <h1>Hello world! Product Page</h1>
 ${urlParams.get('product')}
@@ -114,11 +130,6 @@ ${urlParams.get('product')}
 <button id="myorder">myOrder</button>
 `;
 
-if (sesion === 'false') {
-	Login();
-} else {
-	renderHistory();
-}
 
 // app.innerHTML = templateHistory;
 // app.innerHTML = template;

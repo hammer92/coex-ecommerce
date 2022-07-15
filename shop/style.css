@@ -405,7 +405,24 @@ li {
 .btn-sesion-login:hover .drop-menu{
     display: block;
 }
+.btn-singup-nav{
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
 
+.btn-login-nav{
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
 
-
+.btn-login-nav:hover{
+    background-color: var(--purple);
+}
+.btn-singup-nav:hover{
+    background-color: var(--purple);
+}
 
