@@ -91,7 +91,7 @@ export const readMovieList = ()=>{
     })
 }
 
-const readMovie = (id)=>{
+export const readMovie = (id)=>{
     dbConection.addEventListener('success', ()=>{
         let db = dbConection.result;
         let IDBtransaction = db.transaction('movies', 'readonly');
@@ -103,11 +103,16 @@ const readMovie = (id)=>{
         })
 
         IDBtransaction.oncomplete = ()=> {
-            data
+            sessionStorage.setItem('dbTransferens', JSON.stringify(data));
         }
     })
 }
-
+export const exportData = () =>{
+    let getItem = sessionStorage.getItem('dbTransferens');
+    let data = JSON.parse(getItem);
+    return data
+}
+exportData()
 export const getData = ()=>{
     let getItem = localStorage.getItem('shoppingCart');
     let data = JSON.parse(getItem);
