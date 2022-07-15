@@ -4,21 +4,35 @@ import './style.css';
 import './lib/conection.js';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
-import myorderView from './views/myorderView.js';
+import { OrderList } from './views/myorderView.js';
 
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
 const app = document.querySelector('#app');
 const sesion = localStorage.getItem('iniciosesion');
+const user = new Object();
+user.email = 'admin@admin.com';
+user.password = 'admin';
+
+function Log() {
+	if (sesion) {
+		const SIGIN = document.getElementById('sigin');
+		if (sesion === 'false') {
+			SIGIN.innerHTML = 'Sig In';
+		} else if (sesion === 'true') {
+			SIGIN.innerHTML = user.email;
+		}
+	} else {
+		localStorage.setItem('iniciosesion', false);
+	}
+}
+export { Log };
 
 function Login() {
 	app.innerHTML = templatelogin;
 	var iniciosesion = false;
 	localStorage.setItem('iniciosesion', iniciosesion);
-	var user = new Object();
-	user.email = 'admin@admin.com';
-	user.password = 'admin';
 	const form = document.getElementById('form_login');
 	form.onsubmit = () => {
 		const mail = document.getElementById('email');
@@ -42,8 +56,9 @@ function Login() {
 	};
 }
 
-function RenderMyOrder() {
-	app.innerHTML = myorderView;
+function RenderMyOrder(id, date) {
+	const order = new OrderList(id, date);
+	app.innerHTML = order.myorderView;
 	const BACK = document.getElementById('back-arrow');
 	BACK.addEventListener('click', () => {
 		window.location.reload();
@@ -147,10 +162,15 @@ if (sesion === 'false') {
 // ------------------------
 // Render My Order
 
-const myorder = document.getElementById('myorder');
-myorder.addEventListener('click', () => {
-	// console.log('myorder');
-	RenderMyOrder();
+const ORDER_LIST = document.querySelectorAll('button.myorder');
+
+ORDER_LIST.forEach((order) => {
+	order.addEventListener('click', (e) => {
+		e.preventDefault();
+		const ID = order.querySelector('.id_order').innerHTML;
+		const DATE = order.querySelector('.date_order').innerHTML;
+		RenderMyOrder(ID, DATE);
+	});
 });
 
 // ------------------------

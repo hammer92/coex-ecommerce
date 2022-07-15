@@ -3,7 +3,7 @@ import '../cart/style-cart.css'
 import '../style.css'
 import './style.css'
 import '../cart/component/starsComponent.js';
-
+import {Log} from '../cart/main.js'
 
 const Url = new URL(window.location)
 const urlParams = new URLSearchParams(Url.searchParams);
@@ -22,6 +22,9 @@ var nextPage = 2;
 var prevPage = 3;
 var lastUrl = '';
 var totalPages = 100;
+
+// Verifica si hay un usuario logueado y en dicho caso se renderiza su correo electrónico
+Log();
 
 const cargarFiltros = async () => {
 	try {
@@ -138,7 +141,7 @@ const showMovies = async (data) => {
 						${generoName}
 					</div>
 					<div>
-						<span class="circulo">${pelicula.vote_average}</span>
+						<star-rating rating="${pelicula.vote_average}"></star-rating>
 					</div>
 					</div>
 					<div>
