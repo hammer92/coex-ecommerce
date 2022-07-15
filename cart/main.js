@@ -63,10 +63,6 @@ if (sesion === 'false') {
 
 // History
 
-const history = document.getElementById('history');
-history.addEventListener('click', () => {
-});
-
 function renderHistory() {
     app.innerHTML = templateHistory;
 
@@ -76,24 +72,6 @@ function renderHistory() {
     document.addEventListener("load", readMovieList());
 
 }
-
-// const button = document.getElementById('accion');
-// button.addEventListener("click", async () => {
-//     const h1 = document.querySelector("h1")
-//     console.log("click", h1.style.color)
-//     if (h1.style.color === "blue")
-//         h1.style.color = "red";
-//     else
-//         h1.style.color = "blue";
-// })
-
-const button = document.getElementById('accion');
-button.addEventListener('click', () => {
-    const h1 = document.querySelector('h1');
-    console.log('click', h1.style.color);
-    if (h1.style.color === 'blue') h1.style.color = 'red';
-    else h1.style.color = 'blue';
-});
 /// Render del login
 const buttonlogin = document.getElementById('login');
 
