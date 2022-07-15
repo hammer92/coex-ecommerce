@@ -33,7 +33,7 @@ class CartProduct extends HTMLElement {
 	}
 	connectedCallback() {
 		this.innerHTML = `
-        <a href="#" class="list__link" title="${this.title}">
+        <a href="#" class="list__link" title="Go to ${this.title}">
             <div class="list__item">
                 <figure class="item__cover">
                     <img src="${this.cover}" alt="${this.title}" class="item__img">

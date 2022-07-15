@@ -101,7 +101,7 @@ body{
 .filtros {
 	width: 100%;
 	max-width: 1000px;
-	margin: 40px auto 100px auto;
+	margin: 84px auto 100px auto;
     display: flex;
 }
 
@@ -139,6 +139,11 @@ body{
 }
 
 header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
     color: white;
     background-color: #02021C;
     display: flex;

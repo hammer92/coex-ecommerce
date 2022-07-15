@@ -30,6 +30,8 @@ let prevPage = 3;
 let lastUrl = '';
 let totalPages = 100;
 
+// Verifica si hay un usuario logueado y en dicho caso se renderiza su correo electrónico
+
 const cargarFiltros = async () => {
 	try {
 		let filt = '';
@@ -146,7 +148,7 @@ const showMovies = async (data) => {
 						${generoName}
 					</div>
 					<div>
-						<span class="circulo">${pelicula.vote_average}</span>
+						<star-rating rating="${pelicula.vote_average}"></star-rating>
 					</div>
 					</div>
 					<div>
