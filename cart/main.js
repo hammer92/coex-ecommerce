@@ -27,7 +27,7 @@ function Log() {
 		localStorage.setItem('iniciosesion', false);
 	}
 }
-export { Log };
+
 
 function Login() {
 	app.innerHTML = templatelogin;
@@ -68,48 +68,80 @@ function RenderMyOrder(id, date) {
 function renderHistory() {
     app.innerHTML = templateHistory;
 
-    const boton_g = document.getElementById('boton_guardar');
+    // const boton_g = document.getElementById('boton_guardar');
+	// // let add_date = document.getElementById("history__section__orders__date");
 
-		// let add_date = document.getElementById("history__section__orders__date");
+	// let capa = document.getElementsByClassName(
+	// 	'history__section--orders--shopping'
+	// );
 
-		let capa = document.getElementsByClassName(
-			'history__section--orders--shopping'
-		);
+	// let tag_div = document.createElement('div');
+	// tag_div.setAttribute('id', 'history__section--orders--items');
 
-		let tag_div = document.createElement('div');
-		tag_div.setAttribute('id', 'history__section--orders--items');
+	// for (let i = 0; i < capa.length; i++) {
+	// 	capa[i].appendChild(tag_div);
+	// }
 
-		for (let i = 0; i < capa.length; i++) {
-			capa[i].appendChild(tag_div);
-		}
+	// let tag_h1 = document.createElement('h1');
+	// let tag_img = document.createElement('img');
 
-		let tag_h1 = document.createElement('h1');
-		let tag_img = document.createElement('img');
+	// let capa_2 = document.getElementsByClassName(
+	// 	'history__section--orders--items'
+	// );
 
-		let capa_2 = document.getElementsByClassName(
-			'history__section--orders--items'
-		);
+	// tag_h1.innerHTML = output;
+	// tag_img.setAttribute(
+	// 	'src',
+	// 	'/assets/icons/angle-small-right-free-icon-font.svg'
+	// );
+	// tag_img.style.width = '20px';
 
-		tag_h1.innerHTML = output;
-		tag_img.setAttribute(
-			'src',
-			'/assets/icons/angle-small-right-free-icon-font.svg'
-		);
-		tag_img.style.width = '20px';
-
-		for (let j = 0; j < capa.length; j++) {
-			capa[j].appendChild(tag_h1);
-			capa[j].appendChild(tag_img);
-		}
-	boton_g.addEventListener('click', call_date);   
-    document.addEventListener("load", readMovieList());
+	// for (let j = 0; j < capa.length; j++) {
+	// 	capa[j].appendChild(tag_h1);
+	// 	capa[j].appendChild(tag_img);
+	// }
+	// boton_g.addEventListener('click', call_date);
+	document.addEventListener("load", readMovieList());
 }
+
+const template = `
+<h1>Hello world! Product Page</h1>
+${urlParams.get('product')}
+<button id="accion"> Cambio </button>
+<a href="/index.html" >Home</a>
+<button id="history2">History</button>
+<button id="login">Log in </button>
+<button id="myorder">myOrder</button>
+`;
 
 if (sesion === 'false') {
 	Login();
 } else {
 	renderHistory();
 }
+
+// app.innerHTML = templateHistory;
+// app.innerHTML = template;
+
+// History
+
+// const history = document.getElementById('history2');
+// history.addEventListener('click', () => {});
+
+// const button = document.getElementById('accion');
+// button.addEventListener('click', () => {
+// 	const h1 = document.querySelector('h1');
+// 	console.log('click', h1.style.color);
+// 	if (h1.style.color === 'blue') h1.style.color = 'red';
+// 	else h1.style.color = 'blue';
+// });
+
+/// Render del login
+// const buttonlogin = document.getElementById('login');
+
+// buttonlogin.addEventListener('click', () => {
+// 	Login();
+// });
 
 // ------------------------
 // Render My Order

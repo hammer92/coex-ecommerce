@@ -3,7 +3,6 @@ import '../cart/style-cart.css'
 import '../style.css'
 import './style.css'
 import '../cart/component/starsComponent.js';
-import {Log} from '../cart/main.js'
 
 import { addMovieList, getData } from '../cart/lib/conection.js';
 
@@ -32,7 +31,6 @@ let lastUrl = '';
 let totalPages = 100;
 
 // Verifica si hay un usuario logueado y en dicho caso se renderiza su correo electrónico
-Log();
 
 const cargarFiltros = async () => {
 	try {
