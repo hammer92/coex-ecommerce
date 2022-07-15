@@ -5,22 +5,23 @@ import 'normalize.css'
 import '../style.css'
 import './style.css'
 
-const Url = new URL(window.location)
-const urlParams = new URLSearchParams(Url.searchParams);
-const id = urlParams.get("product")
+const url = new URL(window.location)
+const urlParams = new URLSearchParams(url.searchParams);
+const id = urlParams.get("movie")
+// url example: http://localhost:3000/product/index.html?movie=550
+// it means the page will render the movie with id=550
 
 const container = document.querySelector('div.main-card-container');
-const testID = 550
-const apiController = new MovieController(testID)
+const apiController = new MovieController(id)
 
-render(testID)
+render(id)
 
 async function render(movieId){
     const movie = await apiController.getInfo(movieId)
     const mainCard = new MainCard(movie)
     container.innerHTML = mainCard.template
 
-    const movieSection  = new MovieSection(testID, movie)
+    const movieSection  = new MovieSection(id, movie)
     const movieSectionSlot = document.querySelector('div.main-info-slot')
     const movieSectionInfo = await movieSection.template()
     movieSectionSlot.innerHTML = movieSectionInfo
