@@ -33,7 +33,7 @@ class MovieController{
                 'calification':obJson.vote_average,
                 'year':obJson.release_date.slice(0,4),
                 'synopsis':obJson.overview,
-                'certificitacion':certificitacion,
+                'certification':certificitacion,
                 'image':'https://image.tmdb.org/t/p/w500'+obJson.poster_path
             }
             return obj;

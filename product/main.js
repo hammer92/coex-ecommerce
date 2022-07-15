@@ -1,28 +1,40 @@
+import MovieController from './controllers/movie/movieController';
+import MainCard from './components/main-card/main-card';
+import MovieSection from './components/movie-section/movie-section.js'
 import 'normalize.css'
 import '../style.css'
 import './style.css'
-import MovieSection from "./components/movie-section/movie-section";
 
 const Url = new URL(window.location)
 const urlParams = new URLSearchParams(Url.searchParams);
 const id = urlParams.get("product")
 
-const app = document.querySelector('#app');
+const container = document.querySelector('div.main-card-container');
 const testID = 550
-const section = new MovieSection(testID);
+const apiController = new MovieController(testID)
 
-const template =`
-<h1>Hello world! Cart Page</h1>
-<button id="accion"> Cambio </button>
-<a href="./testfile.html">Tests</a>
-`
-//app.innerHTML = template
+render(testID)
 
+async function render(movieId){
+    const movie = await apiController.getInfo(movieId)
+    const mainCard = new MainCard(movie)
+    container.innerHTML = mainCard.template
 
+    const movieSection  = new MovieSection(testID, movie)
+    const movieSectionSlot = document.querySelector('div.main-info-slot')
+    const movieSectionInfo = await movieSection.template()
+    movieSectionSlot.innerHTML = movieSectionInfo
 
-section.template()
-.then( template => {
-    app.innerHTML = template
-    section.carCast.renderItems()
-    section.carReco.renderItems()
-})
+    movieSection.carCast.renderItems()
+    movieSection.carReco.renderItems()
+    const btns = Array.from(document.querySelectorAll('a.nextSectionButton'))
+
+    btns.forEach(btn =>{
+        btn.addEventListener('click', function(e){
+            let curId = e.target.parentElement.id
+            let nextId = btn.textContent.toLowerCase()
+
+            movieSection.next(curId, nextId)
+        })
+    })
+}

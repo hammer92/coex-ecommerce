@@ -1,10 +1,14 @@
+:root{
+    --img-width: 300px
+}
 *{
     margin: 0;
     padding: 0;
 }
 .main-card{
-    display: flex;
-    min-width: max-content;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 100%;
     min-height: max-content;
     border-radius: 16px;
     background-color: #02021C;
@@ -12,7 +16,7 @@
     padding-bottom: 10px;
 }
 .img-section{
-    width: 300px;
+    width: var(--img-width);
     height: 100%;
     display: grid;
     grid-template-rows: 1fr max-content;
@@ -65,4 +69,7 @@
     display: grid;
     grid-template-columns: auto auto 1fr;
     column-gap: 20px;
+}
+.main-info-slot{
+    width: calc(100% - var(--img-width));
 }

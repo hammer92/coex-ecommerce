@@ -5,7 +5,8 @@ import MovieController from '../../controllers/movie/movieController';
 
 class MovieSection {
 
-    constructor(movieId) {
+    constructor(movieId, movieJson) {
+        this.movie = movieJson
         this.id = movieId;
         this.apiController = new MovieController(this.id);
         this.carReco = new CarouselRecomended(this.id);
@@ -41,7 +42,7 @@ class MovieSection {
         const sections = this.sections
         const elements = []
 
-        const movie = await this.apiController.getInfo()
+        const movie = this.movie
         const trailer = await this.apiController.getTrailer()
 
         sections.forEach(section => {
@@ -52,8 +53,6 @@ class MovieSection {
             let content = document.createElement('div');
 
             let synopsisContent = document.createElement('p');
-            
-
 
             h1.innerText = section.text
 
@@ -67,6 +66,7 @@ class MovieSection {
                     content.setAttribute('class', 'container-video');
                     let frame = document.createElement('iframe')
                     frame.src = trailer.embed_trailer
+                    frame.classList.add('relative-iframe')
                     frame.frameBorder = 0
                     frame.width = 550
                     frame.height = 450
@@ -80,26 +80,37 @@ class MovieSection {
                     content.innerHTML = this.carReco.template
                     break;
             }
-            
+            content.classList.add('contentContainer')
+
             a.append(span, section.next)
-            a.setAttribute('href', `#${section.next.toLowerCase()}`)
+            //a.setAttribute('href', `#${section.next.toLowerCase()}`)
+            a.classList.add('nextSectionButton')
             
             element.setAttribute('id', section.id)
             element.classList.add(commonClass)
             element.append(h1, content, a)
             
             elements.push(element)
-            console.log(element.innerHTML)
+            //console.log(element.innerHTML)
         })
         return elements
     }
     async template() {
-        const elements = await this.createInnerElements()
-        console.log(elements)
-        let template = elements.map(element => element.outerHTML).join('')
+        this.elements = await this.createInnerElements()
+        
+        this.elements[0].style.display = 'grid'
+        let template = this.elements.map(element => element.outerHTML).join('')
 
-        console.log(template)
         return template
     }
+    next(curId, nextId){
+
+        const curContent = document.querySelector(`#${curId}`)
+        const nextContent = document.querySelector(`#${nextId}`)
+
+        curContent.style.display = 'none'
+        nextContent.style.display = 'grid'
+    }
+
 }
 export default MovieSection;
