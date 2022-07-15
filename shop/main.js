@@ -14,8 +14,9 @@ const key = 'd2b1df9d64af7fb2a0342bd9d23e1449'
 const searchURL = "https://api.themoviedb.org/3/search/movie?api_key=d2b1df9d64af7fb2a0342bd9d23e1449";
 
 document.getElementById('checkButton').addEventListener('click', ()=>{
-	let data = getData()
-	addMovieList(data)
+	let data = getData();
+	addMovieList(data);
+	localStorage.setItem('shoppingCart', []);
 	window.location = '../cart/index.html'
 })
 //paginacion
@@ -23,11 +24,11 @@ const prev = document.getElementById('prev')
 const next = document.getElementById('next')
 const current = document.getElementById('current')
 
-var currentPage = 1;
-var nextPage = 2;
-var prevPage = 3;
-var lastUrl = '';
-var totalPages = 100;
+let currentPage = 1;
+let nextPage = 2;
+let prevPage = 3;
+let lastUrl = '';
+let totalPages = 100;
 
 const cargarFiltros = async () => {
 	try {
@@ -45,6 +46,7 @@ const cargarFiltros = async () => {
 
 let getByCategory = "";
 let categorySelected = document.querySelectorAll("#categorySelected");
+
 categorySelected.forEach(element => {
 	element.addEventListener("click", async () => {
 
@@ -65,7 +67,7 @@ categorySelected.forEach(element => {
 const cargarPeliculas = async (category) => {
 	lastUrl = category;
 	let allMovies = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
-	
+
 	if (category == "") {
 		console.log("No hay categoría seleccionada");
 	} else {

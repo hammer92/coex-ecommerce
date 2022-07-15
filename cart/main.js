@@ -3,6 +3,7 @@ import './style.css';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
 import myorderView from './views/myorderView.js';
+import { readMovieList } from './lib/conection.js';
 import './lib/conection.js';
 
 const Url = new URL(window.location);
@@ -17,7 +18,7 @@ const template = `
 ${urlParams.get('product')}
 <button id="accion"> Cambio </button>
 <a href="/index.html" >Home</a>
-<button id="history2">History</button>
+<button id="history">History</button>
 <button id="login">Log in </button>
 <button id="myorder">myOrder</button>
 `;
@@ -67,26 +68,6 @@ buttonlogin.addEventListener('click', () => {
     }
 });
 
-const MOVIES = [
-    {
-        title: 'Saw',
-        genre: 'Thriller',
-        poster_path: '/harQifr8kpIVqlLP41kTR058LZB.jpg',
-        vote_average: 7.4,
-    },
-    {
-        title: 'Avengers: Endgame',
-        genre: 'Action',
-        poster_path: '/or06FN3Dka5tukK1e9sl16pB3iy.jpg',
-        vote_average: 8.3,
-    },
-    {
-        title: 'Joker',
-        genre: 'Action',
-        poster_path: '/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg',
-        vote_average: 8.2,
-    },
-];
 if (sesion === 'false') {
     Login();
 } else {
@@ -95,7 +76,7 @@ if (sesion === 'false') {
 
 // History
 
-const history = document.getElementById('history2');
+const history = document.getElementById('history');
 history.addEventListener('click', () => {
 });
 
@@ -104,57 +85,8 @@ function renderHistory() {
 
     const boton_g = document.getElementById('boton_guardar');
 
-    function call_date(movies) {
-
-        let array_date = [];
-        let contador = 0;
-        const date = new Date();
-        let longitud_movies = movies.length;
-        console.log(longitud_movies);
-
-        let output =
-            String(date.getDate()).padStart(2, '0') +
-            '.' +
-            String(date.getMonth() + 1).padStart(2, '0') +
-            '.' +
-            date.getFullYear();
-
-        array_date.push(output);
-
-        // let add_date = document.getElementById("history__section__orders__date");
-
-        let capa_contenedor = document.getElementsByClassName("history__section--orders--shopping");
-
-        let tag_div = document.createElement("div");
-        tag_div.setAttribute("class", "history__section--orders--items");
-
-        let tag_h1 = document.createElement("h1");
-        let tag_img = document.createElement("img");
-        let tag_h2 = document.createElement("h2");
-
-        let capa = document.getElementsByClassName("history__section--orders--items");
-
-        tag_h1.innerHTML = output;
-        tag_h1.style.color = "white";
-        tag_img.setAttribute('src', '/assets/icons/angle-small-right-free-icon-font.svg');
-        tag_img.style.width = "20px";
-        tag_h2.innerHTML = longitud_movies;
-        tag_h2.style.color = "white";
-        tag_h2.innerHTML += " movies";
-
-        for (let i = 0; i < capa_contenedor.length; i++) {
-            capa_contenedor[i].appendChild(tag_div);
-            for (let j = 0; j < capa.length; j++) {
-                contador = contador + 1;
-                tag_div.setAttribute('id', contador);
-                capa[j].appendChild(tag_h1);
-                capa[j].appendChild(tag_img);
-
-            };
-            capa_contenedor[i].appendChild(tag_h2);
-        }
-    }
-    boton_g.addEventListener("click", call_date(MOVIES));
+    
+    document.addEventListener("load", readMovieList());
 
 }
 

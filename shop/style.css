@@ -20,6 +20,10 @@ button{
     border-color: transparent;
 }
 
+.onMovieHover:hover{
+    background: linear-gradient(0,0,0,0.7);
+}
+
 html, body{
     margin: 0;
     padding: 0;
