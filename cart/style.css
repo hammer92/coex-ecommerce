@@ -282,6 +282,10 @@
 .history__section--orders--items {
     margin: 5px 2px;
 }
+
+.myorderDirection {
+    cursor: pointer;
+}
 /*  LOGIN */
 
 

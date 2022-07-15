@@ -137,15 +137,15 @@ if (sesion){
 // ------------------------
 // Render My Order
 
-const ORDER_LIST = document.querySelectorAll('button.myorder');
-
-ORDER_LIST.forEach((order) => {
-	order.addEventListener('click', (e) => {
-		e.preventDefault();
+const ORDER_LIST = document.getElementsByClassName('myorderDirection');
+console.log(ORDER_LIST)
+for (let element of ORDER_LIST) {
+	element.addEventListener('click', (e) => {
+		console.log(e)
 		const ID = order.querySelector('.id_order').innerHTML;
 		const DATE = order.querySelector('.date_order').innerHTML;
 		RenderMyOrder(ID, DATE);
 	});
-});
+}
 
 // ------------------------

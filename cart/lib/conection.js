@@ -55,7 +55,7 @@ function call_date(movies, keys) {
         const templateCart = `
             <div class="history__section--orders--items" id="${keys[i]}">
                 <h1 style="color: white;">${output}</h1>
-                <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;">
+                <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;" class="myorderDirection">
             </div>
             <h2 style="color: white;">${longitud_movies} movies</h2>
          `
