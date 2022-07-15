@@ -41,11 +41,14 @@ window.onload = () => {
 	renderMovieInCart(moviesInCart);
 };
 
+<<<<<<< HEAD
 //redirige a LOGIN / MYHISTORY dependiendo de la sesion
 const renderCart = () => {
 	window.location = '/cart/index.html';
 }
 
+=======
+>>>>>>> f3e6518b4b61ddecd72f9941bda36829ac21d3e6
 //Barra de error visible para el usuario
 const errorBar = document.querySelector('.error-bar-container')
 const messageContainer = document.getElementById('errorMessage')

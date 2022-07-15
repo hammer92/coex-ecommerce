@@ -362,7 +362,7 @@ li {
     display: none;
     position: absolute;
     background-color:var(--purple-dark);
-    inline-size: 150px;
+    inline-size: 180px;
     padding: 15px;
     text-align: right;
 }
@@ -372,15 +372,22 @@ li {
 }
 
 .btn-logout{
+    margin-top: 9px;
     font-size: 16px;
-    font-weight: 1000;
+    font-weight: 600;
     color:purple;
     padding-right: 0px;
+    cursor: pointer;
+}
+.btn-logout:hover{
+    color:white;
+
 }
 
 .historial-btn{
+    margin-bottom: 5px;
     font-size: 16px;
-    font-weight: 1000;
+    font-weight: 700;
 }
 
 .sigin__arrow{
@@ -398,7 +405,24 @@ li {
 .btn-sesion-login:hover .drop-menu{
     display: block;
 }
+.btn-singup-nav{
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
 
+.btn-login-nav{
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
 
-
+.btn-login-nav:hover{
+    background-color: var(--purple);
+}
+.btn-singup-nav:hover{
+    background-color: var(--purple);
+}
 

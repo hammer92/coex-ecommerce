@@ -1,4 +1,4 @@
-// import '../style.css'
+//import '../style.css'
 import './style.css';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
@@ -9,11 +9,13 @@ import './lib/conection.js';
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
-const app = document.querySelector('#app');
+const app = document.querySelector('#app') ;
 const sesion = localStorage.getItem('iniciosesion');
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
+
+<<<<<<< HEAD
 
 function Log() {
 	if (sesion) {
@@ -29,25 +31,38 @@ function Log() {
 }
 
 
+
+
+function login(){
+    var iniciosesion = false;
+    localStorage.setItem('iniciosesion', iniciosesion);
+    app.innerHTML = templatelogin;
+=======
 function Login() {
 	app.innerHTML = templatelogin;
 	var iniciosesion = false;
 	localStorage.setItem('iniciosesion', iniciosesion);
+>>>>>>> c682f37ce53f51351c48fd72e320750929d34641
 	const form = document.getElementById('form_login');
 	form.onsubmit = () => {
 		const mail = document.getElementById('email');
 		const con = document.getElementById('password');
 		const correo = mail.value;
 		const contra = con.value;
+        console.log('entra a en submit')
 
 		if (correo == '' || contra == '') {
 			alert('Debe llenar todos los campos');
 		} else {
 			if (correo == user.email && contra == user.password) {
-				alert('inicio de sesion correcto');
-				iniciosesion = true;
+                iniciosesion = true
 				localStorage.setItem('iniciosesion', iniciosesion);
-				app.innerHTML = templateprueba;
+<<<<<<< HEAD
+                alert('inicio de sesion correcto');
+				window.location.href ='../shop/index.html';
+=======
+				// app.innerHTML = templateprueba;
+>>>>>>> c682f37ce53f51351c48fd72e320750929d34641
 			} else {
 				alert('Credenciales invalidas');
 			}
@@ -55,6 +70,8 @@ function Login() {
 		}
 	};
 }
+
+
 
 function RenderMyOrder(id, date) {
 	const order = new OrderList(id, date);
@@ -104,6 +121,17 @@ function renderHistory() {
 	document.addEventListener("load", readMovieList());
 }
 
+const verifyRender = ()=>{
+    console.log(localStorage.getItem('iniciosesion'))
+    if (localStorage.getItem('iniciosesion') == true) {
+        renderHistory();
+    } else {
+        login();
+    }
+}
+
+document.addEventListener('load', verifyRender())
+
 const template = `
 <h1>Hello world! Product Page</h1>
 ${urlParams.get('product')}
@@ -114,11 +142,24 @@ ${urlParams.get('product')}
 <button id="myorder">myOrder</button>
 `;
 
-if (sesion === 'false') {
-	Login();
+<<<<<<< HEAD
+=======
+if (sesion){
+	console.log('sesion: ', sesion)
+	if (sesion === 'false') {
+		Login();
+	} else {
+		if(localStorage.getItem('statusback', 'cart')){
+			renderHistory();
+		} else {
+			window.location = '../shop/index.html';
+		}
+	}
 } else {
-	renderHistory();
+	localStorage.setItem('iniciosesion', false);
+	Login();
 }
+>>>>>>> c682f37ce53f51351c48fd72e320750929d34641
 
 // app.innerHTML = templateHistory;
 // app.innerHTML = template;
