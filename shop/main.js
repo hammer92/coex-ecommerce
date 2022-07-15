@@ -217,27 +217,57 @@ cargarPeliculas(getByCategory);
 //--------------------------------------------------
 // Configuracion del navbar para esta de la sesion
 
-document.addEventListener("DOMContentLoaded", ()=>{
+// const checkSesion = () => {
+// 	const nologinstate = document.querySelector("#btn-nosesion-nav");
+// 	const loginstate = document.querySelector("#btn-sesion-nav");
+// 	let estatesesion = localStorage.getItem("iniciosesion");
 
-	const nologinstate = document.querySelector("#btn-nosesion-nav");
-	const loginstate = document.querySelector("#btn-sesion-nav");
-	let estatesesion = localStorage.getItem("iniciosesion");
+// 	if(estatesesion == true){
+// 		nologinstate.classList.add("btn-hidden");
+// 		loginstate.classList.remove("btn-hidden");
+// 	}else{
+// 		nologinstate.classList.remove("btn-hidden");
+// 		loginstate.classList.add("btn-hidden");
+// 	}
 
-	if(estatesesion == true){
-		nologinstate.classList.add("btn-hidden");
-		loginstate.classList.remove("btn-hidden");
-	}else{
-		nologinstate.classList.remove("btn-hidden");
-		loginstate.classList.add("btn-hidden");
-	}
+// }
 
-})
+// window.onload = () => {
+// 	// console.log('se ejecuta')
+// 	const nologinstate = document.querySelector("#btn-nosesion-nav");
+// 	const loginstate = document.querySelector("#btn-sesion-nav");
+// 	let estatesesion = localStorage.getItem("iniciosesion");
+	
+// 	if(estatesesion === 'false'){
+// 		nologinstate.classList.remove("btn-hidden");
+// 		loginstate.classList.add("btn-hidden");
+
+// 	}else {
+// 		nologinstate.classList.add("btn-hidden");
+// 		loginstate.classList.remove("btn-hidden");
+
+// 	}
+
+	// if(estatesesion === 'true'){
+	// 	nologinstate.classList.remove("btn-hidden");
+	// 	loginstate.classList.add("btn-hidden");
+	// 	console.log('true')
+	// }else{
+	// 	console.log('false')
+	// 	nologinstate.classList.add("btn-hidden");
+	// 	loginstate.classList.remove("btn-hidden");
+	// }
+
+
+
+
 
 //funcion del boton log out 
 const buttonlogout = document.getElementById('logout');
 buttonlogout.addEventListener('click', () => {
 	let estado = false;
 	localStorage.setItem('iniciosesion', estado);
+	window.location.reload()
 });
 
 

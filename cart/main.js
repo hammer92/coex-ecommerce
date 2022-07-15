@@ -15,34 +15,10 @@ const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
-<<<<<<< HEAD
-
-function Log() {
-	if (sesion) {
-		const SIGIN = document.getElementById('sigin');
-		if (sesion === 'false') {
-			SIGIN.innerHTML = 'Sig In';
-		} else if (sesion === 'true') {
-			SIGIN.innerHTML = user.email;
-		}
-	} else {
-		localStorage.setItem('iniciosesion', false);
-	}
-}
-
-
-
-
-function login(){
-    var iniciosesion = false;
-    localStorage.setItem('iniciosesion', iniciosesion);
-    app.innerHTML = templatelogin;
-=======
 function Login() {
 	app.innerHTML = templatelogin;
 	var iniciosesion = false;
 	localStorage.setItem('iniciosesion', iniciosesion);
->>>>>>> c682f37ce53f51351c48fd72e320750929d34641
 	const form = document.getElementById('form_login');
 	form.onsubmit = () => {
 		const mail = document.getElementById('email');
@@ -57,12 +33,7 @@ function Login() {
 			if (correo == user.email && contra == user.password) {
                 iniciosesion = true
 				localStorage.setItem('iniciosesion', iniciosesion);
-<<<<<<< HEAD
-                alert('inicio de sesion correcto');
-				window.location.href ='../shop/index.html';
-=======
 				// app.innerHTML = templateprueba;
->>>>>>> c682f37ce53f51351c48fd72e320750929d34641
 			} else {
 				alert('Credenciales invalidas');
 			}
@@ -142,8 +113,6 @@ ${urlParams.get('product')}
 <button id="myorder">myOrder</button>
 `;
 
-<<<<<<< HEAD
-=======
 if (sesion){
 	console.log('sesion: ', sesion)
 	if (sesion === 'false') {
@@ -159,7 +128,6 @@ if (sesion){
 	localStorage.setItem('iniciosesion', false);
 	Login();
 }
->>>>>>> c682f37ce53f51351c48fd72e320750929d34641
 
 // app.innerHTML = templateHistory;
 // app.innerHTML = template;
