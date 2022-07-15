@@ -34,6 +34,7 @@ class MovieController{
                 'year':obJson.release_date.slice(0,4),
                 'synopsis':obJson.overview,
                 'certification':certificitacion,
+                'duration':`${obJson.runtime} min`,
                 'image':'https://image.tmdb.org/t/p/w500'+obJson.poster_path
             }
             return obj;
