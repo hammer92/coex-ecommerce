@@ -14,11 +14,19 @@ const app = document.querySelector('#app');
 const key = 'd2b1df9d64af7fb2a0342bd9d23e1449'
 const searchURL = "https://api.themoviedb.org/3/search/movie?api_key=d2b1df9d64af7fb2a0342bd9d23e1449";
 
+const historialBtn =document.getElementById('historial-btn') 
+
+
 document.getElementById('checkButton').addEventListener('click', ()=>{
 	let data = getData();
 	addMovieList(data);
 	localStorage.setItem('shoppingCart', []);
+	localStorage.setItem('statusback', 'cart');
 	window.location = '../cart/index.html'
+});
+
+document.getElementById('history-shop').addEventListener('click', ()=>{
+	localStorage.setItem('statusback', 'cart');
 })
 //paginacion
 const prev = document.getElementById('prev')

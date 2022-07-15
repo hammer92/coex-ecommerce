@@ -41,6 +41,11 @@ window.onload = () => {
 	renderMovieInCart(moviesInCart);
 };
 
+const renderCart = ()=>{
+	window.location = '/cart/index.html'
+}
+
+
 //Barra de error visible para el usuario
 const errorBar = document.querySelector('.error-bar-container')
 const messageContainer = document.getElementById('errorMessage')
