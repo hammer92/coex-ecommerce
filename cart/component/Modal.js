@@ -1,4 +1,5 @@
 //ARIR CARRITO
+
 const cartContainer = document.querySelector('.cart-container');
 const checkoutButton = document.querySelector('.checkout-button-container');
 
@@ -41,9 +42,6 @@ window.onload = () => {
 };
 
 
-const renderCart = () => {
-	window.location = '/cart/index.html';
-}
 
 //Obtengo las pelis de la lista numero 1
 

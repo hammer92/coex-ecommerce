@@ -1,10 +1,10 @@
 // import '../style.css'
-
 import './style.css';
-import './lib/conection.js';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
 import { OrderList } from './views/myorderView.js';
+import { readMovieList } from './lib/conection.js';
+import './lib/conection.js';
 
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
@@ -66,23 +66,9 @@ function RenderMyOrder(id, date) {
 }
 
 function renderHistory() {
-	app.innerHTML = templateHistory;
+    app.innerHTML = templateHistory;
 
-	const boton_g = document.getElementById('boton_guardar');
-
-	function call_date() {
-		let array_date = [];
-
-		const date = new Date();
-
-		let output =
-			String(date.getDate()).padStart(2, '0') +
-			'.' +
-			String(date.getMonth() + 1).padStart(2, '0') +
-			'.' +
-			date.getFullYear();
-
-		array_date.push(output);
+    const boton_g = document.getElementById('boton_guardar');
 
 		// let add_date = document.getElementById("history__section__orders__date");
 
@@ -115,49 +101,15 @@ function renderHistory() {
 			capa[j].appendChild(tag_h1);
 			capa[j].appendChild(tag_img);
 		}
-	}
-
-	boton_g.addEventListener('click', call_date);
+	boton_g.addEventListener('click', call_date);   
+    document.addEventListener("load", readMovieList());
 }
-
-const template = `
-<h1>Hello world! Product Page</h1>
-${urlParams.get('product')}
-<button id="accion"> Cambio </button>
-<a href="/index.html" >Home</a>
-<button id="history2">History</button>
-<button id="login">Log in </button>
-<button id="myorder">myOrder</button>
-`;
 
 if (sesion === 'false') {
 	Login();
 } else {
 	renderHistory();
 }
-
-// app.innerHTML = templateHistory;
-// app.innerHTML = template;
-
-// History
-
-// const history = document.getElementById('history2');
-// history.addEventListener('click', () => {});
-
-// const button = document.getElementById('accion');
-// button.addEventListener('click', () => {
-// 	const h1 = document.querySelector('h1');
-// 	console.log('click', h1.style.color);
-// 	if (h1.style.color === 'blue') h1.style.color = 'red';
-// 	else h1.style.color = 'blue';
-// });
-
-/// Render del login
-// const buttonlogin = document.getElementById('login');
-
-// buttonlogin.addEventListener('click', () => {
-// 	Login();
-// });
 
 // ------------------------
 // Render My Order

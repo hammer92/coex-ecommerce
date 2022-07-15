@@ -1,5 +1,4 @@
 import "../style.css";
-
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
@@ -12,18 +11,14 @@ const templateHistory = `
     </nav>
 
     <section class="history__section">
-    <a href=""><img src="/assets/icons/back-arrow-comb2.svg" alt="flecha_retroceso" class="history__flecha--retroceso"></a>
+    <a href="http://localhost:3000/shop/index.html"><img src="/assets/icons/back-arrow-comb2.svg" alt="flecha_retroceso" class="history__flecha--retroceso"></a>
         <div class="history__section--orders">
             <span class="history__section--orders--word">My orders</span>
-            <div class="history__section--orders--shopping">
-                <button id="myorder">myOrder</button>
-                <div class="history__section--orders--items">
-                                    
-                </div>              
+            <div class="history__section--orders--shopping" id="historyShopping">
+
             </div>
         </div>
     </section>
-    <button id="boton_guardar" style="color:white;"> Try it </button>
 </div>
 `;
 
