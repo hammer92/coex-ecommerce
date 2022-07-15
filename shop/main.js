@@ -1,3 +1,5 @@
+import 'normalize.css'
+import '../cart/style-cart.css'
 import '../style.css'
 import './style.css'
 
@@ -73,6 +75,7 @@ const cargarPeliculas = async (category) => {
 }
 
 
+
 function getMovies(url) {
 	lastUrl = url;
 	fetch(url).then(res => res.json()).then(data => {
@@ -140,7 +143,7 @@ const showMovies = async (data) => {
 					</div>
 					</div>
 					<div>
-						<button class ="carrito" id="carrito">Add to card</button>
+						<button class ="carrito" onclick="addToCart(${pelicula.id})" id="carrito">Add to card</button>
 					</div>
             	</div>
 			</div>
@@ -153,6 +156,7 @@ const showMovies = async (data) => {
 		console.log(error);
 	}
 }
+
 
 filtros.addEventListener('submit', (e) => {
 	e.preventDefault();
