@@ -14,26 +14,24 @@ class CartProduct extends HTMLElement {
 	}
 
 	attributeChangedCallback(attr, oldVal, newVal) {
-		if (oldVal !== newVal){
-			switch (attr) {
-				case 'title':
-					this.title = newVal;
-					break;
-				case 'genre':
-					this.genre = newVal;
-					break;
-				case 'rating':
-					this.rating = newVal;
-					break;
-				case 'cover':
-					this.cover = newVal;
-					break;
-			}
+		switch (attr) {
+			case 'title':
+				this.title = newVal;
+				break;
+			case 'genre':
+				this.genre = newVal;
+				break;
+			case 'rating':
+				this.rating = newVal;
+				break;
+			case 'cover':
+				this.cover = newVal;
+				break;
 		}
 	}
 	connectedCallback() {
 		this.innerHTML = `
-        <a href="#" class="list__link" title="Go to ${this.title}">
+        <a href="#" class="list__link">
             <div class="list__item">
                 <figure class="item__cover">
                     <img src="${this.cover}" alt="${this.title}" class="item__img">
@@ -50,4 +48,4 @@ class CartProduct extends HTMLElement {
 	}
 }
 
-customElements.define('cart-product', CartProduct);
+window.customElements.define('cart-product', CartProduct);

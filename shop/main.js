@@ -4,6 +4,7 @@ import '../style.css'
 import './style.css'
 import '../cart/component/starsComponent.js';
 
+import { addMovieList, getData } from '../cart/lib/conection.js';
 
 const Url = new URL(window.location)
 const urlParams = new URLSearchParams(Url.searchParams);
@@ -12,16 +13,24 @@ const app = document.querySelector('#app');
 const key = 'd2b1df9d64af7fb2a0342bd9d23e1449'
 const searchURL = "https://api.themoviedb.org/3/search/movie?api_key=d2b1df9d64af7fb2a0342bd9d23e1449";
 
+document.getElementById('checkButton').addEventListener('click', ()=>{
+	let data = getData();
+	addMovieList(data);
+	localStorage.setItem('shoppingCart', []);
+	window.location = '../cart/index.html'
+})
 //paginacion
 const prev = document.getElementById('prev')
 const next = document.getElementById('next')
 const current = document.getElementById('current')
 
-var currentPage = 1;
-var nextPage = 2;
-var prevPage = 3;
-var lastUrl = '';
-var totalPages = 100;
+let currentPage = 1;
+let nextPage = 2;
+let prevPage = 3;
+let lastUrl = '';
+let totalPages = 100;
+
+// Verifica si hay un usuario logueado y en dicho caso se renderiza su correo electrónico
 
 const cargarFiltros = async () => {
 	try {
@@ -39,6 +48,7 @@ const cargarFiltros = async () => {
 
 let getByCategory = "";
 let categorySelected = document.querySelectorAll("#categorySelected");
+
 categorySelected.forEach(element => {
 	element.addEventListener("click", async () => {
 
@@ -59,7 +69,7 @@ categorySelected.forEach(element => {
 const cargarPeliculas = async (category) => {
 	lastUrl = category;
 	let allMovies = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
-	
+
 	if (category == "") {
 		console.log("No hay categoría seleccionada");
 	} else {
@@ -138,7 +148,7 @@ const showMovies = async (data) => {
 						${generoName}
 					</div>
 					<div>
-						<span class="circulo">${pelicula.vote_average}</span>
+						<star-rating rating="${pelicula.vote_average}"></star-rating>
 					</div>
 					</div>
 					<div>
@@ -202,3 +212,21 @@ function pageCall(page) {
 
 cargarFiltros();
 cargarPeliculas(getByCategory);
+
+//--------------------------------------------------
+// Configuracion del navbar para esta de la sesion
+
+document.addEventListener("DOMContentLoaded", ()=>{
+
+	const nologinstate = document.querySelector("#btn-nosesion-nav");
+	const loginstate = document.querySelector("#btn-sesion-nav");
+
+	if(localStorage.getItem("iniciosesion")){
+		nologinstate.classList.add("btn-hidden");
+		loginstate.classList.remove("btn-hidden");
+	}else{
+		nologinstate.classList.remove("btn-hidden");
+		loginstate.classList.add("btn-hidden");
+	}
+
+})

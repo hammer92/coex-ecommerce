@@ -20,6 +20,10 @@ button{
     border-color: transparent;
 }
 
+.onMovieHover:hover{
+    background: linear-gradient(0,0,0,0.7);
+}
+
 html, body{
     margin: 0;
     padding: 0;
@@ -97,7 +101,7 @@ body{
 .filtros {
 	width: 100%;
 	max-width: 1000px;
-	margin: 40px auto 100px auto;
+	margin: 84px auto 100px auto;
     display: flex;
 }
 
@@ -135,6 +139,11 @@ body{
 }
 
 header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
     color: white;
     background-color: #02021C;
     display: flex;
@@ -341,3 +350,55 @@ li {
 .hover *{
     margin: 10px;
 }
+
+.btn-hidden{
+    display: none;
+}
+.btn-drop-menu:hover{
+    color:var(--purple)
+}
+.drop-menu{
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color:var(--purple-dark);
+    inline-size: 150px;
+    padding: 15px;
+    text-align: right;
+}
+
+.btn-sesion-login{
+    position: relative;
+}
+
+.btn-logout{
+    font-size: 16px;
+    font-weight: 1000;
+    color:purple;
+    padding-right: 0px;
+}
+
+.historial-btn{
+    font-size: 16px;
+    font-weight: 1000;
+}
+
+.sigin__arrow{
+    block-size: auto;
+    inline-size: 12px;
+}
+
+.hr-dropdown{
+    margin-left:12px;   
+    border:none;
+    height: 0.5px;
+    background-color: #4b4b4b;
+}
+
+.btn-sesion-login:hover .drop-menu{
+    display: block;
+}
+
+
+
+
