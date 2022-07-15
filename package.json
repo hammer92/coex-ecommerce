@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "lit-html": "^2.2.6",
     "vite": "^2.9.9"
   },
   "dependencies": {

@@ -3,18 +3,34 @@ import './style.css';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
 import { OrderList } from './views/myorderView.js';
-import { readMovieList } from './lib/conection.js';
+import { readMovieList, exportData, renderOrder } from './lib/conection.js';
 import './lib/conection.js';
 
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
-const app = document.querySelector('#app') ;
+const app = document.querySelector('#app');
+const data = exportData()
 const sesion = localStorage.getItem('iniciosesion');
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
+<<<<<<< HEAD
+=======
+
+export function RenderMyOrder() {
+	const order = new OrderList(data);
+	app.innerHTML = order.myorderView;
+	const BACK = document.getElementById('back-arrow');
+	BACK.addEventListener('click', () => {
+		window.location.reload();
+	});
+}
+
+
+
+>>>>>>> a8eef2651b01d343808c6abbe2ae47ff80d0bbf4
 function Login() {
 	app.innerHTML = templatelogin;
 	var iniciosesion = false;
@@ -33,7 +49,12 @@ function Login() {
 			if (correo == user.email && contra == user.password) {
                 iniciosesion = true
 				localStorage.setItem('iniciosesion', iniciosesion);
+<<<<<<< HEAD
 				// app.innerHTML = templateprueba;
+=======
+                alert('inicio de sesion correcto');
+				window.location.href ='../shop/index.html';
+>>>>>>> a8eef2651b01d343808c6abbe2ae47ff80d0bbf4
 			} else {
 				alert('Credenciales invalidas');
 			}
@@ -43,15 +64,6 @@ function Login() {
 }
 
 
-
-function RenderMyOrder(id, date) {
-	const order = new OrderList(id, date);
-	app.innerHTML = order.myorderView;
-	const BACK = document.getElementById('back-arrow');
-	BACK.addEventListener('click', () => {
-		window.location.reload();
-	});
-}
 
 function renderHistory() {
     app.innerHTML = templateHistory;
@@ -92,17 +104,6 @@ function renderHistory() {
 	document.addEventListener("load", readMovieList());
 }
 
-const verifyRender = ()=>{
-    console.log(localStorage.getItem('iniciosesion'))
-    if (localStorage.getItem('iniciosesion') == true) {
-        renderHistory();
-    } else {
-        login();
-    }
-}
-
-document.addEventListener('load', verifyRender())
-
 const template = `
 <h1>Hello world! Product Page</h1>
 ${urlParams.get('product')}
@@ -128,6 +129,12 @@ if (sesion){
 	localStorage.setItem('iniciosesion', false);
 	Login();
 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> a8eef2651b01d343808c6abbe2ae47ff80d0bbf4
 
 // app.innerHTML = templateHistory;
 // app.innerHTML = template;
@@ -155,15 +162,5 @@ if (sesion){
 // ------------------------
 // Render My Order
 
-const ORDER_LIST = document.querySelectorAll('button.myorder');
-
-ORDER_LIST.forEach((order) => {
-	order.addEventListener('click', (e) => {
-		e.preventDefault();
-		const ID = order.querySelector('.id_order').innerHTML;
-		const DATE = order.querySelector('.date_order').innerHTML;
-		RenderMyOrder(ID, DATE);
-	});
-});
 
 // ------------------------
