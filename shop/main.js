@@ -203,3 +203,21 @@ function pageCall(page) {
 
 cargarFiltros();
 cargarPeliculas(getByCategory);
+
+//--------------------------------------------------
+// Configuracion del navbar para esta de la sesion
+
+document.addEventListener("DOMContentLoaded", ()=>{
+
+	const nologinstate = document.querySelector("#btn-nosesion-nav");
+	const loginstate = document.querySelector("#btn-sesion-nav");
+
+	if(localStorage.getItem("iniciosesion")){
+		nologinstate.classList.add("btn-hidden");
+		loginstate.classList.remove("btn-hidden");
+	}else{
+		nologinstate.classList.remove("btn-hidden");
+		loginstate.classList.add("btn-hidden");
+	}
+
+})

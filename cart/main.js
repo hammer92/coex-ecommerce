@@ -29,8 +29,6 @@ const history = document.getElementById("history2");
 history.addEventListener("click", () => {
     console.log("Hola mundo");
     app.innerHTML = templateHistory;
-
-
     const boton_g = document.getElementById("boton_guardar");
 
     function call_date() {
