@@ -102,3 +102,22 @@
     text-align: center;
     width: 100%;
 }
+
+.error-bar-container{
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    display: none;
+    opacity: 0;
+    transition: all .3s;
+}
+
+.error-bar{
+    right: 45%;
+    position: fixed;
+    background: red;
+    padding: 5px 10px;
+    border-radius: 10px;
+    bottom: 20px;
+}

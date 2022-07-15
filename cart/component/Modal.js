@@ -40,9 +40,24 @@ window.onload = () => {
 	renderMovieInCart(moviesInCart);
 };
 
-
+//redirige a LOGIN / MYHISTORY dependiendo de la sesion
 const renderCart = () => {
 	window.location = '/cart/index.html';
+}
+
+//Barra de error visible para el usuario
+const errorBar = document.querySelector('.error-bar-container')
+const messageContainer = document.getElementById('errorMessage')
+
+const throwError = (message) => {
+	messageContainer.innerText = message
+	errorBar.style.display = 'block'
+	errorBar.style.opacity = '1'
+	setTimeout(() => {
+	errorBar.style.display = 'none'
+	errorBar.style.opacity = '0'
+		
+	}, 2000);
 }
 
 //Obtengo las pelis de la lista numero 1
@@ -65,7 +80,7 @@ const addToCart = async (id) => {
 			JSON.stringify(moviesInCart)
 		);
 	} else {
-		console.log('peli repetida');
+		throwError('Peli repetida')
 		return;
 	}
 };
