@@ -23,11 +23,11 @@ const prev = document.getElementById('prev')
 const next = document.getElementById('next')
 const current = document.getElementById('current')
 
-var currentPage = 1;
-var nextPage = 2;
-var prevPage = 3;
-var lastUrl = '';
-var totalPages = 100;
+let currentPage = 1;
+let nextPage = 2;
+let prevPage = 3;
+let lastUrl = '';
+let totalPages = 100;
 
 const cargarFiltros = async () => {
 	try {
@@ -45,6 +45,7 @@ const cargarFiltros = async () => {
 
 let getByCategory = "";
 let categorySelected = document.querySelectorAll("#categorySelected");
+
 categorySelected.forEach(element => {
 	element.addEventListener("click", async () => {
 
@@ -65,7 +66,7 @@ categorySelected.forEach(element => {
 const cargarPeliculas = async (category) => {
 	lastUrl = category;
 	let allMovies = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
-	
+
 	if (category == "") {
 		console.log("No hay categoría seleccionada");
 	} else {
