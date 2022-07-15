@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+<<<<<<< HEAD
+# custom
+*testfile.*
+=======
+#custom
+*testfile.*
+>>>>>>> Product-example

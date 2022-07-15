@@ -6,7 +6,7 @@ const app = document.querySelector('#app');
 const template = `
 <h1>Hello world!</h1>
 <a href="/cart/index.html">Cart Page</a>
-<a href="/product/index.html">Product Page</a>
+<a href="/product/index.html?movie=500">Product Page</a>
 <a href="/shop/index.html">Shop Page</a>
 `;
 

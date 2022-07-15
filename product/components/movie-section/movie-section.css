@@ -1,70 +1,90 @@
-* {
+ *{
   margin: 0;
-  padding: 0;
 }
 html,
 body {
   height: 100%;
 }
+
 .movie-section{
+  display: none;
+  grid-template-rows: auto 1fr;
   position: relative;
   width: 100%;
   height: 100%;
   background-color: #02021C;
 }
+
 .movie-section::after {
-  position: absolute;
   bottom: 0;
   left: 0;
   content: "";
   width: 100%;
   height: 80%;
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
     top,
     rgba(0, 0, 0, 0) 0,
     rgba(0, 0, 0, 0.8) 80%,
     rgba(0, 0, 0, 0.8) 100%
   );
   background: linear-gradient(
-    to bottom,
+    to bottom
     rgba(0, 0, 0, 0) 0,
     rgba(0, 0, 0, 0.8) 80%,
     rgba(0, 0, 0, 0.8) 100%
-  );
+    
+  ); */
 }
+
 .movie-section h1 {
-  padding-left: 45px;
   position: relative;
-  top: 30%;
-  left: 50%;
-  z-index: 2;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  /* z-index: 2; */
+  /* /* -webkit-transform: translate(-50%, -50%); */
   color: #fff;
   text-align: left;
-  white-space: nowrap;
 }
-.movie-section p {
-  padding-left: 50px;
+
+.movie-section p{
+  /* padding-left: 50px;
   position: relative;
   top: 50%;
   left: 50%;
   z-index: 2;
   -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  color: #fff;
-  text-align: left;
-}
+  transform: translate(-50%, -50%); */
+  color:  #C7C7C7;
+  text-align: justify;
+  font-size: x-large;
+} 
 
 
+.container-video {
+  /* position: relative; */
+  overflow: hidden;
+  width: 100%;
+  
+  /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+} 
+
+
+/* Then style the iframe to fit in the container div with full height and width */
+.relative-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 80%;
+} 
 .movie-section a {
   position: absolute;
   bottom: 20px;
   left: 45%;
   z-index: 2;
   display: inline-block;
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
+  /* -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%); */
   color: #fff;
   letter-spacing: 0.1em;
   text-decoration: none;
@@ -72,4 +92,9 @@ body {
 }
 .movie-section a:hover {
   opacity: 0.5;
+  cursor: pointer;
+} 
+.contentContainer{
+  height: 100%;
+  width: 100%;
 }
