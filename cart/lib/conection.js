@@ -31,7 +31,35 @@ export const addMovieList = (object)=>{
     })
 }
 
+export const readMovie = (id)=>{
+    dbConection.addEventListener('success', ()=>{
+        let db = dbConection.result;
+        let IDBtransaction = db.transaction('movies', 'readonly');
+        let objectStore = IDBtransaction.objectStore('movies');
+        let cursor = objectStore.get(id)
+        let data;
+        cursor.addEventListener('success', ()=>{
+            data = cursor.result;
+        })
+
+        IDBtransaction.oncomplete = ()=> {
+            sessionStorage.setItem('dbTransferens', JSON.stringify(data));
+        }
+    })
+}
+
+export const exportData = () =>{
+    let getItem = sessionStorage.getItem('dbTransferens');
+    let data = JSON.parse(getItem);
+    return data
+}
+
 //Integracion entre la base de datos con la vista del historial de compras
+export const renderOrder = (e) => {
+    let id = e.target.id;
+    readMovie(id);
+    let data = exportData();
+};
 
 function call_date(movies, keys) {
 
@@ -54,10 +82,9 @@ function call_date(movies, keys) {
     for (let i = 0; i < movies.length && i < keys.length; i++) {
         let longitud_movies = movies[i].length;
         const templateCart = `
-        <button class="myorderbtn">
-            <div class="history__section--orders--items" id="${keys[i]}">
+            <div class="history__section--orders--items">
                 <h1 style="color: white;">${output}</h1>
-                <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;" class="myorderDirection">
+                <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;" id="${keys[i]}" class="myorderDirection">
             </div>
             <h2 style="color: white;">${longitud_movies} movies</h2>
         </button>
@@ -98,28 +125,6 @@ export const readMovieList = ()=>{
     // console.log('HOLAAA: ', Template)
 }
 
-export const readMovie = (id)=>{
-    dbConection.addEventListener('success', ()=>{
-        let db = dbConection.result;
-        let IDBtransaction = db.transaction('movies', 'readonly');
-        let objectStore = IDBtransaction.objectStore('movies');
-        let cursor = objectStore.get(id)
-        let data;
-        cursor.addEventListener('success', ()=>{
-            data = cursor.result;
-        })
-
-        IDBtransaction.oncomplete = ()=> {
-            sessionStorage.setItem('dbTransferens', JSON.stringify(data));
-        }
-    })
-}
-export const exportData = () =>{
-    let getItem = sessionStorage.getItem('dbTransferens');
-    let data = JSON.parse(getItem);
-    return data
-}
-// exportData()
 export const getData = ()=>{
     let getItem = localStorage.getItem('shoppingCart');
     let data = JSON.parse(getItem);
