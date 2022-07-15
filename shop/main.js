@@ -218,8 +218,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 	const nologinstate = document.querySelector("#btn-nosesion-nav");
 	const loginstate = document.querySelector("#btn-sesion-nav");
+	let estatesesion = localStorage.getItem("iniciosesion");
 
-	if(localStorage.getItem("iniciosesion")){
+	if(estatesesion == true){
 		nologinstate.classList.add("btn-hidden");
 		loginstate.classList.remove("btn-hidden");
 	}else{
@@ -228,3 +229,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	}
 
 })
+
+//funcion del boton log out 
+const button = document.getElementById('logout');
+button.addEventListener('click', () => {
+	let estado = false
+	localStorage.setItem('iniciosesion', estado);
+});
