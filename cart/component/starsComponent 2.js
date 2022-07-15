@@ -1,10 +1,8 @@
-import '../style.css'
-
 class starsElement extends HTMLElement {
 	constructor() {
 		super();
 		this.source = '../../assets/icons/icon_star.svg';
-		this.modifier_class;
+		this.rating;
 	}
 
 	ratingToStars(rat) {
@@ -25,18 +23,18 @@ class starsElement extends HTMLElement {
 
 	attributeChangedCallback(attr, oldVal, newVal) {
 		if (attr === 'rating') {
-			this.modifier_class = this.ratingToStars(newVal);
+			this.rating = this.ratingToStars(newVal);
 		}
 	}
 
 	connectedCallback() {
 		this.innerHTML = `
         <figure class="item__stars">
-			<img src="${this.source}" alt="star" class="item__star ${this.modifier_class[0]}">
-			<img src="${this.source}" alt="star" class="item__star ${this.modifier_class[1]}">
-			<img src="${this.source}" alt="star" class="item__star ${this.modifier_class[2]}">
-			<img src="${this.source}" alt="star" class="item__star ${this.modifier_class[3]}">
-			<img src="${this.source}" alt="star" class="item__star ${this.modifier_class[4]}">
+			<img src="${this.source}" alt="star" class="item__star ${this.rating[0]}">
+			<img src="${this.source}" alt="star" class="item__star ${this.rating[1]}">
+			<img src="${this.source}" alt="star" class="item__star ${this.rating[2]}">
+			<img src="${this.source}" alt="star" class="item__star ${this.rating[3]}">
+			<img src="${this.source}" alt="star" class="item__star ${this.rating[4]}">
 		</figure>`;
 	}
 }

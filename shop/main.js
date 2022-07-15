@@ -2,7 +2,9 @@ import 'normalize.css'
 import '../cart/style-cart.css'
 import '../style.css'
 import './style.css'
+import '../cart/component/starsComponent.js';
 
+import { addMovieList, getData } from '../cart/lib/conection.js';
 
 const Url = new URL(window.location)
 const urlParams = new URLSearchParams(Url.searchParams);
@@ -11,6 +13,11 @@ const app = document.querySelector('#app');
 const key = 'd2b1df9d64af7fb2a0342bd9d23e1449'
 const searchURL = "https://api.themoviedb.org/3/search/movie?api_key=d2b1df9d64af7fb2a0342bd9d23e1449";
 
+document.getElementById('checkButton').addEventListener('click', ()=>{
+	let data = getData()
+	addMovieList(data)
+	window.location = '../cart/index.html'
+})
 //paginacion
 const prev = document.getElementById('prev')
 const next = document.getElementById('next')
@@ -73,8 +80,6 @@ const cargarPeliculas = async (category) => {
 		console.log(error);
 	}
 }
-
-
 
 function getMovies(url) {
 	lastUrl = url;
