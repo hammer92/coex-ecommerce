@@ -3,7 +3,6 @@ import '../cart/style-cart.css'
 import '../style.css'
 import './style.css'
 import '../cart/component/starsComponent.js';
-import templatelogin from '../cart/views/login.js';
 
 import { addMovieList, getData } from '../cart/lib/conection.js';
 
@@ -14,16 +13,15 @@ const app = document.querySelector('#app');
 const key = 'd2b1df9d64af7fb2a0342bd9d23e1449'
 const searchURL = "https://api.themoviedb.org/3/search/movie?api_key=d2b1df9d64af7fb2a0342bd9d23e1449";
 
-document.getElementById('checkButton').addEventListener('click', ()=>{
+document.getElementById('checkButton').addEventListener('click', () => {
 	let data = getData();
 	addMovieList(data);
 	localStorage.setItem('shoppingCart', []);
 	window.location = '../cart/index.html'
 })
 //paginacion
-const prev = document.getElementById('prev')
-const next = document.getElementById('next')
-const current = document.getElementById('current')
+const headerNav = document.getElementById('header');
+const pagination = document.getElementById('pagination');
 
 let currentPage = 1;
 let nextPage = 2;
@@ -33,11 +31,139 @@ let totalPages = 100;
 
 // Verifica si hay un usuario logueado y en dicho caso se renderiza su correo electrónico
 
+const loadPagination = () => {
+
+	let templatePagination = `
+	<div class="page" id="prev">Previous Page</div>
+	<div class="current" id="current">1</div>
+	<div class="page" id="next">Next Page</div>`;
+
+	pagination.innerHTML = templatePagination;
+
+	const prev = document.getElementById('prev');
+	const current = document.getElementById('current')
+	const next = document.getElementById('next');
+	//Paginacion
+	prev.addEventListener('click', () => {
+		if (prevPage > 0) {
+			pageCall(prevPage);
+		}
+	})
+
+	next.addEventListener('click', () => {
+		if (nextPage <= totalPages) {
+			pageCall(nextPage);
+		}
+	})
+
+}
+
+const loadNav = () => {
+	try {
+		let templateNav = '';
+
+		templateNav = `
+		<div class="izHeader">
+		<a class="logo" href="">
+		  <img src="../assets/icons/logo_coexbuster.svg" width="80px" alt="">
+		</a>
+		
+		<div class="categories">
+		  <nav class="nav">
+			<ul>
+			  <button id="categorySelected" value="All">
+				<li>All</li>
+			  </button>
+  
+			  <button id="categorySelected" value="28">
+				<li>Action</li>
+			  </button>
+  
+			  <button id="categorySelected" value="12">
+				<li>Adventure</li>
+			  </button>
+  
+			  <button id="categorySelected" value="16">
+				<li>Animation</li>
+			  </button>
+  
+			  <button id="categorySelected" value="35">
+				<li>Comedy</li>
+			  </button>
+  
+			  <li>
+				<select class="list-categories" name="" id="categorySelected">
+  
+				  <option id="categorySelected">- Others categories -</option>
+  
+				  <option id="categorySelected" value="80">Crime</option>
+  
+				  <option id="categorySelected" value="99">Documentary</option>
+  
+				  <option id="categorySelected" value="18">Drama</option>
+  
+				  <option id="categorySelected" value="10751">Family</option>
+  
+				  <option id="categorySelected" value="14">Fantasy</option>
+  
+				  <option id="categorySelected" value="36">History</option>
+  
+				  <option id="categorySelected" value="27">Horror</option>
+  
+				  <option id="categorySelected" value="10402">Music</option>
+  
+				  <option id="categorySelected" value="9648">Mistery</option>
+  
+				  <option id="categorySelected" value="10749">Romance</option>
+  
+				  <option id="categorySelected" value="878">Fiction</option>
+  
+				  <option id="categorySelected" value="10770">TV Movie</option>
+  
+				  <option id="categorySelected" value="53">Thriller</option>
+  
+				  <option id="categorySelected" value="10752">War</option>
+  
+				  <option id="categorySelected" value="37">Western</option>
+				</select>
+			  </li>
+			</ul>
+		  </nav>
+		</div>
+	  </div>
+  
+	  <div class="derHeader">
+      <div class="btn-sesion" id="btn-nosesion-nav">
+        <button id="login-btn" class="btn-login-nav" >Log in</button>
+        <button id="singup-btn" class="btn-singup-nav">Sing up</button>
+      </div>
+      <div class="btn-sesion-login btn-hidden" id="btn-sesion-nav">
+        <div class="btn-drop-menu">
+          <label class="user-correo">admin@admin.com</label>
+          <a href="#" class="sigin__arrow" as="button" ><img src="../assets/icons/arrow_down.svg" alt="" width="18px" heigth="27"></a>
+        </div>
+        <div class="drop-menu">
+          <a class="historial-btn" href="#">History orders</a><br><hr class="hr-dropdown">
+          <button id="logout" class="btn-logout">Sing out</button>
+        </div>
+      </div>
+      <a href="#" as="button" onclick="openCart()" ><img src="../assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27"></a>
+    </div>
+	  
+		`;
+		headerNav.innerHTML = templateNav;
+
+	} catch (error) {
+		console.log(error);
+	}
+}
+loadNav();
+
 const cargarFiltros = async () => {
 	try {
 		let filt = '';
 
-		filt += `	
+		filt = `	
 	
 		<input type="text" class="search" id="search" name="search" placeholder="Buscar">
 	`;
@@ -85,6 +211,7 @@ const cargarPeliculas = async (category) => {
 		console.log(error);
 	}
 }
+
 
 function getMovies(url) {
 	lastUrl = url;
@@ -159,13 +286,14 @@ const showMovies = async (data) => {
 			</div>
 				`;
 		});
-		
+
 		app.innerHTML = peliculas;
-		
+
 	} catch (error) {
 		console.log(error);
 	}
 }
+
 
 filtros.addEventListener('submit', (e) => {
 	e.preventDefault();
@@ -181,18 +309,6 @@ filtros.addEventListener('submit', (e) => {
 
 });
 
-//Paginacion
-prev.addEventListener('click', () => {
-	if (prevPage > 0) {
-		pageCall(prevPage);
-	}
-})
-
-next.addEventListener('click', () => {
-	if (nextPage <= totalPages) {
-		pageCall(nextPage);
-	}
-})
 
 function pageCall(page) {
 	let urlSplit = lastUrl.split('?');
@@ -209,24 +325,23 @@ function pageCall(page) {
 		let url = urlSplit[0] + '?' + b
 		getMovies(url);
 	}
+	
 }
-
+loadPagination();
 cargarFiltros();
 cargarPeliculas(getByCategory);
-
 //--------------------------------------------------
 // Configuracion del navbar para esta de la sesion
 
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
 
 	const nologinstate = document.querySelector("#btn-nosesion-nav");
 	const loginstate = document.querySelector("#btn-sesion-nav");
-	let estatesesion = localStorage.getItem("iniciosesion");
 
-	if(estatesesion == true){
+	if (localStorage.getItem("iniciosesion")) {
 		nologinstate.classList.add("btn-hidden");
 		loginstate.classList.remove("btn-hidden");
-	}else{
+	} else {
 		nologinstate.classList.remove("btn-hidden");
 		loginstate.classList.add("btn-hidden");
 	}
@@ -246,7 +361,3 @@ const buttonlogin = document.getElementById('login-btn');
 buttonlogin.addEventListener('click', () => {
 	window.location = '../cart/index.html';
 });
-
-
-
-
