@@ -41,14 +41,10 @@ window.onload = () => {
 	renderMovieInCart(moviesInCart);
 };
 
-<<<<<<< HEAD
 //redirige a LOGIN / MYHISTORY dependiendo de la sesion
 const renderCart = () => {
 	window.location = '/cart/index.html';
 }
-=======
-
->>>>>>> 9fdd4537b394d2d627d72bfb2bf6d5f7d270e74d
 
 //Barra de error visible para el usuario
 const errorBar = document.querySelector('.error-bar-container')
