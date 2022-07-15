@@ -30,10 +30,11 @@ function Log() {
 }
 
 
-var iniciosesion = false;
-localStorage.setItem('iniciosesion', iniciosesion);
+
 
 function login(){
+    var iniciosesion = false;
+    localStorage.setItem('iniciosesion', iniciosesion);
     app.innerHTML = templatelogin;
 	const form = document.getElementById('form_login');
 	form.onsubmit = () => {
