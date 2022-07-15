@@ -49,22 +49,26 @@ function call_date(movies, keys) {
     array_date.push(output);
 
     let capa_contenedor = document.getElementById('historyShopping');
+    let Template = '';
 
     for (let i = 0; i < movies.length && i < keys.length; i++) {
         let longitud_movies = movies[i].length;
         const templateCart = `
+        <button class="myorderbtn">
             <div class="history__section--orders--items" id="${keys[i]}">
                 <h1 style="color: white;">${output}</h1>
                 <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;">
             </div>
             <h2 style="color: white;">${longitud_movies} movies</h2>
+        </button>
          `
-
-        capa_contenedor.innerHTML += templateCart;
+        Template += templateCart;
     }
+    return Template;
 }
 
 export const readMovieList = ()=>{
+    let Template;
     dbConection.addEventListener('success', ()=>{
         let db = dbConection.result;
         let IDBtransaction = db.transaction('movies', 'readonly');
@@ -85,13 +89,16 @@ export const readMovieList = ()=>{
         keyList.addEventListener('success', ()=>{
             key = keyList.result;
         });
-        IDBtransaction.oncomplete = ()=>{
-            call_date(data, key);
+        Template = IDBtransaction.oncomplete = ()=>{
+            return call_date(data, key);
         }
+        console.log('hola: ', Template);
+        return Template;
     })
+    // console.log('HOLAAA: ', Template)
 }
 
-const readMovie = (id)=>{
+export const readMovie = (id)=>{
     dbConection.addEventListener('success', ()=>{
         let db = dbConection.result;
         let IDBtransaction = db.transaction('movies', 'readonly');
@@ -103,11 +110,16 @@ const readMovie = (id)=>{
         })
 
         IDBtransaction.oncomplete = ()=> {
-            data
+            sessionStorage.setItem('dbTransferens', JSON.stringify(data));
         }
     })
 }
-
+export const exportData = () =>{
+    let getItem = sessionStorage.getItem('dbTransferens');
+    let data = JSON.parse(getItem);
+    return data
+}
+// exportData()
 export const getData = ()=>{
     let getItem = localStorage.getItem('shoppingCart');
     let data = JSON.parse(getItem);
