@@ -46,8 +46,6 @@ function call_date(movies, keys) {
 
     array_date.push(output);
 
-    // let add_date = document.getElementById("history__section__orders__date");
-
     let capa_contenedor = document.getElementById('historyShopping');
 
     for (let i = 0; i < movies.length && i < keys.length; i++) {
