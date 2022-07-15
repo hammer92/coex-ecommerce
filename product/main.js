@@ -1,70 +1,41 @@
-import "../style.css";
-import "./style.css";
-import CarouselRecomended from "./components/carousel-recomended/carousel-recomended";
-import MovieController from "./controllers/movie/movieController";
-import MovieSection from "./components/movie-section/movie-section";
-import CarruselCasting from "./components/casting/casting";
-/* const Url = new URL(window.location);
-const urlParams = new URLSearchParams(Url.searchParams); */
+import MovieController from './controllers/movie/movieController';
+import MainCard from './components/main-card/main-card';
+import MovieSection from './components/movie-section/movie-section.js'
+import 'normalize.css'
+import '../style.css'
+import './style.css'
 
+const url = new URL(window.location)
+const urlParams = new URLSearchParams(url.searchParams);
+const id = urlParams.get("movie")
+// url example: http://localhost:3000/product/index.html?movie=550
+// it means the page will render the movie with id=550
 
-const carousel = document.querySelector('#carousel-recomended')
-const carouselInstance = new CarouselRecomended()
-carousel.innerHTML = carouselInstance.templateClass
-const gliderCarousel = carouselInstance.move()
+const container = document.querySelector('div.main-card-container');
+const apiController = new MovieController(id)
 
-const divCasting = document.querySelector('#carruselCasting');
-const casting = new CarruselCasting();
-divCasting.innerHTML = casting.templateClass;
-const gliderCasting = casting.move(); 
+render(id)
 
+async function render(movieId){
+    const movie = await apiController.getInfo(movieId)
+    const mainCard = new MainCard(movie)
+    container.innerHTML = mainCard.template
 
+    const movieSection  = new MovieSection(id, movie)
+    const movieSectionSlot = document.querySelector('div.main-info-slot')
+    const movieSectionInfo = await movieSection.template()
+    movieSectionSlot.innerHTML = movieSectionInfo
 
+    movieSection.carCast.renderItems()
+    movieSection.carReco.renderItems()
+    const btns = Array.from(document.querySelectorAll('a.nextSectionButton'))
 
-const movie = new MovieController(550);
+    btns.forEach(btn =>{
+        btn.addEventListener('click', function(e){
+            let curId = e.target.parentElement.id
+            let nextId = btn.textContent.toLowerCase()
 
-document.addEventListener('DOMContentLoaded', () =>{
-
-  movie.getRecommended().then(value => {
-    console.log(value);
-    value.forEach(e=>{
-      const newElement = document.createElement("div")
-      newElement.innerHTML = 
-      `<div class="carousel__elemento">
-          <img class="carousel__img" src="${e.image_link}" alt="${e.name}">
-          <div class="contenedor__elemento">
-            <p class="carousel__titulo" >${e.name}</p>
-          </div>
-      </div>`
-      gliderCarousel.addItem(newElement)
+            movieSection.next(curId, nextId)
+        })
     })
-  })
-  movie.getCasting().then(value => {
-    console.log(value);
-    value.forEach(e=>{
-      const newElement2 = document.createElement("div")
-      newElement2.innerHTML = 
-      `<div class="carousel__element">
-          <img class="carousel__img2" src="${e.image_link}" alt="${e.name}">
-          <div class="container__element">
-            <p class="carousel__tit" >${e.name}</p>
-          </div>
-      </div>`
-  
-      gliderCasting.addItem(newElement2)
-  
-    })
-  })
-})
-
-
-
-
-
-
-
-
-
-
-
-
+}
