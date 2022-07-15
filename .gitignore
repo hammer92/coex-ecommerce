@@ -23,5 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
+<<<<<<< HEAD
 # custom
 *testfile.*
+=======
+#custom
+*testfile.*
+>>>>>>> Product-example

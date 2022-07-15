@@ -1,12 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop Page</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="./main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Page</title>
+
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="izHeader">
+      <div class="logo">
+        <img src="../assets/icons/logo_coexbuster.svg" width="80px" alt="">
+      </div>
+
+      <!-- <div class="categorias">
+        <nav class="nav">
+          <ul>
+            <a id="categoryMovie" value="0">
+              <li>All</li>
+            </a>
+            <a id="categoryMovie" value="28">
+              <li>Action</li>
+            </a>
+            <a id="categoryMovie" value="12">
+              <li>Adventure</li>
+            </a>
+            <a id="categoryMovie" value="16">
+              <li>Animation</li>
+            </a>
+            <a id="categoryMovie" value="35">
+              <li>Comedy</li>
+            </a>
+
+            <li>
+              <select class="list-categories" name="categoryMovie" id="categoryMovie">
+                      <option value="">-Select-</option>
+                      <option value="80">Crime</option>
+                      <option value="99">Documentary</option>
+                      <option value="18">Drama</option>
+                      <option value="10751">Family</option>
+                      <option value="14">Fantasy</option>
+                      <option value="36">History</option>
+                      <option value="27">Horror</option>
+                      <option value="10402">Music</option>
+                      <option value="9648">Mistery</option>
+                      <option value="10749">Romance</option>
+                      <option value="878">Fiction</option>
+                      <option value="10770">TV Movie</option>
+                      <option value="53">Thriller</option>
+                      <option value="10752">War</option>
+                      <option value="37">Western</option>
+              </select>
+            </li>
+          </ul>
+        </nav>
+
+      </div> -->
+
+      <div class="categories">
+        <nav class="nav">
+          <ul>
+            <button id="categorySelected" value="All">
+              <li>All</li>
+            </button>
+
+            <button id="categorySelected" value="28">
+              <li>Action</li>
+            </button>
+
+            <button id="categorySelected" value="12">
+              <li>Adventure</li>
+            </button>
+
+            <button id="categorySelected" value="16">
+              <li>Animation</li>
+            </button>
+
+            <button id="categorySelected" value="35">
+              <li>Comedy</li>
+            </button>
+
+            <li>
+              <select class="list-categories" name="" id="categorySelected">
+
+                <option id="categorySelected">- Others categories -</option>
+
+                <option id="categorySelected" value="80">Crime</option>
+
+                <option id="categorySelected" value="99">Documentary</option>
+
+                <option id="categorySelected" value="18">Drama</option>
+
+                <option id="categorySelected" value="10751">Family</option>
+
+                <option id="categorySelected" value="14">Fantasy</option>
+
+                <option id="categorySelected" value="36">History</option>
+
+                <option id="categorySelected" value="27">Horror</option>
+
+                <option id="categorySelected" value="10402">Music</option>
+
+                <option id="categorySelected" value="9648">Mistery</option>
+
+                <option id="categorySelected" value="10749">Romance</option>
+
+                <option id="categorySelected" value="878">Fiction</option>
+
+                <option id="categorySelected" value="10770">TV Movie</option>
+
+                <option id="categorySelected" value="53">Thriller</option>
+
+                <option id="categorySelected" value="10752">War</option>
+
+                <option id="categorySelected" value="37">Western</option>
+              </select>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="derHeader">
+      <a href="../cart/login.html" class="sesion">Sign in</a>
+      <a href="#"><img src="../assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27"></a>
+    </div>
+
+  </header>
+
+  <form class="filtros" id="filtros"></form>
+
+
+  <div class="app" id="app">
+
+  </div>
+
+  <div class="pagination">
+    <div class="page" id="prev">Previous Page</div>
+    <div class="current" id="current">1</div>
+    <div class="page" id="next">Next Page</div>
+</div>
+  
+  <script type="module" src="./main.js"></script>
+</body>
+
 </html>

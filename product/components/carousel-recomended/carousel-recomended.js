@@ -1,12 +1,13 @@
 import './carousel-recomended.css'
+import MovieController from '../../controllers/movie/movieController';
 
 class CarouselRecomended
 {
-    constructor(window, elemento){
-        this.ventana = window
-        this.query = elemento
+    constructor(id){
+        this.id = id
+        this.apiController = new MovieController(this.id);
     }
-    get templateClass()
+    get template()
     {
         return `
         <div class="contenedor">
@@ -14,102 +15,6 @@ class CarouselRecomended
                 <h2 class="titulo">Recomendado</h2>
                 <div class="carousel__contenedor">
                     <div id="lista" class=".carousel__lista">
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002.jpg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/003.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/004.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002_p.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                            <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002.jpg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002_p.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/004.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/1.png" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                            <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002_p.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                            <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/003.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/004.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/002_p.webp" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
-                        <div class="carousel__elemento">
-                            <img class="carousel__img" src="./components/carousel-recomended/img/001_p.jpeg" alt="Rock and Roll Hall of Fame">
-                            <div class="contenedor__elemento">
-                                <p class="carousel__titulo" >Nombre pelicula</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div role="tablist" class="carousel__indicadores"></div>
@@ -119,8 +24,8 @@ class CarouselRecomended
     `
     }
     move(){
-        this.ventana.addEventListener('load', ()=>{
-            new Glider(document.getElementById('lista'), {
+        return new Glider(document.getElementById('lista'),
+		{
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				draggable: true,
@@ -140,7 +45,8 @@ class CarouselRecomended
 						draggable: true,
 						itemWidth: 150,
 						duration: 0.25}
-					},{
+					},
+					{
 					  // screens greater than >= 1024px
 						breakpoint: 800,
 						settings: {
@@ -149,10 +55,27 @@ class CarouselRecomended
 						slidesToScroll: 4,
 						itemWidth: 150,
 						duration: 0.25}
-						}]
-			})
-        })
+					}
+				]
+		})
     }
+	async renderItems(){
+		const gliderCarousel = this.move()
+		const images = await this.apiController.getRecommended()
+		
+		images.forEach( img => {
+			const newElement = document.createElement("div")
+			newElement.innerHTML = `
+				<div class="carousel__elemento">
+					<img class="carousel__img" src="${img.image_link}" alt="${img.name}">
+					<div class="contenedor__elemento">
+						<p class="carousel__titulo" >${img.name}</p>
+					</div>
+				</div>
+				`
+			gliderCarousel.addItem(newElement)
+		})
+	}
 }
 
 export default CarouselRecomended
