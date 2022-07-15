@@ -15,20 +15,6 @@ const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
-function Log() {
-	if (sesion) {
-		const SIGIN = document.getElementById('sigin');
-		if (sesion === 'false') {
-			SIGIN.innerHTML = 'Sig In';
-		} else if (sesion === 'true') {
-			SIGIN.innerHTML = user.email;
-		}
-	} else {
-		localStorage.setItem('iniciosesion', false);
-	}
-}
-
-
 function Login() {
 	app.innerHTML = templatelogin;
 	var iniciosesion = false;
