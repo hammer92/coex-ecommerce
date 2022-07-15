@@ -16,7 +16,6 @@ class CarruselCasting {
                         
                     </div>
                 </div>
-                <div role="tablist" class="carousel__indicadores2"></div>
             </div>
 
         </div>

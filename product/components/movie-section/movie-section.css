@@ -83,8 +83,8 @@ body {
   left: 45%;
   z-index: 2;
   display: inline-block;
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
+  /* -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%); */
   color: #fff;
   letter-spacing: 0.1em;
   text-decoration: none;

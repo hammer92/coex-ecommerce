@@ -35,3 +35,13 @@
     width: 100%;
     height: 100%;
 }
+
+.header-logo{
+    display: flex;
+    padding-left: 5%;
+    padding-top: 2%;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+    height: 100%;
+}

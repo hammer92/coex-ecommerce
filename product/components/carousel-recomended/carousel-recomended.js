@@ -16,7 +16,6 @@ class CarouselRecomended
                     <div id="lista" class=".carousel__lista">
                     </div>
                 </div>
-                <div role="tablist" class="carousel__indicadores"></div>
             </div>
 
         </div>
