@@ -53,14 +53,25 @@ function call_date(movies, keys) {
     for (let i = 0; i < movies.length && i < keys.length; i++) {
         let longitud_movies = movies[i].length;
         const templateCart = `
-            <div class="history__section--orders--items" id="${keys[i]}">
+            <div class="history__section--orders--items">
                 <h1 style="color: white;">${output}</h1>
-                <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;" class="myorderDirection">
+                <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;" id="${keys[i]}" class="myorderDirection">
             </div>
             <h2 style="color: white;">${longitud_movies} movies</h2>
          `
 
         capa_contenedor.innerHTML += templateCart;
+    }
+
+    const renderOrder = (e) => {
+        let id = e.target.id;
+        
+    };
+    
+    const ORDER_LIST = document.getElementsByClassName('myorderDirection');
+    console.log(ORDER_LIST)
+    for (let element of ORDER_LIST) {
+        element.addEventListener('click', renderOrder);
     }
 }
 
