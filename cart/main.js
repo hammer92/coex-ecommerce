@@ -100,10 +100,15 @@ ${urlParams.get('product')}
 <button id="myorder">myOrder</button>
 `;
 
-if (sesion === 'false') {
-	Login();
+if (sesion){
+	if (sesion === 'false') {
+		Login();
+	} else {
+		renderHistory();
+	}
 } else {
-	renderHistory();
+	localStorage.setItem('iniciosesion', false);
+	Login();
 }
 
 // app.innerHTML = templateHistory;
