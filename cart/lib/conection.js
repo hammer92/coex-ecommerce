@@ -31,6 +31,8 @@ export const addMovieList = (object)=>{
     })
 }
 
+//Integracion entre la base de datos con la vista del historial de compras
+
 function call_date(movies, keys) {
 
     let array_date = [];
@@ -95,29 +97,14 @@ const readMovie = (id)=>{
         let IDBtransaction = db.transaction('movies', 'readonly');
         let objectStore = IDBtransaction.objectStore('movies');
         let cursor = objectStore.get(id)
+        let data;
         cursor.addEventListener('success', ()=>{
-            if(cursor.result){
-                console.log(cursor.result);
-            }else{
-                console.log("Todos los datos fueron leidos");
-            }
+            data = cursor.result;
         })
-    })
-}
 
-const readKey = ()=>{
-    dbConection.addEventListener('success', ()=>{
-        let db = dbConection.result;
-        let IDBtransaction = db.transaction('movies', 'readonly');
-        let objectStore = IDBtransaction.objectStore('movies');
-        let cursor = objectStore.getAllKeys()
-        cursor.addEventListener('success', ()=>{
-            if(cursor.result){
-                console.log(cursor.result);
-            }else{
-                console.log("Todos los datos fueron leidos");
-            }
-        })
+        IDBtransaction.oncomplete = ()=> {
+            data
+        }
     })
 }
 
