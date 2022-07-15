@@ -1,10 +1,9 @@
 // import '../style.css'
-
 import './style.css';
-import './lib/conection.js';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
 import myorderView from './views/myorderView.js';
+import './lib/conection.js';
 
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
@@ -13,6 +12,7 @@ const UNIQUE_USER_TOKEN = 'ABC';
 
 const app = document.querySelector('#app');
 const sesion = localStorage.getItem('iniciosesion');
+
 
 function Login() {
 	app.innerHTML = templatelogin;
@@ -59,7 +59,6 @@ if (sesion === 'false') {
 } else  {
 	renderHistory()
 }
-
 
 // app.innerHTML = templateHistory;
 // app.innerHTML = template;

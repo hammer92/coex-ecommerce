@@ -1,5 +1,4 @@
 import "../style.css";
-
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
