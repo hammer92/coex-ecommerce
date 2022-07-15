@@ -11,7 +11,6 @@ class CarruselCasting {
         return `
         <div class="container">
             <div class="carousel">
-                <h2 class="titulo"> Casting</h2>
                 <div class="carousel__container">
                     <div id="lista2" class="carousel__list">
                         
@@ -42,7 +41,7 @@ class CarruselCasting {
                         slidesToScroll: 2,
                         draggable: true,
                         itemWidth: 100,
-                        duration: 0.25}
+                        duration: 2.5}
                     },
                     {
                         // screens greater than >= 1024px
@@ -52,7 +51,7 @@ class CarruselCasting {
                         draggable: true,
                         slidesToScroll: 4,
                         itemWidth: 100,
-                        duration: 0.25}
+                        duration: 2.5}
                     }
                 ]
         })
