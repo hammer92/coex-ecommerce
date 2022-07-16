@@ -3,21 +3,106 @@ import './style.css';
 import templateHistory from './views/history.js';
 import templatelogin from './views/login.js';
 import { OrderList } from './views/myorderView.js';
-import { readMovieList, exportData, renderOrder } from './lib/conection.js';
 import './lib/conection.js';
+import { dbConection } from './lib/conection.js';
 
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
 const app = document.querySelector('#app');
-const data = exportData()
 const sesion = localStorage.getItem('iniciosesion');
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
+//Peticiones a la base de datos 
+const readMovie = (e)=>{
+	let id = parseInt(e.target.id);
+	let db = dbConection.result;
+	let IDBtransaction = db.transaction('movies', 'readonly');
+	let objectStore = IDBtransaction.objectStore('movies');
+	let cursor = objectStore.get(id);
+	let data;
+	cursor.addEventListener('success', ()=>{
+		data = cursor.result;
+	})
 
-export function RenderMyOrder() {
+	IDBtransaction.oncomplete = ()=> {
+		console.log(data)
+		RenderMyOrder(data);
+	}
+}
+
+
+//Integracion entre la base de datos con la vista del historial de compras
+
+
+function call_date(movies, keys) {
+    let array_date = [];
+    const date = new Date();
+
+    let output =
+        String(date.getDate()).padStart(2, '0') +
+        '.' +
+        String(date.getMonth() + 1).padStart(2, '0') +
+        '.' +
+        date.getFullYear();
+
+    array_date.push(output);
+
+    let capa_contenedor = document.getElementById('historyShopping');
+
+    for (let i = 0; i < movies.length && i < keys.length; i++) {
+        let longitud_movies = movies[i].length;
+        const templateCart = `
+            <div class="history_section-orders">
+            <div class="history__section--orders--items">
+                <h1 style="color: white;">${output}</h1>
+                <h2 style="color: white;">${longitud_movies} movies</h2>
+            </div>
+            <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;" id="${keys[i]}" class="myorderDirection">
+
+            </div>         
+        `
+        capa_contenedor.innerHTML += templateCart;
+    }
+	
+	const ORDER_LIST = document.querySelectorAll('.myorderDirection');
+	for (let element of ORDER_LIST) {
+		element.addEventListener('click', readMovie);
+	}
+}
+
+const readMovieList = ()=>{
+    dbConection.addEventListener('success', ()=>{
+        let db = dbConection.result;
+        let IDBtransaction = db.transaction('movies', 'readonly');
+        let objectStore = IDBtransaction.objectStore('movies');
+        let cursor = objectStore.openCursor();
+        let keyList = objectStore.getAllKeys();
+        let data = [];
+        let key;
+        cursor.addEventListener('success', ()=>{
+            if(cursor.result){
+                data.push(cursor.result.value);
+                cursor.result.continue()
+            }else{
+                console.log("Todos los datos fueron leidos");
+            }
+        });
+        keyList.addEventListener('success', ()=>{
+            key = keyList.result;
+        });
+        IDBtransaction.oncomplete = ()=>{
+            return call_date(data, key);
+        }
+    })
+}
+
+//Fin de las peticiones a la base de datos
+
+
+function RenderMyOrder(data) {
 	const order = new OrderList(data);
 	app.innerHTML = order.myorderView;
 	const BACK = document.getElementById('back-arrow');
@@ -27,6 +112,12 @@ export function RenderMyOrder() {
 }
 
 
+
+function renderHistory() {
+    app.innerHTML = templateHistory;
+
+	document.addEventListener("load", readMovieList());
+}
 
 function Login() {
 	app.innerHTML = templatelogin;
@@ -56,57 +147,6 @@ function Login() {
 	};
 }
 
-
-
-function renderHistory() {
-    app.innerHTML = templateHistory;
-
-    // const boton_g = document.getElementById('boton_guardar');
-	// // let add_date = document.getElementById("history__section__orders__date");
-
-	// let capa = document.getElementsByClassName(
-	// 	'history__section--orders--shopping'
-	// );
-
-	// let tag_div = document.createElement('div');
-	// tag_div.setAttribute('id', 'history__section--orders--items');
-
-	// for (let i = 0; i < capa.length; i++) {
-	// 	capa[i].appendChild(tag_div);
-	// }
-
-	// let tag_h1 = document.createElement('h1');
-	// let tag_img = document.createElement('img');
-
-	// let capa_2 = document.getElementsByClassName(
-	// 	'history__section--orders--items'
-	// );
-
-	// tag_h1.innerHTML = output;
-	// tag_img.setAttribute(
-	// 	'src',
-	// 	'/assets/icons/angle-small-right-free-icon-font.svg'
-	// );
-	// tag_img.style.width = '20px';
-
-	// for (let j = 0; j < capa.length; j++) {
-	// 	capa[j].appendChild(tag_h1);
-	// 	capa[j].appendChild(tag_img);
-	// }
-	// boton_g.addEventListener('click', call_date);
-	document.addEventListener("load", readMovieList());
-}
-
-const template = `
-<h1>Hello world! Product Page</h1>
-${urlParams.get('product')}
-<button id="accion"> Cambio </button>
-<a href="/index.html" >Home</a>
-<button id="history2">History</button>
-<button id="login">Log in </button>
-<button id="myorder">myOrder</button>
-`;
-
 if (sesion){
 	console.log('sesion: ', sesion)
 	if (sesion === 'false') {
@@ -122,35 +162,3 @@ if (sesion){
 	localStorage.setItem('iniciosesion', false);
 	Login();
 }
-
-
-
-
-// app.innerHTML = templateHistory;
-// app.innerHTML = template;
-
-// History
-
-// const history = document.getElementById('history2');
-// history.addEventListener('click', () => {});
-
-// const button = document.getElementById('accion');
-// button.addEventListener('click', () => {
-// 	const h1 = document.querySelector('h1');
-// 	console.log('click', h1.style.color);
-// 	if (h1.style.color === 'blue') h1.style.color = 'red';
-// 	else h1.style.color = 'blue';
-// });
-
-/// Render del login
-// const buttonlogin = document.getElementById('login');
-
-// buttonlogin.addEventListener('click', () => {
-// 	Login();
-// });
-
-// ------------------------
-// Render My Order
-
-
-// ------------------------
