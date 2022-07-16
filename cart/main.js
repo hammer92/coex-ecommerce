@@ -15,10 +15,23 @@ const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
-function Login() {
-	app.innerHTML = templatelogin;
-	var iniciosesion = false;
-	localStorage.setItem('iniciosesion', iniciosesion);
+function Log() {
+	if (sesion) {
+		const SIGIN = document.getElementById('sigin');
+		if (sesion === 'false') {
+			SIGIN.innerHTML = 'Sig In';
+		} else if (sesion === 'true') {
+			SIGIN.innerHTML = user.email;
+		}
+	} else {
+		localStorage.setItem('iniciosesion', false);
+	}
+}
+
+function login(){
+    var iniciosesion = false;
+    localStorage.setItem('iniciosesion', iniciosesion);
+    app.innerHTML = templatelogin;
 	const form = document.getElementById('form_login');
 	form.onsubmit = () => {
 		const mail = document.getElementById('email');
@@ -33,7 +46,8 @@ function Login() {
 			if (correo == user.email && contra == user.password) {
                 iniciosesion = true
 				localStorage.setItem('iniciosesion', iniciosesion);
-				// app.innerHTML = templateprueba;
+                alert('inicio de sesion correcto');
+				window.location.href ='../shop/index.html';
 			} else {
 				alert('Credenciales invalidas');
 			}
@@ -113,21 +127,6 @@ ${urlParams.get('product')}
 <button id="myorder">myOrder</button>
 `;
 
-if (sesion){
-	console.log('sesion: ', sesion)
-	if (sesion === 'false') {
-		Login();
-	} else {
-		if(localStorage.getItem('statusback', 'cart')){
-			renderHistory();
-		} else {
-			window.location = '../shop/index.html';
-		}
-	}
-} else {
-	localStorage.setItem('iniciosesion', false);
-	Login();
-}
 
 // app.innerHTML = templateHistory;
 // app.innerHTML = template;
