@@ -76,7 +76,7 @@ const addToCart = async (id) => {
 			JSON.stringify(moviesInCart)
 		);
 	} else {
-		throwError('Peli repetida')
+		throwError('This movie is already in car')
 		return;
 	}
 };
