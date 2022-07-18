@@ -34,7 +34,6 @@ function Login() {
 				localStorage.setItem('iniciosesion', iniciosesion);
                 alert('inicio de sesion correcto');
 				window.location.href ='../shop/index.html';
-				// app.innerHTML = templateprueba;
 			} else {
 				alert('Credenciales invalidas');
 			}
