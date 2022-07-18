@@ -10,8 +10,13 @@ const TAGS = [];
 function getData(data){
 
 	data.forEach((movie) => {
+		let gener = ''
+		movie.genres.forEach(genre=>{
+			gener += genre.name+', '
+		})
+		let generos = gener.substring(0, gener.length-2);
 		TAGS.push(
-			`<cart-product title="${movie.title}" genre="${movie.genre}" cover="${ImageUrl}${movie.poster_path}" rating="${movie.vote_average}"></cart-product>`
+			`<cart-product title="${movie.title}" genre="${generos}" cover="${ImageUrl}${movie.poster_path}" rating="${movie.vote_average}"></cart-product>`
 		);
 	});
 	const MoviesTag = TAGS.join('');
@@ -39,8 +44,7 @@ function OrderList( data, date) {
 			<section class="order">
 				<h1 class="order__title">My order</h1>
 				<div class="order__info">
-					<h2 class="info__date">${date}</h2>
-					<h3 class="info__articles">${data.length} movies</h3>
+					<h2 class="info__date">${data.length} movies</h2>
 				</div>
 				<div class="order__list">
 					${movies}
