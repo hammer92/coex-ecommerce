@@ -1,22 +1,7 @@
-
-let indexDB = window.indexedDB;
 let db;
-let dbConection = indexDB.open('movies', 1);
+let indexDB = window.indexedDB;
+export let dbConection = indexDB.open('movies', 1);
 
-
-let arrayMovie;
-
-const getData = async ()=>{
-    let data = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=d2b1df9d64af7fb2a0342bd9d23e1449&language=en-US&page=1')
-                .then(res=>res.json())
-                .then(res=>{
-                    return res.results
-                });
-    return data
-}
-
-arrayMovie = getData()
-console.log(arrayMovie)
 
 dbConection.onsuccess = ()=>{
     db = dbConection.result;
@@ -30,57 +15,25 @@ dbConection.onupgradeneeded = (e)=>{
    })
 };
 
-const addMovieList = (object)=>{
-    db = dbConection.result;
+export const addMovieList = (object)=>{
+    let db = dbConection.result;
     let IDBtransaction = db.transaction('movies', 'readwrite');
     let objectStore = IDBtransaction.objectStore('movies');
-    objectStore.add(object);
+    let data = objectStore.add(object);
     IDBtransaction.addEventListener('complete', ()=>{
-        console.log('Objecto agregado correctamente')
-    })
-}
-
-
-
-const readMovieList = ()=>{
-    db = dbConection.result;
-    let IDBtransaction = db.transaction('movies', 'readonly');
-    let objectStore = IDBtransaction.objectStore('movies');
-    let cursor = objectStore.openCursor();
-    cursor.addEventListener('success', ()=>{
-        if(cursor.result){
-            console.log(cursor.result.value);
-            cursor.result.continue()
+        if (data.error) {
+            console.log("error revise la funcion");
         }else{
-            console.log("Todos los datos fueron leidos");
+
+            console.log('Objecto agregado correctamente')
+
         }
     })
 }
 
-const readMovie = (id)=>{
-    db = dbConection.result;
-    let IDBtransaction = db.transaction('movies', 'readonly');
-    let objectStore = IDBtransaction.objectStore('movies');
-    let cursor = objectStore.get(id)
-    cursor.addEventListener('success', ()=>{
-        if(cursor.result){
-            console.log(cursor.result);
-        }else{
-            console.log("Todos los datos fueron leidos");
-        }
-    })
-}
 
-const readKey = ()=>{
-    db = dbConection.result;
-    let IDBtransaction = db.transaction('movies', 'readonly');
-    let objectStore = IDBtransaction.objectStore('movies');
-    let cursor = objectStore.getAllKeys()
-    cursor.addEventListener('success', ()=>{
-        if(cursor.result){
-            console.log(cursor.result);
-        }else{
-            console.log("Todos los datos fueron leidos");
-        }
-    })
+export const getData = ()=>{
+    let getItem = localStorage.getItem('shoppingCart');
+    let data = JSON.parse(getItem);
+    return data;
 }

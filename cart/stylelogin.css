@@ -17,9 +17,11 @@
         background-color: #030328;
     }
     #login{
+
         margin: auto;
     }
     .login{
+        margin-top: 84px;
         max-width: 850px;
         width: 25%;
         position: relative;
@@ -86,6 +88,7 @@
         cursor: pointer;
         font-size: 15px;
         font-weight: 700;
+        text-decoration: none;
     }
     
     .btn-singup:hover{
