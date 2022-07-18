@@ -1,0 +1,13 @@
+sec-info-card{
+    display: flex;
+    justify-content: space-between;
+    min-width: max-content;
+    border: solid 0.5px #C7C7C7;
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+.sec-info{
+    color: #C7C7C7;
+    font-weight: bold;
+    font-size: small;
+}
