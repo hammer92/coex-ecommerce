@@ -84,7 +84,7 @@ const cargarPeliculas = async (category) => {
 	} else {
 		allMovies = category;
 	}
-
+	
 	console.log(`Has seleccionado categorías en URL: ${allMovies}`);
 
 	try {
