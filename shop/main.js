@@ -249,7 +249,7 @@ buttonlogout.addEventListener('click', () => {
 	console.log("click en log out")
 	let estado = false;
 	localStorage.setItem('iniciosesion', estado);
-	window.location.reload();
+	window.location.reload()
 });
 
 //funcion btn log in
