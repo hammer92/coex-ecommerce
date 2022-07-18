@@ -33,7 +33,7 @@ function Login() {
                 iniciosesion = true
 				localStorage.setItem('iniciosesion', iniciosesion);
                 alert('inicio de sesion correcto');
-				window.location.href ='../shop/index.html';
+				window.location ='../shop/index.html';
 			} else {
 				alert('Credenciales invalidas');
 			}
