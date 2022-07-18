@@ -50,9 +50,9 @@ const throwError = (message) => {
 	errorBar.style.display = 'block'
 	errorBar.style.opacity = '1'
 	setTimeout(() => {
-	errorBar.style.display = 'none'
-	errorBar.style.opacity = '0'
-		
+		errorBar.style.display = 'none'
+		errorBar.style.opacity = '0'
+
 	}, 2000);
 }
 
@@ -60,24 +60,26 @@ const throwError = (message) => {
 
 //funcion para añadir una peli al shopping cart
 const addToCart = async (id) => {
-	const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`
-		)
-		.then((r) => r.json())
-		.catch((e) => console.log(e));
-	const indexMovies = moviesInCart.map((movie) => movie.id);
-	//comprobamos que la pelicula seleccionada no este repetida en moviesCart
-	if (!indexMovies.includes(movie.id)) {
-		moviesInCart.push(movie);
-		renderMovieInCart(moviesInCart);
-		showCheckoutButton(moviesInCart.length);
-		openCart();
-		localStorage.setItem(
-			'shoppingCart',
-			JSON.stringify(moviesInCart)
-		);
-	} else {
-		throwError('This movie is already in car')
-		return;
+	try {
+		const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
+		const response = await movie.json();
+		const indexMovies = moviesInCart.map((movie) => movie.id);
+		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
+		if (!indexMovies.includes(response.id)) {
+			moviesInCart.push(response);
+			renderMovieInCart(moviesInCart);
+			showCheckoutButton(moviesInCart.length);
+			openCart();
+			localStorage.setItem(
+				'shoppingCart',
+				JSON.stringify(moviesInCart)
+			);
+		} else {
+			throwError('Peli repetida')
+			return;
+		}
+	} catch (error) {
+		console.error(error);
 	}
 };
 

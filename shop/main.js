@@ -179,11 +179,9 @@ let categorySelected = document.querySelectorAll("#categorySelected");
 categorySelected.forEach(element => {
 	element.addEventListener("click", async () => {
 
-		categorySelected.forEach(minCategory => {
-			if (minCategory.getAttribute('value') != element.getAttribute('value')) {
-				minCategory.classList.remove("seleccionado");
-			}
-		})
+		if (element.getAttribute('value') != element.getAttribute('value')) {
+			element.classList.remove("seleccionado");
+		}
 
 		element.classList.add("seleccionado");
 		getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${element.value}`;
@@ -193,7 +191,7 @@ categorySelected.forEach(element => {
 });
 
 
-const cargarPeliculas = async (category) => {
+const cargarPeliculas = (category) => {
 	lastUrl = category;
 	let allMovies = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
 
@@ -325,7 +323,7 @@ function pageCall(page) {
 		let url = urlSplit[0] + '?' + b
 		getMovies(url);
 	}
-	
+
 }
 loadPagination();
 cargarFiltros();
