@@ -82,7 +82,7 @@
     padding: 5px;
     font-size: 10px;
     margin: 40px 0px;
-    background-color: var(--purple-bg);
+    background-color: transparent;
     /* display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -92,6 +92,7 @@
 
 .history__section--orders--items {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-top: 10px;
 }
@@ -281,6 +282,18 @@
 
 .history__section--orders--items {
     margin: 5px 2px;
+}
+
+.myorderDirection {
+    cursor: pointer;
+}
+
+.history_section-orders {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+    background-color: var(--purple-bg);
+    padding: 5px;
 }
 /*  LOGIN */
 
