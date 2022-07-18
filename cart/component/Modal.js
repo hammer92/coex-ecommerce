@@ -63,24 +63,26 @@ const throwError = (message) => {
 
 //funcion para añadir una peli al shopping cart
 const addToCart = async (id) => {
-	const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`
-		)
-		.then((r) => r.json())
-		.catch((e) => console.log(e));
-	const indexMovies = moviesInCart.map((movie) => movie.id);
-	//comprobamos que la pelicula seleccionada no este repetida en moviesCart
-	if (!indexMovies.includes(movie.id)) {
-		moviesInCart.push(movie);
-		renderMovieInCart(moviesInCart);
-		showCheckoutButton(moviesInCart.length);
-		openCart();
-		localStorage.setItem(
-			'shoppingCart',
-			JSON.stringify(moviesInCart)
-		);
-	} else {
-		throwError('Peli repetida')
-		return;
+	try {
+		const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
+		const response = await movie.json();
+		const indexMovies = moviesInCart.map((movie) => movie.id);
+		//comprobamos que la pelicula seleccionada no este repetida en moviesCart
+		if (!indexMovies.includes(response.id)) {
+			moviesInCart.push(response);
+			renderMovieInCart(moviesInCart);
+			showCheckoutButton(moviesInCart.length);
+			openCart();
+			localStorage.setItem(
+				'shoppingCart',
+				JSON.stringify(moviesInCart)
+			);
+		} else {
+			throwError('Peli repetida')
+			return;
+		}
+	} catch (error) {
+		console.error(error);
 	}
 };
 
@@ -88,37 +90,38 @@ const cartList = document.querySelector('.cart-list');
 
 //renderizar moviesInCart
 const renderMovieInCart = async (moviesArray) => {
-	const genres = await fetch(
-		`https://api.themoviedb.org/3/genre/movie/list?api_key=dde722cb807472090076a60be85c0010&language=en-US`
-	)
-		.then((r) => r.json())
-		.catch((e) => console.log(e));
-	let template = ``;
-	moviesArray.map((movie) => {
-		let genreMovie = '';
-		genres.genres.forEach((genero) => {
-			if (genero.id === movie.genres[0].id) {
-				genreMovie = genero.name;
-			}
+	try {
+		const genres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=dde722cb807472090076a60be85c0010&language=en-US`)
+		const response = await genres.json()
+		let template = ``;
+		moviesArray.map((movie) => {
+			let genreMovie = '';
+			response.genres.forEach((genero) => {
+				if (genero.id === movie.genres[0].id) {
+					genreMovie = genero.name;
+				}
+			});
+			let url = imageUrl + movie.poster_path;
+			const cart = `
+				<div class="cart-item">
+					<div class="cart-item-img">
+						<img 
+						src="${url}" alt="movie-img">
+					<div class="cart-info-container">
+						<h2>${movie.title}</h2>
+						<span>${genreMovie}</span>
+						<star-rating rating="${movie.vote_average}"></star-rating>
+					</div>
+				</div>
+				<div class="delete-button" onclick="deleteMovieInCart(${movie.id})">X</div>
+			</div>
+			`;
+			template += cart;
 		});
-		let url = imageUrl + movie.poster_path;
-		const cart = `
-            <div class="cart-item">
-                <div class="cart-item-img">
-                    <img 
-                    src="${url}" alt="movie-img">
-                <div class="cart-info-container">
-                    <h2>${movie.title}</h2>
-                    <span>${genreMovie}</span>
-                    <star-rating rating="${movie.vote_average}"></star-rating>
-                </div>
-            </div>
-            <div class="delete-button" onclick="deleteMovieInCart(${movie.id})">X</div>
-        </div>
-        `;
-		template += cart;
-	});
-	cartList.innerHTML = template;
+		cartList.innerHTML = template;
+	} catch (error) {
+			console.log(error)
+	}
 };
 
 //funcion de eliminar elemento de shopping cart
