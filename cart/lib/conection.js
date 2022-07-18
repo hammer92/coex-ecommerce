@@ -32,8 +32,10 @@ export const addMovieList = (object)=>{
 }
 
 export const readMovie = (id)=>{
+
     dbConection.addEventListener('success', ()=>{
         let db = dbConection.result;
+        console.log(id)
         let IDBtransaction = db.transaction('movies', 'readonly');
         let objectStore = IDBtransaction.objectStore('movies');
         let cursor = objectStore.get(id)
@@ -46,11 +48,13 @@ export const readMovie = (id)=>{
             sessionStorage.setItem('dbTransferens', JSON.stringify(data));
         }
     })
+    
 }
 
 export const exportData = () =>{
     let getItem = sessionStorage.getItem('dbTransferens');
     let data = JSON.parse(getItem);
+    // console.log(data)
     return data
 }
 
@@ -59,7 +63,6 @@ export const renderOrder = (e) => {
     let id = e.target.id;
     readMovie(id);
     let data = exportData();
-    console.log(data)
 };
 
 function call_date(movies, keys) {

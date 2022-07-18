@@ -16,8 +16,6 @@ const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
-<<<<<<< HEAD
-=======
 
 export function RenderMyOrder() {
 	const order = new OrderList(data);
@@ -30,7 +28,6 @@ export function RenderMyOrder() {
 
 
 
->>>>>>> a8eef2651b01d343808c6abbe2ae47ff80d0bbf4
 function Login() {
 	app.innerHTML = templatelogin;
 	var iniciosesion = false;
@@ -49,12 +46,8 @@ function Login() {
 			if (correo == user.email && contra == user.password) {
                 iniciosesion = true
 				localStorage.setItem('iniciosesion', iniciosesion);
-<<<<<<< HEAD
-				// app.innerHTML = templateprueba;
-=======
                 alert('inicio de sesion correcto');
 				window.location.href ='../shop/index.html';
->>>>>>> a8eef2651b01d343808c6abbe2ae47ff80d0bbf4
 			} else {
 				alert('Credenciales invalidas');
 			}
@@ -129,12 +122,6 @@ if (sesion){
 	localStorage.setItem('iniciosesion', false);
 	Login();
 }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> a8eef2651b01d343808c6abbe2ae47ff80d0bbf4
 
 // app.innerHTML = templateHistory;
 // app.innerHTML = template;
