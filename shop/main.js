@@ -94,86 +94,8 @@ const cargarPeliculas = async (category) => {
 	}
 }
 
-function getMovies(url) {
-	lastUrl = url;
-	fetch(url).then(res => res.json()).then(data => {
-		console.log(data.results)
-		if (data.results.length !== 0) {
-			showMovies(data.results);
-			currentPage = data.page;
-			nextPage = currentPage + 1;
-			prevPage = currentPage - 1;
-			totalPages = data.total_pages;
 
-			current.innerText = currentPage;
 
-			if (currentPage <= 1) {
-				prev.classList.add('disabled');
-				next.classList.remove('disabled')
-			} else if (currentPage >= totalPages) {
-				prev.classList.remove('disabled');
-				next.classList.add('disabled')
-			} else {
-				prev.classList.remove('disabled');
-				next.classList.remove('disabled')
-			}
-		} else {
-			app.innerHTML = `<h1 class="no-results">No Results Found</h1>`
-		}
-	})
-}
-
-const showMovies = async (data) => {
-	try {
-		const respuestaGeneros = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
-
-		//accedemos a los datos
-		const generos = await respuestaGeneros.json();
-
-		let peliculas = '';
-		data.forEach(pelicula => {
-			if (pelicula.overview === "") {
-				pelicula.overview = "Dont have overview"
-			}
-			let generoId = pelicula.genre_ids[0];
-			let generoName = "";
-			generos.genres.forEach(genero => {
-				if (genero.id === generoId) {
-					generoName = genero.name;
-				}
-			})
-
-			peliculas += `
-			<div class="pelicula">
-            <div class="arr"> <!-- parte donde va la imagen de la pelicula--!>
-            <div class="hover"><p>${pelicula.overview}</p>  </div>
-            <img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">
-                <!-- <p class="title_poster">${pelicula.original_title}</p>--!>
-            
-            </div>
-            <div class="aba"> <!-- parte donde va el genero de la pelicula y el boton--!>
-                <div class="info">
-					<div>
-						${generoName}
-					</div>
-					<div>
-						<star-rating rating="${pelicula.vote_average}"></star-rating>
-					</div>
-					</div>
-					<div>
-						<button class ="carrito" onclick="addToCart(${pelicula.id})" id="carrito">Add to card</button>
-					</div>
-            	</div>
-			</div>
-				`;
-		});
-		
-		app.innerHTML = peliculas;
-		
-	} catch (error) {
-		console.log(error);
-	}
-}
 
 filtros.addEventListener('submit', (e) => {
 	e.preventDefault();

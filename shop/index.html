@@ -9,97 +9,10 @@
 
 <body>
 
-  <header class="header">
-    <div class="izHeader">
-      <a class="logo" href="">
-        <img src="../assets/icons/logo_coexbuster.svg" width="80px" alt="">
-      </a>
-      
-      <div class="categories">
-        <nav class="nav">
-          <ul>
-            <button id="categorySelected" value="All">
-              <li>All</li>
-            </button>
-
-            <button id="categorySelected" value="28">
-              <li>Action</li>
-            </button>
-
-            <button id="categorySelected" value="12">
-              <li>Adventure</li>
-            </button>
-
-            <button id="categorySelected" value="16">
-              <li>Animation</li>
-            </button>
-
-            <button id="categorySelected" value="35">
-              <li>Comedy</li>
-            </button>
-
-            <li>
-              <select class="list-categories" name="" id="categorySelected">
-
-                <option id="categorySelected">- Others categories -</option>
-
-                <option id="categorySelected" value="80">Crime</option>
-
-                <option id="categorySelected" value="99">Documentary</option>
-
-                <option id="categorySelected" value="18">Drama</option>
-
-                <option id="categorySelected" value="10751">Family</option>
-
-                <option id="categorySelected" value="14">Fantasy</option>
-
-                <option id="categorySelected" value="36">History</option>
-
-                <option id="categorySelected" value="27">Horror</option>
-
-                <option id="categorySelected" value="10402">Music</option>
-
-                <option id="categorySelected" value="9648">Mistery</option>
-
-                <option id="categorySelected" value="10749">Romance</option>
-
-                <option id="categorySelected" value="878">Fiction</option>
-
-                <option id="categorySelected" value="10770">TV Movie</option>
-
-                <option id="categorySelected" value="53">Thriller</option>
-
-                <option id="categorySelected" value="10752">War</option>
-
-                <option id="categorySelected" value="37">Western</option>
-              </select>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <div class="derHeader">
-      <div class="btn-sesion" id="btn-nosesion-nav">
-        <button id="login-btn" class="btn-login-nav" >Log in</button>
-        <button id="singup-btn" class="btn-singup-nav">Sing up</button>
-      </div>
-      <div class="btn-sesion-login " id="btn-sesion-nav">
-        <div class="btn-drop-menu">
-          <label class="user-correo">admin@admin.com</label>
-          <a href="#" class="sigin__arrow" as="button" ><img src="../assets/icons/arrow_down.svg" alt="" width="18px" heigth="27"></a>
-        </div>
-        <div class="drop-menu">
-          <a class="historial-btn" href="../cart/index.html" id="history-shop">History orders</a><br><hr class="hr-dropdown">
-          <button id="logout" class="btn-logout">Log out</button>
-        </div> 
-      </div>
-      <a href="#" as="button" onclick="openCart()" ><img src="../assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27"></a>
-    </div>
-
-  </header>
-
-  <section>
+  <nav-bar></nav-bar>
+  <card-movie></card-movie>
+  <pagination-bar></pagination-bar>
+  <!-- <section>
   <div class="cart-slider">
     <div class="cart-container">
       <div class="title-container">
@@ -124,19 +37,22 @@
   <form class="filtros" id="filtros"></form>
 
 
-  <div class="app" id="app">
 
-  </div>
 
   <div class="pagination">
     <div class="page" id="prev">Previous Page</div>
     <div class="current" id="current">1</div>
     <div class="page" id="next">Next Page</div>
-</div>
+</div> -->
+  <div class="app" id="app">
 
+  </div>
+  <!-- <script type="module" src="./main.js"></script> -->
+  <script type="module" src="./components/card-movie.js"></script>
+  <script type="module" src="./components/pagination.js"></script>
+  <script type="module" src="./components/nav-bar.js"></script>
   
-  <script type="module" src="./main.js"></script>
-  <script src="../cart/component/Modal.js"></script>
+  <!-- <script src="../cart/component/Modal.js"></script> -->
 </body>
 
 </html>
