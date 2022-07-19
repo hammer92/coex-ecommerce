@@ -23,7 +23,7 @@ const templatelogin=`
 <div class="extra_login">
   <label class="forgot">forgot my passsword</label>
   <br>
-  <button class="btn-singup" type="submit" href="#">Sin up</button>
+  <button class="btn-singup" type="submit" href="#">Sing up</button>
 </div>
 `;export default templatelogin
 
