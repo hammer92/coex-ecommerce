@@ -9,6 +9,7 @@
     --gray-secondary: #797979;
     --purple-fil: invert(22%) sepia(83%) saturate(2189%) hue-rotate(260deg) brightness(87%) contrast(102%);
     --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
+
     }
     h1 {
         color:red;
@@ -17,14 +18,16 @@
         background-color: #030328;
     }
     #login{
+        margin-top: 84px;
         margin: auto;
     }
     .login{
+        
         max-width: 850px;
         width: 25%;
         position: relative;
         margin: auto;
-        margin-top: 10%;
+        margin-top: 15%;
     
     }
     
@@ -86,6 +89,7 @@
         cursor: pointer;
         font-size: 15px;
         font-weight: 700;
+        text-decoration: none;
     }
     
     .btn-singup:hover{
