@@ -14,9 +14,9 @@
      --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
  }
 
-button{
+.btn{
     background-color: transparent;
-    color: white;
+    color: var(--white);
     border-color: transparent;
 }
 
@@ -144,7 +144,7 @@ header{
     left: 0;
     width: 100%;
     z-index: 2;
-    color: white;
+    color: var(--white);
     background-color: #02021C;
     display: flex;
     justify-content: space-between;
@@ -198,7 +198,7 @@ li,option{
 }
 
 a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -276,7 +276,7 @@ li {
     margin:10px 30px;
     align-items: center;
     justify-content: center;
-    color:white;
+    color:var(--white);
     margin-top: -80px;
 }
 
@@ -285,7 +285,7 @@ li {
     background-color: #02021C;
     /* padding: 5px; */
     padding-left: 5px;
-    color: white;
+    color: var(--white);
     padding-right: 5px;
     font-size: 15px;
     padding-top: 5px;
@@ -318,7 +318,7 @@ li {
 }
 
 .no-results{
-    color:white;
+    color:var(--white);
 }
 
 .izHeader li{
@@ -331,7 +331,7 @@ li {
 
 .hover{
     position: absolute;
-    color: white;
+    color: var(--white);
     background-color: rgba(0,0,0,0.95);
     height: 300px;
     border-top-right-radius: 10px;
@@ -380,7 +380,7 @@ li {
     cursor: pointer;
 }
 .btn-logout:hover{
-    color:white;
+    color:var(--white);
 
 }
 
@@ -406,14 +406,14 @@ li {
     display: block;
 }
 .btn-singup-nav{
-    border: 2px solid white;
+    border: 2px solid var(--white);
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
 }
 
 .btn-login-nav{
-    border: 2px solid white;
+    border: 2px solid var(--white);
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
