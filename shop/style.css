@@ -259,6 +259,7 @@ li {
     border: none;
     font-weight: bold;
     margin-bottom: 20px;
+    cursor: pointer;
 
 }
 
