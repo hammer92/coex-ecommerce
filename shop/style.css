@@ -57,10 +57,6 @@ body{
 
 }
 
-.pelicula:hover{
-	/* transform: translateY(-15px); */
-}
-
 .circulo{
     background-color: #7B2ABF;
     border-radius: 15px;
@@ -206,16 +202,6 @@ a:hover{
     transition: 0.2s;
     color: #7B2ABF;
     cursor: pointer;
-}
-
-.seleccionado{
-    border: 1px solid #7B2ABF;
-    border-radius: 10px;
-    /* padding: 5px; */
-    padding-left: 5px;
-    color: #7B2ABF;
-    padding-right: 5px;
-    font-size: 15px;
 }
 
 li {
