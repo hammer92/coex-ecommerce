@@ -95,9 +95,6 @@ const cargarPeliculas = async (category) => {
 	}
 };
 
-
-
-
 filtros.addEventListener('submit', (e) => {
 	e.preventDefault();
 
