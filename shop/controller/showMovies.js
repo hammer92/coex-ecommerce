@@ -8,7 +8,6 @@ const showMovies = async (data) => {
 		//accedemos a los datos
 		const generos = await respuestaGeneros.json();
 		const templateMovies = document.createElement('div');
-		console.log(data[0].poster_path);
 		let peliculas = '';
 		data.forEach(pelicula => {
 			if (pelicula.overview === "") {

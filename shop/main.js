@@ -2,6 +2,7 @@ import 'normalize.css';
 import '../style.css';
 import './style.css';
 import './components/nav-bar.js';
+import './components/pagination.js';
 import cargarPeliculas from './controller/loadMovie.js';
 import templatelogin from '../cart/views/login.js';
 
@@ -30,6 +31,7 @@ const historialBtn = document.getElementById('historial-btn');
 let templateNav = document.createElement('template');
 templateNav.innerHTML += /*html*/ `
 	<nav-bar></nav-bar>
+	<pagination-bar></pagination-bar>
 `
 app.appendChild(templateNav.content);
 cargarPeliculas('');

@@ -2,7 +2,7 @@ import showMovies from "./showMovies.js";
 
 
 async function getMovies(url) {
-	let lastUrl = url
+	let lastUrl = url;
 	let peticion = await fetch(url);
 	let data = await peticion.json();
 	console.log(data.results)

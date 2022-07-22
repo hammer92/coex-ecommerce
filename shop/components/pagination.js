@@ -2,7 +2,6 @@ import cargarPeliculas from "../controller/loadMovie.js";
 import pageCall from "../controller/pageCall.js";
 
 let peticion = await cargarPeliculas('');
-console.log(peticion);
 let current = await peticion.getMovies(peticion.allMovies);
 class pagination extends HTMLElement {
     constructor() {
@@ -107,16 +106,14 @@ class pagination extends HTMLElement {
         let prevPage= data.currentPage-1
         let prev = this.shadowRoot.getElementById('prev');
         let next = this.shadowRoot.getElementById('next');
-        prev.addEventListener('click', async()=>{
+        prev.addEventListener('click', ()=>{
             if (data.nextPage <= totalPages) {
-                this.validation();
                 pageCall(nextPage);
             }
         })
         
-        next.addEventListener('click', async()=>{
+        next.addEventListener('click', ()=>{
             if (data.prevPage > 0) {
-                this.validation();
                 pageCall(prevPage);
             }
         })
