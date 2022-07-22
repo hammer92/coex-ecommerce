@@ -15,6 +15,8 @@ const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
+import * as log from './views/login/main.js'
+
 //Peticiones a la base de datos 
 const readMovie = (e)=>{
 	let id = parseInt(e.target.id);
@@ -120,7 +122,8 @@ function renderHistory() {
 }
 
 function Login() {
-	app.innerHTML = templatelogin;
+	// app.innerHTML = templatelogin;
+	log.render();
 	var iniciosesion = false;
 	localStorage.setItem('iniciosesion', iniciosesion);
 	const form = document.getElementById('form_login');
