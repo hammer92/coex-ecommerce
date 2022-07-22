@@ -9,22 +9,26 @@
     --gray-secondary: #797979;
     --purple-fil: invert(22%) sepia(83%) saturate(2189%) hue-rotate(260deg) brightness(87%) contrast(102%);
     --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
+
     }
     h1 {
         color:red;
     }
     body{
         background-color: #030328;
+        margin-top: 90px;
     }
     #login{
+        margin-top: 84px;
         margin: auto;
     }
     .login{
+        
         max-width: 850px;
         width: 25%;
         position: relative;
         margin: auto;
-        margin-top: 10%;
+        margin-top: 15%;
     
     }
     
@@ -47,7 +51,6 @@
         background-color: var(--purple-input);
         margin-top: 2%;
         margin-bottom: 10%;
-    
     }
     .btn-login{
         width: 100%;
@@ -58,9 +61,11 @@
         padding: 1rem 7rem ;
         font-size: 20px;
         cursor: pointer;
+        border: 2px solid purple;
     }
     .btn-login:hover{
         border: 2px solid white;
+        transition: ease-in-out .2s ;
     }
     .extra_login{
         text-align: center;
@@ -86,12 +91,13 @@
         cursor: pointer;
         font-size: 15px;
         font-weight: 700;
+        text-decoration: none;
     }
     
     .btn-singup:hover{
         background-color: rgba(255, 255, 255, 1);
         color: #7b2abf;
-        
+        transition: ease-in 0.4s;
     }
     
     
