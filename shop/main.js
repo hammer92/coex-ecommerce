@@ -29,10 +29,23 @@ const historialBtn = document.getElementById('historial-btn');
 // 	localStorage.setItem('statusback', 'cart');
 // });
 let templateNav = document.createElement('template');
-templateNav.innerHTML += /*html*/ `
-	<nav-bar></nav-bar>
-	<pagination-bar></pagination-bar>
-`
+// templateNav.innerHTML += /*html*/ `
+// 	<nav-bar></nav-bar>
+// 	<pagination-bar></pagination-bar>
+// `
+templateNav.innerHTML = `
+<div class="s-container">
+	<header class="s-header">
+		<nav-bar></nav-bar>
+	</header>
+	<main class="s-content">
+		<section class="s-grid" id="MovieGalery"></section>
+	</main>
+	<footer class="s-footer">
+		<pagination-bar></pagination-bar>
+	</footer>
+</div>
+`;
 app.appendChild(templateNav.content);
 cargarPeliculas('');
 
