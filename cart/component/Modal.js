@@ -39,19 +39,11 @@ window.onload = () => {
 	renderMovieInCart(moviesInCart);
 };
 
-<<<<<<< HEAD
-const renderCart = ()=>{
-	window.location = '/cart/index.html'
-}
-
-
-=======
 //redirige a LOGIN / MYHISTORY dependiendo de la sesion
 const renderCart = () => {
 	window.location = '/cart/index.html';
 }
 
->>>>>>> 534daa9a3d81d7b02700f63fe58d93ac902982c4
 //Barra de error visible para el usuario
 const errorBar = document.querySelector('.error-bar-container')
 const messageContainer = document.getElementById('errorMessage')
@@ -93,6 +85,8 @@ const addToCart = async (id) => {
 		console.error(error);
 	}
 };
+
+
 
 const cartList = document.querySelector('.cart-list');
 

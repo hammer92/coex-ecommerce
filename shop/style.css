@@ -78,6 +78,7 @@ body{
 
 .app .pelicula .arr{
     height: 300px;
+    cursor: pointer;
 }
 
 .app .pelicula .arr .poster {

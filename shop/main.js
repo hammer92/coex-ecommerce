@@ -123,6 +123,10 @@ function getMovies(url) {
 	})
 }
 
+function redirectToProduct(id){
+	window.location = `/product/index.html?movie=${id}`
+}
+
 const showMovies = async (data) => {
 	try {
 		const respuestaGeneros = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
@@ -145,7 +149,7 @@ const showMovies = async (data) => {
 
 			peliculas += `
 			<div class="pelicula">
-            <div class="arr"> <!-- parte donde va la imagen de la pelicula--!>
+            <div class="arr" onclick="redirectToProduct(${pelicula.id})"> <!-- parte donde va la imagen de la pelicula--!>
             <div class="hover"><p>${pelicula.overview}</p>  </div>
             <img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">
                 <!-- <p class="title_poster">${pelicula.original_title}</p>--!>
