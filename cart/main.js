@@ -15,8 +15,6 @@ const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
-import * as log from './views/login/main.js'
-
 //Peticiones a la base de datos 
 const readMovie = (e)=>{
 	let id = parseInt(e.target.id);
@@ -122,8 +120,7 @@ function renderHistory() {
 }
 
 function Login() {
-	// app.innerHTML = templatelogin;
-	log.render();
+	app.innerHTML = templatelogin;
 	var iniciosesion = false;
 	localStorage.setItem('iniciosesion', iniciosesion);
 	const form = document.getElementById('form_login');
@@ -132,6 +129,7 @@ function Login() {
 		const con = document.getElementById('password');
 		const correo = mail.value;
 		const contra = con.value;
+        console.log('entra a en submit')
 
 		if (correo == '' || contra == '') {
 			alert('Debe llenar todos los campos');
@@ -140,10 +138,11 @@ function Login() {
                 iniciosesion = true
 				localStorage.setItem('iniciosesion', iniciosesion);
                 alert('inicio de sesion correcto');
-				window.location ='../shop/index.html';
+				window.location.href ='../shop/index.html';
 			} else {
 				alert('Credenciales invalidas');
 			}
+			console.log(correo, contra);
 		}
 	};
 }
