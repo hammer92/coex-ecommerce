@@ -5,7 +5,6 @@ async function getMovies(url) {
 	let lastUrl = url;
 	let peticion = await fetch(url);
 	let data = await peticion.json();
-	console.log(data.results)
 	if (data.results.length !== 0) {
 		showMovies(data.results);
 		let currentPage = data.page;

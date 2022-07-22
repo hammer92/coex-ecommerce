@@ -25,11 +25,9 @@ class pagination extends HTMLElement {
             <style>
                 .pagination{
                     display:flex;
-                    margin:10px 30px;
                     align-items: center;
                     justify-content: center;
                     color: white;
-                    margin-top: 200px;
                 }
 
                 .page{ 

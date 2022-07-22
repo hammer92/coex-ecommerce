@@ -7,7 +7,8 @@ const showMovies = async (data) => {
 
 		//accedemos a los datos
 		const generos = await respuestaGeneros.json();
-		const templateMovies = document.createElement('div');
+		// const templateMovies = document.createElement('div');
+		const templateMovies = document.getElementById('MovieGalery');
 		let peliculas = '';
 		data.forEach(pelicula => {
 			if (pelicula.overview === "") {
@@ -34,8 +35,8 @@ const showMovies = async (data) => {
 		});
 		
 		templateMovies.innerHTML = peliculas;
-		templateMovies.classList.add('app');
-		app.appendChild(templateMovies);
+		// templateMovies.classList.add('app');
+		// app.appendChild(templateMovies);
 
 		
 	} catch (error) {
