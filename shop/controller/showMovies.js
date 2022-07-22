@@ -1,4 +1,4 @@
-import '../components/card-movie.js';
+import '../components/movieCard/movieCardComponent.js';
 
 const showMovies = async (data) => {
 	const key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
@@ -17,18 +17,19 @@ const showMovies = async (data) => {
 			let generoName = "";
 			generos.genres.forEach(genero => {
 				if (genero.id === generoId) {
-					generoName = genero.name;
+					generoName += genero.name;
 				}
 			})
 
 			peliculas +=  /*html*/ `
-				<card-movie 
+				<movie-card 
+					title="${pelicula.title}" 
+					genre="${generoName}" 
 					overview="${pelicula.overview}" 
-					img="${pelicula.poster_path}" 
-					gender="${generoName}" 
+					path="${pelicula.poster_path}" 
 					vote="${pelicula.vote_average}"
 				>
-				</card-movie>
+				</movie-card>
 			`
 		});
 		
