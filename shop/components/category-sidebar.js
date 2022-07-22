@@ -1,7 +1,10 @@
+import cargarPeliculas from "../controller/loadMovie";
+
 class category extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: "open"});
+        this.getByCategory = '';
     }
     getTemplate(){
         const template = document.createElement('template');
@@ -147,6 +150,25 @@ class category extends HTMLElement {
     }
     connectedCallback(){
         this.render();
+        let categorySelected = this.shadowRoot.querySelectorAll('#categorySelected');
+        const key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
+        categorySelected.forEach((element) => {
+            element.addEventListener('click', async () => {
+                categorySelected.forEach((minCategory) => {
+                    if (
+                        minCategory.getAttribute('value') !=
+                        element.getAttribute('value')
+                    ) {
+                        minCategory.classList.remove('seleccionado');
+                    }
+                });
+        
+                element.classList.add('seleccionado');
+                this.getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${element.value}`;
+                console.log('Seleccionaste: ' + element.value);
+                cargarPeliculas(this.DOCUMENT_POSITION_CONTAINED_BYgetByCategory);
+            });
+        });
     }
 }
 

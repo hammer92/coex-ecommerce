@@ -11,7 +11,6 @@ const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 const filtros = document.getElementById('filtros');
 const app = document.querySelector('#app');
-const key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
 const searchURL =
 	'https://api.themoviedb.org/3/search/movie?api_key=d2b1df9d64af7fb2a0342bd9d23e1449';
 
@@ -28,10 +27,6 @@ document.getElementById('checkButton').addEventListener('click', () => {
 document.getElementById('history-shop').addEventListener('click', () => {
 	localStorage.setItem('statusback', 'cart');
 });
-//paginacion
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-const current = document.getElementById('current');
 
 
 
@@ -51,45 +46,12 @@ const cargarFiltros = async () => {
 	}
 };
 
-let getByCategory = '';
-let categorySelected = document.querySelectorAll('#categorySelected');
 
-categorySelected.forEach((element) => {
-	element.addEventListener('click', async () => {
-		categorySelected.forEach((minCategory) => {
-			if (
-				minCategory.getAttribute('value') !=
-				element.getAttribute('value')
-			) {
-				minCategory.classList.remove('seleccionado');
-			}
-		});
 
-		element.classList.add('seleccionado');
-		getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${element.value}`;
-		console.log('Seleccionaste: ' + element.value);
-		cargarPeliculas(getByCategory);
-	});
-});
 
-const cargarPeliculas = async (category) => {
-	lastUrl = category;
-	let allMovies = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
 
-	if (category == '') {
-		console.log('No hay categoría seleccionada');
-	} else {
-		allMovies = category;
-	}
 
-	console.log(`Has seleccionado categorías en URL: ${allMovies}`);
 
-	try {
-		getMovies(allMovies);
-	} catch (error) {
-		console.log(error);
-	}
-};
 
 filtros.addEventListener('submit', (e) => {
 	e.preventDefault();
@@ -104,38 +66,10 @@ filtros.addEventListener('submit', (e) => {
 	}
 });
 
-//Paginacion
-prev.addEventListener('click', () => {
-	if (prevPage > 0) {
-		pageCall(prevPage);
-	}
-});
 
-next.addEventListener('click', () => {
-	if (nextPage <= totalPages) {
-		pageCall(nextPage);
-	}
-});
-
-function pageCall(page) {
-	let urlSplit = lastUrl.split('?');
-	let queryParams = urlSplit[1].split('&');
-	let key = queryParams[queryParams.length - 1].split('=');
-	if (key[0] != 'page') {
-		let url = lastUrl + '&page=' + page;
-		getMovies(url);
-	} else {
-		key[1] = page.toString();
-		let a = key.join('=');
-		queryParams[queryParams.length - 1] = a;
-		let b = queryParams.join('&');
-		let url = urlSplit[0] + '?' + b;
-		getMovies(url);
-	}
-}
 
 cargarFiltros();
-cargarPeliculas(getByCategory);
+
 
 //--------------------------------------------------
 // Configuracion del navbar para esta de la sesion

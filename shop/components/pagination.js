@@ -1,10 +1,13 @@
-import getMovies from "../controller/getMovies.js";
+import cargarPeliculas from "../controller/loadMovie.js";
+import pageCall from "../controller/pageCall.js";
 
+let peticion = await cargarPeliculas('');
+console.log(peticion);
+let current = await peticion.getMovies(peticion.allMovies);
 class pagination extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode:'open'});
-        this.current = getMovies();
     }
     getTemplate(){
         const template = document.createElement('template');
@@ -74,32 +77,52 @@ class pagination extends HTMLElement {
     }
     data(){
         return{
-            currentPage : this.current.currentPage,
-            totalPages : this.current.totalPages,
-            prev: this.shadowRoot.getElementById('prev'),
-            next: this.shadowRoot.getElementById('next'),
-            current: this.shadowRoot.getElementById('current'),
-            nextPage: currentPage+1,
-            prevPage: currentPage-1
+            currentPage : current.currentPage,
+            totalPages : current.totalPages,
+            
         }
     }
     validation(){
-        let data = this.data();
-        current.innerText = currentPage;
+        let prev = this.shadowRoot.getElementById('prev');
+        let next = this.shadowRoot.getElementById('next');
+        let current = this.shadowRoot.getElementById('current');
+        let data = this.data() 
+        current.innerText = data.currentPage;
         if (data.currentPage <= 1) {
-            data.prev.classList.add('disabled');
-            data.next.classList.remove('disabled')
-        } else if (data.currentPage >= totalPages) {
-            data.prev.classList.remove('disabled');
-            data.next.classList.add('disabled')
+            prev.classList.add('disabled');
+            next.classList.remove('disabled')
+        } else if (data.currentPage >= data.totalPages) {
+            prev.classList.remove('disabled');
+            next.classList.add('disabled')
         } else {
-            data.prev.classList.remove('disabled');
-            data.next.classList.remove('disabled')
+            prev.classList.remove('disabled');
+            next.classList.remove('disabled')
         }
     }
     connectedCallback(){
         this.render();
+        this.validation()
+        let data = this.data();
+        let nextPage= data.currentPage+1
+        let prevPage= data.currentPage-1
+        let prev = this.shadowRoot.getElementById('prev');
+        let next = this.shadowRoot.getElementById('next');
+        prev.addEventListener('click', async()=>{
+            if (data.nextPage <= totalPages) {
+                this.validation();
+                pageCall(nextPage);
+            }
+        })
+        
+        next.addEventListener('click', async()=>{
+            if (data.prevPage > 0) {
+                this.validation();
+                pageCall(prevPage);
+            }
+        })
+        
     }
+    
 }
 
 customElements.define('pagination-bar', pagination);
