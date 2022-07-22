@@ -1,3 +1,5 @@
+import '../../cart/component/starsComponent.js';
+
 class cardMovie extends HTMLElement {
     constructor() {
         super();
@@ -5,7 +7,7 @@ class cardMovie extends HTMLElement {
     }
 
     static get observedAttributes(){
-        return ['overview', 'imgPath', 'gender', 'vote_average', 'id']
+        return ['overview', 'img', 'gender', 'vote', 'id']
     }
 
     attributeChangedCallback(value, oldValue, newValue){
@@ -22,7 +24,7 @@ class cardMovie extends HTMLElement {
                     <div class="hover">
                         <p>${this.overview}</p>  
                     </div>
-                    <img class="poster" src="https://image.tmdb.org/t/p/w500/${this.imgPath}">
+                    <img class="poster" src="https://image.tmdb.org/t/p/w500${this.img}">
             
                 </div>
                 <div class="aba">
@@ -31,7 +33,7 @@ class cardMovie extends HTMLElement {
                             ${this.gender}
                         </div>
                         <div>
-                            <star-rating rating="${this.vote_average}"></star-rating>
+                            <star-rating rating="${this.vote}"></star-rating>
                         </div>
                     </div>
                     <div>
@@ -95,16 +97,16 @@ class cardMovie extends HTMLElement {
                     margin: 10px;
                 }
 
-                .app .pelicula .titulo {
+                .titulo {
                     font-size: 16px;
                     font-weight: 600;
                 }
 
-                .app .pelicula .arr{
+                .arr{
                     height: 300px;
                 }
 
-                .app .pelicula .arr .poster {
+                .poster {
                     width: 100%;
                     height: 100%;
                     border-top-right-radius: 15px;

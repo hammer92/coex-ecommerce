@@ -166,7 +166,7 @@ class category extends HTMLElement {
                 element.classList.add('seleccionado');
                 this.getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${element.value}`;
                 console.log('Seleccionaste: ' + element.value);
-                cargarPeliculas(this.DOCUMENT_POSITION_CONTAINED_BYgetByCategory);
+                cargarPeliculas(this.getByCategory);
             });
         });
     }

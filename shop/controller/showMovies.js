@@ -7,7 +7,8 @@ const showMovies = async (data) => {
 
 		//accedemos a los datos
 		const generos = await respuestaGeneros.json();
-
+		const templateMovies = document.createElement('div');
+		console.log(data[0].poster_path);
 		let peliculas = '';
 		data.forEach(pelicula => {
 			if (pelicula.overview === "") {
@@ -24,15 +25,18 @@ const showMovies = async (data) => {
 			peliculas +=  /*html*/ `
 				<card-movie 
 					overview="${pelicula.overview}" 
-					imgPath="${pelicula.poster_path}" 
+					img="${pelicula.poster_path}" 
 					gender="${generoName}" 
-					vote_average="${pelicula.vote_average}"
+					vote="${pelicula.vote_average}"
 				>
 				</card-movie>
 			`
 		});
 		
-		return peliculas;
+		templateMovies.innerHTML = peliculas;
+		templateMovies.classList.add('app');
+		app.appendChild(templateMovies);
+
 		
 	} catch (error) {
 		console.log(error);
