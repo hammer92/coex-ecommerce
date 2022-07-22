@@ -28,6 +28,7 @@ const showMovies = async (data) => {
 					overview="${pelicula.overview}" 
 					path="${pelicula.poster_path}" 
 					vote="${pelicula.vote_average}"
+					id="${pelicula.id}"
 				>
 				</movie-card>
 			`

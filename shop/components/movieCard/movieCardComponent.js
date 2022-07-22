@@ -38,10 +38,14 @@ class movieCardComponent extends HTMLElement{
         }
     }
 
+    redirectToProduct(id){
+        window.location = `/product/index.html?movie=${id}`
+    }
+
 	connectedCallback() {
 		this.innerHTML = `
 		<div class="s-grid__card">
-            <figure class="s-card__cover">
+            <figure class="s-card__cover" onclick="${()=>{this.redirectToProduct(this.id)}}">
                 <button class="s-go-to-detail">
                     <img src="${this.movieUrl}${this.poster_path}" alt="${this.title}" class="s-card__poster">
                     <span class="s-card__title">${this.title}</span>
