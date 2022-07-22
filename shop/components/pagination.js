@@ -1,7 +1,10 @@
+import getMovies from "../controller/getMovies.js";
+
 class pagination extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode:'open'});
+        this.current = getMovies();
     }
     getTemplate(){
         const template = document.createElement('template');
@@ -68,6 +71,31 @@ class pagination extends HTMLElement {
     }
     render(){
         this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
+    }
+    data(){
+        return{
+            currentPage : this.current.currentPage,
+            totalPages : this.current.totalPages,
+            prev: this.shadowRoot.getElementById('prev'),
+            next: this.shadowRoot.getElementById('next'),
+            current: this.shadowRoot.getElementById('current'),
+            nextPage: currentPage+1,
+            prevPage: currentPage-1
+        }
+    }
+    validation(){
+        let data = this.data();
+        current.innerText = currentPage;
+        if (data.currentPage <= 1) {
+            data.prev.classList.add('disabled');
+            data.next.classList.remove('disabled')
+        } else if (data.currentPage >= totalPages) {
+            data.prev.classList.remove('disabled');
+            data.next.classList.add('disabled')
+        } else {
+            data.prev.classList.remove('disabled');
+            data.next.classList.remove('disabled')
+        }
     }
     connectedCallback(){
         this.render();

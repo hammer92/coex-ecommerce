@@ -33,11 +33,7 @@ const prev = document.getElementById('prev');
 const next = document.getElementById('next');
 const current = document.getElementById('current');
 
-let currentPage = 1;
-let nextPage = 2;
-let prevPage = 3;
-let lastUrl = '';
-let totalPages = 100;
+
 
 // Verifica si hay un usuario logueado y en dicho caso se renderiza su correo electrónico
 

@@ -1,4 +1,5 @@
 import './category-sidebar.js';
+import './drop-menu.js';
 
 class navBar extends HTMLElement {
     constructor() {
@@ -24,11 +25,7 @@ class navBar extends HTMLElement {
                     <div class="btn-sesion-login " id="btn-sesion-nav">
                         <div class="btn-drop-menu">
                             <label class="user-correo">admin@admin.com</label>
-                            <a href="#" class="sigin__arrow" as="button" ><img src="../assets/icons/arrow_down.svg" alt="" width="18px" heigth="27"></a>
-                        </div>
-                        <div class="drop-menu">
-                            <a class="historial-btn" href="../cart/index.html" id="history-shop">History orders</a><br><hr class="hr-dropdown">
-                            <button id="logout" class="btn-logout">Log out</button>
+                            <a href="#" class="sigin__arrow" as="button" id='sigin_arrow' ><img src="../assets/icons/arrow_down.svg" alt="" width="18px" heigth="27"></a>
                         </div> 
                     </div>
                     <a href="#" as="button" onclick="openCart()" >
