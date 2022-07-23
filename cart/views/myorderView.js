@@ -1,4 +1,4 @@
-import '../component/cartProdComponent.js';
+import '../component/cart-prod/main';
 
 const ImageUrl = 'https://image.tmdb.org/t/p/w500';
 const IconSrc = '../../assets/icons';
@@ -6,7 +6,6 @@ const IconSrc = '../../assets/icons';
 const TAGS = [];
 
 // const ORDER_DATE = '13.07.2022';
-
 function getData(data){
 	data.forEach((movie) => {
 		let gener = ''

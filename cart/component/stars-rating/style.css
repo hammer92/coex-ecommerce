@@ -1,0 +1,18 @@
+.item__stars {
+    width: fit-content;
+    cursor: help;
+    gap: 6px;
+}
+
+.item__star {
+    height: 12px;
+    width: auto
+}
+
+.item__star--purple {
+    filter: var(--purple-fil);
+}
+
+.item__star--gray {
+    filter: var(--purple-gray-fil);
+}

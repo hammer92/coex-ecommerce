@@ -1,20 +1,23 @@
 //import '../style.css'
 import './style.css';
-import templateHistory from './views/history.js';
-import templatelogin from './views/login.js';
-import { OrderList } from './views/myorderView.js';
+/* import templateHistory from './views/history.js';
+import templatelogin from './views/login.js'; 
+import { OrderList } from './views/myorderView.js'; */
 import './lib/conection.js';
 import { dbConection } from './lib/conection.js';
 import * as HistoryComponent from '../cart/component/history/main.js';
 import * as MyOrder from '../cart/component/myOrder/main.js';
 const Url = new URL(window.location);
-const urlParams = new URLSearchParams(Url.searchParams);
+/* const urlParams = new URLSearchParams(Url.searchParams); */
 
 const app = document.querySelector('#app');
 const sesion = localStorage.getItem('iniciosesion');
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
+
+/* import * as log from './views/login/main.js' */
+import * as LoginComponent from './component/login/main.js'
 
 //Peticiones a la base de datos 
 const readMovie = (e)=>{
@@ -125,47 +128,52 @@ function RenderMyOrder(data) {
 // }
 HistoryComponent.render(app,readMovieList());
 
-function Login() {
-	app.innerHTML = templatelogin;
-	var iniciosesion = false;
-	localStorage.setItem('iniciosesion', iniciosesion);
-	const form = document.getElementById('form_login');
-	form.onsubmit = () => {
-		const mail = document.getElementById('email');
-		const con = document.getElementById('password');
-		const correo = mail.value;
-		const contra = con.value;
-        console.log('entra a en submit')
+// const Login = ()=> {
+// 	// app.innerHTML = templatelogin;
+// 	log.render();
+// 	// LoginComponent.render(app)
+// 	var iniciosesion = false;
+// 	localStorage.setItem('iniciosesion', iniciosesion);
+// 	const form = document.getElementById('form_login');
+// 	form.onsubmit = () => {
+// 		const mail = document.getElementById('email');
+// 		const con = document.getElementById('password');
+// 		const correo = mail.value;
+// 		const contra = con.value;
 
-		if (correo == '' || contra == '') {
-			alert('Debe llenar todos los campos');
-		} else {
-			if (correo == user.email && contra == user.password) {
-                iniciosesion = true
-				localStorage.setItem('iniciosesion', iniciosesion);
-                alert('inicio de sesion correcto');
-				window.location.href ='../shop/index.html';
-			} else {
-				alert('Credenciales invalidas');
-			}
-			console.log(correo, contra);
-		}
-	};
-}
+// 		if (correo == '' || contra == '') {
+// 			alert('Debe llenar todos los campos');
+// 		} else {
+// 			if (correo == user.email && contra == user.password) {
+//                 iniciosesion = true
+// 				localStorage.setItem('iniciosesion', iniciosesion);
+//                 alert('inicio de sesion correcto');
+// 				window.location ='../shop/index.html';
+// 			} else {
+// 				alert('Credenciales invalidas');
+// 			}
+// 		}
+// 	};
+// }
 
+ // Refactorizacion de componente login 
 if (sesion){
 	console.log('sesion: ', sesion)
 	if (sesion === 'false') {
-		Login();
+		LoginComponent.render(app);
 	} else {
 		if(localStorage.getItem('statusback', 'cart')){
+			console.log('sesion: ', sesion)
 			HistoryComponent.render(app,readMovieList());
 			// renderHistory();
 		} else {
+			console.log('sesion: ', sesion)
 			window.location = '../shop/index.html';
 		}
 	}
 } else {
+	console.log('sesion: ', sesion)
 	localStorage.setItem('iniciosesion', false);
-	Login();
+	LoginComponent.render(app);
 }
+
