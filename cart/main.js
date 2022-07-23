@@ -4,6 +4,7 @@ import { dbConection } from './lib/conection.js';
 import * as HistoryComponent from '../cart/component/history/main.js';
 import * as MyOrder from '../cart/component/myOrder/main.js';
 import * as LoginComponent from './component/login/main.js'
+import '../shop/components/nav-bar';
 const sesion = localStorage.getItem('iniciosesion');
 
 const app = document.querySelector('#app');
@@ -11,7 +12,8 @@ const app = document.querySelector('#app');
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
-
+const topbar = document.getElementById('topbar');
+topbar.innerHTML = '<nav-bar></nav-bar>';
 //Peticiones a la base de datos 
 const readMovie = (e)=>{
 	let id = parseInt(e.target.id);
