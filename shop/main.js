@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import 'normalize.css'
-import '../style.css'
-import './style.css'
-import '../cart/component/starsComponent.js';
-=======
 import 'normalize.css';
 import '../style.css';
 import './style.css';
@@ -11,7 +5,6 @@ import './components/nav-bar.js';
 import './components/pagination.js';
 import './components/filtro.js';
 import cargarPeliculas from './controller/loadMovie.js';
->>>>>>> 0a0cb31499d92bc150dfa6026c75b4ee9e99f7a5
 import templatelogin from '../cart/views/login.js';
 
 import { addMovieList, getData } from '../cart/lib/conection.js';
