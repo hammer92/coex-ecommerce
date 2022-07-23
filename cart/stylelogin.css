@@ -11,6 +11,12 @@
     --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
 
     }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Quicksand', sans-serif;
+    }
     h1 {
         color:red;
     }

@@ -5,7 +5,7 @@ const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
- function Login() {
+function Login() {
 	var iniciosesion = false;
 	localStorage.setItem('iniciosesion', iniciosesion);
 	const form = document.getElementById('form_login');

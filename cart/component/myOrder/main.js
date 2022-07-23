@@ -3,7 +3,6 @@ import './style.css';
 import '../cart-prod/main';
 
 const parentNode = document.querySelector('#app')
-const container = document.createElement('div');
 
 const CrearFecha = (fecha) => {
     return `<h2 class="info__date">${fecha}</h2>`;
