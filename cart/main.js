@@ -107,7 +107,7 @@ function RenderMyOrder(data) {
 	});
 }
 
-HistoryComponent.render(app,readMovieList());
+HistoryComponent.render(app,localStorage.getItem('orders'));
 
  // Refactorizacion de componente login 
 if (sesion){
@@ -117,7 +117,7 @@ if (sesion){
 	} else {
 		if(localStorage.getItem('statusback', 'cart')){
 			console.log('sesion: ', sesion)
-			HistoryComponent.render(app,readMovieList());
+			HistoryComponent.render(app,localStorage.getItem('orders'));
 			// renderHistory();
 		} else {
 			console.log('sesion: ', sesion)
