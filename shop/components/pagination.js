@@ -24,16 +24,10 @@ class pagination extends HTMLElement {
         return /*html*/ `
             <style>
                 .pagination{
-                    position: fixed;
-                    bottom: 50px;
-                    left: 0;
-                    right: 0;
-                    margin: 0px auto;
                     display:flex;
                     align-items: center;
                     justify-content: center;
                     color: white;
-                    z-index: 6;
                 }
 
                 .page{ 

@@ -33,7 +33,6 @@ class filtro extends HTMLElement {
                 .filtros {
                     width: 100%;
                     max-width: 1000px;
-                    margin: auto auto 100px auto;
                     display: flex;
                 }
             </style>
