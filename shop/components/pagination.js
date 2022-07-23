@@ -88,9 +88,8 @@ class pagination extends HTMLElement {
     validation(){
         let prev = this.shadowRoot.getElementById('prev');
         let next = this.shadowRoot.getElementById('next');
-        let current = this.shadowRoot.getElementById('current');
-        let data = this.data() 
-        current.innerText = data.currentPage;
+        let data = this.data()
+        
         if (data.currentPage <= 1) {
             prev.classList.add('disabled');
             next.classList.remove('disabled')
@@ -103,22 +102,28 @@ class pagination extends HTMLElement {
         }
     }
     connectedCallback(){
-        this.render();
-        this.validation()
         let data = this.data();
-        let nextPage= data.currentPage+1
-        let prevPage= data.currentPage-1
+        this.render();
+        this.validation();
+        let Page = data.currentPage;
         let prev = this.shadowRoot.getElementById('prev');
         let next = this.shadowRoot.getElementById('next');
+        let current = this.shadowRoot.getElementById('current');
+        
         next.addEventListener('click', ()=>{
-            if (nextPage <= data.totalPages) {
-                pageCall(nextPage);
+            if (Page <= data.totalPages) {
+                Page++;
+                current.innerHTML = Page;
+                pageCall(Page);
             }
         })
         
         prev.addEventListener('click', ()=>{
-            if (prevPage > 0) {
-                pageCall(prevPage);
+            if (Page >= 1) {
+                --Page;
+                current.innerHTML = Page;
+                pageCall(Page);
+                
             }
         })
         

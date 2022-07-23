@@ -9,7 +9,6 @@ async function getMovies(url) {
 		showMovies(data.results);
 		let currentPage = data.page;
 		let totalPages = data.total_pages;
-
 		return {
 			currentPage : currentPage,
 			totalPages : totalPages
