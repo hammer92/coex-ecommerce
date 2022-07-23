@@ -98,13 +98,7 @@ const readMovieList = ()=>{
 
 
 function RenderMyOrder(data) {
-	// const order = new OrderList(data);
-	// app.innerHTML = order.myorderView;
-	MyOrder.render(app,data);
-	const BACK = document.getElementById('back-arrow');
-	BACK.addEventListener('click', () => {
-		window.location.reload();
-	});
+	MyOrder.render(data);
 }
 
 HistoryComponent.render(app,readMovieList());

@@ -3,6 +3,7 @@ import './style.css';
 import '../cart-prod/main';
 
 const parentNode = document.querySelector('#app')
+const BACK = document.getElementById('back-arrow')
 
 const CrearFecha = (fecha) => {
     return `<h2 class="info__date">${fecha}</h2>`;
@@ -12,6 +13,9 @@ const CrearElemento = ({id, name, rating, genre, img}) =>{
 }
 
 export function render(order){
+	BACK.addEventListener('click', () => {
+		window.location.reload();
+	});
     const content = order.products.map(product => CrearElemento(product)).join('\n');
     const date = new Date(order.date).toDateString()
     parentNode.innerHTML = template.replace('${movies}',content).replace('${date}', CrearFecha(date));
