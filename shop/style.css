@@ -18,6 +18,10 @@
     box-sizing: border-box;
 }
 
+nav-bar {
+    width: 100%;
+}
+
 body{
     margin-top: 0 !important;
 }
