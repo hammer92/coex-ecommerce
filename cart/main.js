@@ -17,6 +17,7 @@ user.email = 'admin@admin.com';
 user.password = 'admin';
 
 import * as log from './views/login/main.js'
+import * as LoginComponent from './component/login/main.js'
 
 //Peticiones a la base de datos 
 const readMovie = (e)=>{
@@ -127,9 +128,10 @@ function RenderMyOrder(data) {
 // }
 HistoryComponent.render(app,readMovieList());
 
-function Login() {
+const Login = ()=> {
 	// app.innerHTML = templatelogin;
 	log.render();
+	// LoginComponent.render(app)
 	var iniciosesion = false;
 	localStorage.setItem('iniciosesion', iniciosesion);
 	const form = document.getElementById('form_login');
@@ -154,6 +156,7 @@ function Login() {
 	};
 }
 
+
 if (sesion){
 	console.log('sesion: ', sesion)
 	if (sesion === 'false') {
@@ -170,3 +173,4 @@ if (sesion){
 	localStorage.setItem('iniciosesion', false);
 	Login();
 }
+
