@@ -75,6 +75,7 @@ class navBar extends HTMLElement {
                     filter: var(--purple-gray-fil);
                 }
                 .logo{
+                    cursor: pointer;
                     width: 168px;
                     height: 30px;
                 }
@@ -96,49 +97,12 @@ class navBar extends HTMLElement {
                     color:#7B2ABF;
                 }
                 
-                a:hover{
-                    transition: 0.2s;
-                    color: #7B2ABF;
-                    cursor: pointer;
-                }
-                
-                li {
-                    display: inline;
-                    list-style: none;
-                    margin: 1%;
-                    font-size: 18px;
-                }
-                
-                .izHeader li{
-                    cursor: pointer;
-                }
-
-                .btn-hidden{
-                    display: none !important;
-                }
-                .btn-drop-menu:hover{
-                    color:var(--purple)
-                }
-
-                .btn-sesion-login{
-                    position: relative;
-                }
                 .sigin__arrow{
                     filter: var(--purple-fil);
                     block-size: auto;
                     inline-size: 12px;
                 }
 
-                .hr-dropdown{
-                    margin-left:12px;   
-                    border:none;
-                    height: 0.5px;
-                    background-color: #4b4b4b;
-                }
-
-                .btn-sesion-login:hover .drop-menu{
-                    display: block;
-                }
                 .btn-singup-nav{
                     border: 2px solid white;
                     border-radius: 5px;
@@ -153,13 +117,6 @@ class navBar extends HTMLElement {
                     cursor: pointer;
                 }
 
-                .btn-login-nav:hover{
-                    background-color: var(--purple);
-                }
-                .btn-singup-nav:hover{
-                    background-color: var(--purple);
-                }
-
                 .displayNone{
                     display: none;
                 }
@@ -171,6 +128,7 @@ class navBar extends HTMLElement {
             </style>
         `
     };
+    //Renderizacion del componente
     render(){
         this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
     }
@@ -184,11 +142,11 @@ class navBar extends HTMLElement {
             let estatesesion = localStorage.getItem('iniciosesion');
         
             if (estatesesion === 'false') {
-                nologinstate.classList.remove('btn-hidden');
-                loginstate.classList.add('btn-hidden');
+                nologinstate.classList.remove('displayNone');
+                loginstate.classList.add('displayNone');
             } else {
-                nologinstate.classList.add('btn-hidden');
-                loginstate.classList.remove('btn-hidden');
+                nologinstate.classList.add('displayNone');
+                loginstate.classList.remove('displayNone');
             }
         })()
         
