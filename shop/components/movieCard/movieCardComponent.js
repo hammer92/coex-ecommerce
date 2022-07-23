@@ -1,4 +1,4 @@
-import '../../../cart/component/starsComponent.js';
+import '../../../cart/component/stars-rating/starsComponent';
 import './style.css';
 
 class movieCardComponent extends HTMLElement {

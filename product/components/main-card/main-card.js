@@ -1,6 +1,6 @@
 import "./main-card.css";
 import '../sec-info-card/sec-info-card.js'
-import '../../../cart/component/starsComponent.js'
+import '../../../cart/component/stars-rating/starsComponent'
 
 class MainCard {
     constructor( movieJson ){

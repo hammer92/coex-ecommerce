@@ -1,7 +1,8 @@
-:root{
+:root {
     --white: #fff;
     --purple: #7b2abf;
     --purple-dark: #02021C;
+    --purple-dark-shadow: rgba(2, 2, 28, .5);
     --purple-bg: #030328;
     --purple-input: #110E35;
     --red-warning: #E45871;
@@ -9,27 +10,31 @@
     --gray-secondary: #797979;
     --purple-fil: invert(22%) sepia(83%) saturate(2189%) hue-rotate(260deg) brightness(87%) contrast(102%);
     --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
-
+}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Quicksand', sans-serif;
     }
     h1 {
         color:red;
     }
     body{
         background-color: #030328;
-        margin-top: 90px;
     }
     #login{
         margin-top: 84px;
         margin: auto;
     }
+    .container-login{
+        margin-top: 10%;
+    }
     .login{
-        
         max-width: 850px;
         width: 25%;
         position: relative;
         margin: auto;
-        margin-top: 15%;
-    
     }
     
     .text_login{
