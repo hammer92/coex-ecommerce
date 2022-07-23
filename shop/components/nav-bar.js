@@ -5,9 +5,15 @@ class navBar extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: "open"});
+        this.categorySidebar;
     };
     getTemplate(){
         const template = document.createElement('template');
+        if(window.location.pathname === '/shop/index.html'){
+            this.categorySidebar = '<category-sidebar></category-sidebar>';
+        } else {
+            this.categorySidebar = '';
+        }
         template.innerHTML = /*html*/`
             ${this.getStyles()}
             <header class="header">
@@ -16,7 +22,7 @@ class navBar extends HTMLElement {
                         <img src="../assets/icons/logo_coexbuster.svg" width="80px" alt="">
                     </a>
                 </div>
-                <category-sidebar></category-sidebar>
+                ${this.categorySidebar}
                 <div class="derHeader">
                     <div class="btn-sesion" id="btn-nosesion-nav">
                         <button id="login-btn" class="btn-login-nav" >Log in</button>
