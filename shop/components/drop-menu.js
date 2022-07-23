@@ -19,9 +19,9 @@ class dropMenu extends HTMLElement {
         return /*html*/ `
             <style>
                 .drop-menu{
-                    right: 0;
-                    display: none;
-                    position: absolute;
+                    right: 25px;
+                    top: 54px;
+                    position: fixed;
                     background-color:var(--purple-dark);
                     inline-size: 180px;
                     padding: 15px;
@@ -41,10 +41,6 @@ class dropMenu extends HTMLElement {
                     color:purple;
                     padding-right: 0px;
                     cursor: pointer;
-                }
-                .btn-logout:hover{
-                    color:var(--white);
-
                 }
 
                 .historial-btn{
@@ -96,6 +92,14 @@ class dropMenu extends HTMLElement {
     }
     connectedCallback(){
         this.render();
+        //funcion del boton log out
+        const buttonlogout = this.shadowRoot.getElementById('logout');
+        buttonlogout.addEventListener('click', () => {
+            console.log('click en log out');
+            let estado = false;
+            localStorage.setItem('iniciosesion', estado);
+            window.location.reload();
+        });
     }
 }
 

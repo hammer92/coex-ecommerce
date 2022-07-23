@@ -28,6 +28,7 @@ class navBar extends HTMLElement {
                             <a href="#" class="sigin__arrow" as="button" id='sigin_arrow' ><img src="../assets/icons/arrow_down.svg" alt="" width="18px" heigth="27"></a>
                         </div> 
                     </div>
+                    <drop-menu id="drop-menu" class="displayNone"></drop-menu>
                     <a href="#" as="button" onclick="openCart()" >
                         <img src="../../assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
                     </a>
@@ -96,113 +97,20 @@ class navBar extends HTMLElement {
                     font-size: 18px;
                 }
                 
-                
-                
-                
-                .title_poster{
-                    color: #f9f9f9;
-                }
-                
-                
-                .aba{
-                    background-color: #02021C;
-                    border-bottom-right-radius: 15px;
-                    border-bottom-left-radius: 15px;
-                }
-                
-                .info{
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    padding-left: 15px;
-                    padding-right: 15px;
-                    margin-bottom: 20px;
-                    margin-top: 20px;
-                    color: #f9f9f9;
-                }
-                
-                .carrito{
-                    width: 196px;
-                    height: 40px;
-                    background: #7B2ABF;
-                    border-radius: 10px;
-                    color: #f9f9f9;
-                    border: none;
-                    font-weight: bold;
-                    margin-bottom: 20px;
-                    cursor: pointer;
-                
-                }
-                
                 .izHeader li{
                     cursor: pointer;
                 }
 
-                #categorySelected{
-                    font-size: 16px;
-                }
-
-                .hover{
-                    position: absolute;
-                    color: white;
-                    background-color: rgba(0,0,0,0.95);
-                    height: 300px;
-                    border-top-right-radius: 10px;
-                    border-top-left-radius: 10px;
-                    width: 220px;
-                    overflow: hidden;
-                    text-align: justify;
-                    font-size: 12px;
-                    opacity: 0;
-                }
-
-                .hover:hover{
-                    opacity: 1;
-                }
-
-                .hover *{
-                    margin: 10px;
-                }
-
                 .btn-hidden{
-                    display: none;
+                    display: none !important;
                 }
                 .btn-drop-menu:hover{
                     color:var(--purple)
-                }
-                .drop-menu{
-                    right: 0;
-                    display: none;
-                    position: absolute;
-                    background-color:var(--purple-dark);
-                    inline-size: 180px;
-                    padding: 15px;
-                    text-align: right;
                 }
 
                 .btn-sesion-login{
                     position: relative;
                 }
-
-                .btn-logout{
-                    margin-top: 9px;
-                    font-size: 16px;
-                    font-weight: 600;
-                    color:purple;
-                    padding-right: 0px;
-                    cursor: pointer;
-                }
-                .btn-logout:hover{
-                    color:white;
-
-                }
-
-                .historial-btn{
-                    margin-bottom: 5px;
-                    font-size: 16px;
-                    font-weight: 700;
-                }
-
                 .sigin__arrow{
                     block-size: auto;
                     inline-size: 12px;
@@ -239,6 +147,14 @@ class navBar extends HTMLElement {
                     background-color: var(--purple);
                 }
 
+                .displayNone{
+                    display: none;
+                }
+
+                .displayBlock{
+                    display:block !important;
+                }
+
             </style>
         `
     };
@@ -247,6 +163,33 @@ class navBar extends HTMLElement {
     }
     connectedCallback(){
         this.render();
+        // Configuracion del navbar para esta de la sesion
+        // Verifica si hay un usuario logueado y en dicho caso se renderiza su correo electrónico
+        (() => {
+            const nologinstate = this.shadowRoot.querySelector('#btn-nosesion-nav');
+            const loginstate = this.shadowRoot.querySelector('#btn-sesion-nav');
+            let estatesesion = localStorage.getItem('iniciosesion');
+        
+            if (estatesesion === 'false') {
+                nologinstate.classList.remove('btn-hidden');
+                loginstate.classList.add('btn-hidden');
+            } else {
+                nologinstate.classList.add('btn-hidden');
+                loginstate.classList.remove('btn-hidden');
+            }
+        })()
+        
+        //Funcion de activar drop-menu
+        let dropMenu = this.shadowRoot.getElementById('drop-menu');
+        this.shadowRoot.getElementById('sigin_arrow').addEventListener('click', ()=>{
+            dropMenu.classList.toggle('displayBlock');
+        })
+
+        //funcion btn log in
+        const buttonlogin = this.shadowRoot.getElementById('login-btn');
+        buttonlogin.addEventListener('click', () => {
+            window.location = '../cart/index.html';
+        });
     };
 }
 

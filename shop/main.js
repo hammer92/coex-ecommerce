@@ -47,40 +47,13 @@ app.appendChild(templateNav.content);
 cargarPeliculas('');
 
 
-// Verifica si hay un usuario logueado y en dicho caso se renderiza su correo electrónico
 
 
 
 
 
-// //--------------------------------------------------
-// // Configuracion del navbar para esta de la sesion
 
-// window.onload = () => {
-// 	const nologinstate = document.querySelector('#btn-nosesion-nav');
-// 	const loginstate = document.querySelector('#btn-sesion-nav');
-// 	let estatesesion = localStorage.getItem('iniciosesion');
 
-// 	if (estatesesion === 'false') {
-// 		nologinstate.classList.remove('btn-hidden');
-// 		loginstate.classList.add('btn-hidden');
-// 	} else {
-// 		nologinstate.classList.add('btn-hidden');
-// 		loginstate.classList.remove('btn-hidden');
-// 	}
-// };
 
-// //funcion del boton log out
-// const buttonlogout = document.getElementById('logout');
-// buttonlogout.addEventListener('click', () => {
-// 	console.log('click en log out');
-// 	let estado = false;
-// 	localStorage.setItem('iniciosesion', estado);
-// 	window.location.reload();
-// });
 
-// //funcion btn log in
-// const buttonlogin = document.getElementById('login-btn');
-// buttonlogin.addEventListener('click', () => {
-// 	window.location = '../cart/index.html';
-// });
+
