@@ -21,6 +21,7 @@ import template from './index.html?raw'
 const parentNode = document.querySelector('#app')
 const node = document.createElement('div')
 const classes = ['shopping-cart']
+const myOrdersPath = '/cart/index.html'
 // DOM elements
 let cartContainer
 let cartItems
@@ -47,8 +48,11 @@ export function render(){
     checkoutBtn = node.querySelector('.checkout-button-container')
     errBar = node.querySelector('.error-bar-container')
     errMssg = node.querySelector('#errorMessage')
+    // rendering stored values
+    for(let movie of moviesInCart()){
+        renderMovie(movie)
+    }
     // success mssg
-    clear()
     console.log('Shopping cart rendered')
 }
 export function initialize(){
@@ -103,6 +107,13 @@ function moviesInCart(){
      */
     let movies = JSON.parse(localStorage.getItem('moviesInCart'))
     return movies || []
+}
+function ordersHistory(){
+    /**
+     * Retrieves the orders history stored in localStorage
+     */
+     let orders = JSON.parse(localStorage.getItem('orders'))
+     return orders || []
 }
 function storeMovie(movie){
     /**
@@ -161,10 +172,30 @@ function deleteMovie(id){
     node.querySelector(`#movie-${id}`)
         .remove()
 }
+function saveOrder(){
+    // getting current values
+    let movies = moviesInCart()
+    const orders = ordersHistory()
+    console.log(orders)
+    const order = {
+        date: Date.now(),
+        products: movies
+    }
+    // updating values
+    orders.push(order)
+    console.log(orders)
+    // storing values
+    localStorage.setItem('orders', JSON.stringify(orders))
+    localStorage.setItem('moviesInCart', '[]')
+    // updating and redirecting
+    clear()
+    close()
+    window.location.href = myOrdersPath
+}
 function goToCheckout(){
     const movies = moviesInCart()
     if(movies.length >= 1){
-        console.log('checkinn')
+        saveOrder()
     }else{
         throwError('There are no products...')
     }
