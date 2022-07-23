@@ -1,6 +1,7 @@
 import './style.css'
 import templateLogin from './index.html?raw';
 const IconSrc = '../../../assets/icons';
+import * as HistoryComponent from '../history/main.js';
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
@@ -30,10 +31,34 @@ function Login() {
 	};
 }
 
-export function render(dom){
+function render(dom){
     dom.innerHTML = templateLogin.replace('${IconSrc}', IconSrc);
     document.addEventListener('load', Login())
+
 }
 
+export function logueo(dom, sesion){
 
+	if (sesion){
+		console.log('sesion: ', sesion)
+		if (sesion === 'false') {
+			render(dom);
+		} else {
+			if(localStorage.getItem('statusback', 'cart')){
+				console.log('sesion: ', sesion)
+				HistoryComponent.render(dom,readMovieList());
+				// renderHistory();
+			} else {
+				console.log('sesion: ', sesion)
+				window.location = '../shop/index.html';
+			}
+		}
+	} else {
+		console.log('sesion: ', sesion)
+		localStorage.setItem('iniciosesion', false);
+		render(dom);
+	}
+	
+
+}
 

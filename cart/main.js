@@ -98,35 +98,30 @@ const readMovieList = ()=>{
 
 
 function RenderMyOrder(data) {
-	// const order = new OrderList(data);
-	// app.innerHTML = order.myorderView;
-	MyOrder.render(app,data);
-	const BACK = document.getElementById('back-arrow');
-	BACK.addEventListener('click', () => {
-		window.location.reload();
-	});
+	MyOrder.render(data);
 }
 
 HistoryComponent.render(app,localStorage.getItem('orders'));
 
  // Refactorizacion de componente login 
-if (sesion){
-	console.log('sesion: ', sesion)
-	if (sesion === 'false') {
-		LoginComponent.render(app);
-	} else {
-		if(localStorage.getItem('statusback', 'cart')){
-			console.log('sesion: ', sesion)
-			HistoryComponent.render(app,localStorage.getItem('orders'));
-			// renderHistory();
-		} else {
-			console.log('sesion: ', sesion)
-			window.location = '../shop/index.html';
-		}
-	}
-} else {
-	console.log('sesion: ', sesion)
-	localStorage.setItem('iniciosesion', false);
-	LoginComponent.render(app);
-}
+// if (sesion){
+// 	console.log('sesion: ', sesion)
+// 	if (sesion === 'false') {
+// 		LoginComponent.render(app);
+// 	} else {
+// 		if(localStorage.getItem('statusback', 'cart')){
+// 			console.log('sesion: ', sesion)
+// 			HistoryComponent.render(app,readMovieList());
+// 			// renderHistory();
+// 		} else {
+// 			console.log('sesion: ', sesion)
+// 			window.location = '../shop/index.html';
+// 		}
+// 	}
+// } else {
+// 	console.log('sesion: ', sesion)
+// 	localStorage.setItem('iniciosesion', false);
+// 	LoginComponent.render(app);
+// }
 
+LoginComponent.logueo(app,sesion);
