@@ -6,7 +6,7 @@ import * as MyOrder from '../cart/component/myOrder/main.js';
 import * as LoginComponent from './component/login/main.js'
 
 const app = document.querySelector('#app');
-const sesion = localStorage.getItem('iniciosesion');
+
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
@@ -104,23 +104,9 @@ function RenderMyOrder(data) {
 HistoryComponent.render(app,readMovieList());
 
  // Refactorizacion de componente login 
-if (sesion){
-	console.log('sesion: ', sesion)
-	if (sesion === 'false') {
-		LoginComponent.render(app);
-	} else {
-		if(localStorage.getItem('statusback', 'cart')){
-			console.log('sesion: ', sesion)
-			HistoryComponent.render(app,readMovieList());
-			// renderHistory();
-		} else {
-			console.log('sesion: ', sesion)
-			window.location = '../shop/index.html';
-		}
-	}
-} else {
-	console.log('sesion: ', sesion)
-	localStorage.setItem('iniciosesion', false);
+
+function RenderLogin (app) {
 	LoginComponent.render(app);
 }
 
+RenderLogin(app)
