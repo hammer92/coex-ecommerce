@@ -19,14 +19,14 @@ class dropMenu extends HTMLElement {
         return /*html*/ `
             <style>
                 .drop-menu{
-                    right: 25px;
+                    position: absolute;
+                    right: 110px;
                     top: 54px;
                     position: fixed;
                     background-color:var(--purple-dark);
                     inline-size: 180px;
                     padding: 15px;
                     text-align: right;
-                    background-color: black;
                     color: white;
                 }
 

@@ -24,8 +24,10 @@ class navBar extends HTMLElement {
                     </div>
                     <div class="btn-sesion-login " id="btn-sesion-nav">
                         <div class="btn-drop-menu">
-                            <label class="user-correo">admin@admin.com</label>
-                            <a href="#" class="sigin__arrow" as="button" id='sigin_arrow' ><img src="../assets/icons/arrow_down.svg" alt="" width="18px" heigth="27"></a>
+                            <button class="email__sigin" type="button" id='sigin_arrow' >
+                                <label class="user-correo">admin@admin.com</label>
+                                <img src="../assets/icons/arrow_down_black.svg" alt="" width="18px" heigth="27" class="sigin__arrow">
+                            </button>
                         </div> 
                     </div>
                     <drop-menu id="drop-menu" class="displayNone"></drop-menu>
@@ -56,7 +58,16 @@ class navBar extends HTMLElement {
                     align-items: center;
                     height: 54px
                 }
-                
+                .email__sigin{
+                    color: var(--purple);
+                    font-size: 1rem;
+                }
+                .email__sigin:hover{
+                    color: var(--purple-input);
+                }
+                .email__sigin:hover .sigin__arrow{
+                    filter: var(--purple-gray-fil);
+                }
                 .logo{
                     width: 168px;
                     height: 30px;
@@ -69,7 +80,7 @@ class navBar extends HTMLElement {
                 
                 .derHeader{
                     display: flex;
-                    justify-content: space-around;
+                    justify-content: space-between;
                     align-items: center;
                     gap: 20px;
                     width:20%;
@@ -107,6 +118,7 @@ class navBar extends HTMLElement {
                     position: relative;
                 }
                 .sigin__arrow{
+                    filter: var(--purple-fil);
                     block-size: auto;
                     inline-size: 12px;
                 }
