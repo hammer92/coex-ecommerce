@@ -113,7 +113,7 @@ class pagination extends HTMLElement {
         })
         
         prev.addEventListener('click', ()=>{
-            if (Page >= 1) {
+            if (Page > 1) {
                 --Page;
                 current.innerHTML = Page;
                 pageCall(Page);
