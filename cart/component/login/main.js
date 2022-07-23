@@ -32,17 +32,12 @@ function Login() {
 	};
 }
 
-
-
-
 function render(dom){
 	dom.innerHTML = templateLogin.replace('${IconSrc}', IconSrc);
 	document.addEventListener('load', Login())
 }
 
-
 export function logueo(dom, sesion){
-
 	if (sesion){
 		console.log('sesion: ', sesion)
 		if (sesion === 'false') {
@@ -51,7 +46,6 @@ export function logueo(dom, sesion){
 			if(localStorage.getItem('statusback', 'cart')){
 				console.log('sesion: ', sesion)
 				HistoryComponent.render(dom,readMovieList());
-				// renderHistory();
 			} else {
 				console.log('sesion: ', sesion)
 				window.location = '../shop/index.html';
