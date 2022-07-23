@@ -12,7 +12,7 @@ class navBar extends HTMLElement {
             ${this.getStyles()}
             <header class="header">
                 <div class="izHeader">
-                    <a class="logo" href="">
+                    <a class="logo" href="./index.html">
                         <img src="../assets/icons/logo_coexbuster.svg" width="80px" alt="">
                     </a>
                 </div>

@@ -1,125 +1,95 @@
-import cargarPeliculas from "../controller/loadMovie";
+import cargarPeliculas from '../controller/loadMovie';
+import { GetCategories } from '../controller/getCategories.js';
 
 class category extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({mode: "open"});
-        this.getByCategory = '';
-    }
-    getTemplate(){
-        const template = document.createElement('template');
-        template.innerHTML = /*html*/ `
+	constructor() {
+		super();
+		this.attachShadow({ mode: 'open' });
+        this.key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
+		this.allGenres = `<li class="active-category" id="categorySelected"><a href="">All</a></li>`;
+		this.categories;
+		this.topCategories;
+		this.otherCategories;
+	}
+	getItem({ id, name }) {
+		const sParams = new URLSearchParams(window.location.search);
+		const active =
+			parseInt(sParams.get('category')) === id
+				? 'active-category'
+				: '';
+		return `<li class="${active} list-item"><a href="?category=${id}">${name}</a></li>`;
+	}
+	async getCategories() {
+		const CATEGORIES = await GetCategories();
+		this.categories = CATEGORIES.genres;
+        this.PrincipalCategoryList();
+	}
+	PrincipalCategoryList() {
+		let tempTopCategories = [];
+		let tempOtherCategories = [];
+		this.categories.forEach((category, index) => {
+			index < 4
+				? tempTopCategories.push(category)
+				: tempOtherCategories.push(category);
+		});
+		this.topCategories = (tempTopCategories || [])
+			.map(this.getItem)
+			.join('\n');
+		this.otherCategories = (tempOtherCategories || [])
+			.map(this.getItem)
+			.join('\n');
+        // RENDER
+		this.render();
+	}
+	getTemplate() {
+		const template = document.createElement('template');
+		template.innerHTML = /*html*/ `
             <div class="categories">
                 <nav class="nav">
-                    <ul>
-                        <button id="categorySelected" value="All">
-                            <li>All</li>
-                        </button>
-
-                        <button id="categorySelected" value="28">
-                            <li>Action</li>
-                        </button>
-
-                        <button id="categorySelected" value="12">
-                            <li>Adventure</li>
-                        </button>
-
-                        <button id="categorySelected" value="16">
-                            <li>Animation</li>
-                        </button>
-
-                        <button id="categorySelected" value="35">
-                            <li>Comedy</li>
-                        </button>
-
-                        <li>
-                            <select class="list-categories" name="" id="categorySelected">
-
-                                <option id="categorySelected">- Others categories -</option>
-
-                                <option id="categorySelected" value="80">Crime</option>
-
-                                <option id="categorySelected" value="99">Documentary</option>
-
-                                <option id="categorySelected" value="18">Drama</option>
-
-                                <option id="categorySelected" value="10751">Family</option>
-
-                                <option id="categorySelected" value="14">Fantasy</option>
-
-                                <option id="categorySelected" value="36">History</option>
-
-                                <option id="categorySelected" value="27">Horror</option>
-
-                                <option id="categorySelected" value="10402">Music</option>
-
-                                <option id="categorySelected" value="9648">Mistery</option>
-
-                                <option id="categorySelected" value="10749">Romance</option>
-
-                                <option id="categorySelected" value="878">Fiction</option>
-
-                                <option id="categorySelected" value="10770">TV Movie</option>
-
-                                <option id="categorySelected" value="53">Thriller</option>
-
-                                <option id="categorySelected" value="10752">War</option>
-
-                                <option id="categorySelected" value="37">Western</option>
-                            </select>
-                        </li>
+                    <ul class="list-categories">
+                        ${this.topCategories}
+                        <ul class="other-categories">
+                            ${this.otherCategories}
+                        </ul>
                     </ul>
                 </nav>
             </div>
 
             ${this.getStyles()}
-        `
-        return template;
-    }
-    getStyles(){
-        return /*html*/ `
+        `;
+		return template;
+	}
+	getStyles() {
+		return /*html*/ `
             <style>
-                button{
-                    background-color: transparent;
-                    color: white;
-                    border-color: transparent;
-                }
                 .categories{
                     width: 100%;
                 }
                 .list-categories{
+                    display: flex;
+                    gap: 1rem;
+                }
+                .other-categories{
+                    display: none;
                     border-style: none;
                     background-color: #02021C;
                     margin-left: 10px;
                     color: #D8D8D8;
                 }
-                
-                .categoria{
-                    margin-left: 10px;
-                    color: #D8D8D8;
+                .list-item{
+                    border: 1px solid transparent;
+                    border-radius: 10px;
+                    padding: 5px 10px;
+                    list-style: none;
                 }
-                
-                
-                .nav li:last-of-type{
-                    margin-top:-1px;
+                .active-category{
+                    border-color: #7b2abf;
                 }
-
-                li,option{
-                    font-size: 32px;
-                    /* color: red */
-                }
-                
-                .nav ul{
-                    display: flex;
-                    gap: 30px;
-                }
-                
-                .categorias{
-                    display: flex;
-                }
-                
-                a {
+                .active-category a{
                     color: white;
+                }
+                a{
+                    color: #797979;
                     text-decoration: none;
                 }
                 a:hover{
@@ -127,47 +97,18 @@ class category extends HTMLElement {
                     color: #7B2ABF;
                     cursor: pointer;
                 }
-                
-                li {
-                    display: flex;
-                    list-style: none;
-                    margin: 1%;
-                    font-size: 18px;
-                }
-                .seleccionado{
-                    border: 1px solid #7B2ABF;
-                    border-radius: 10px;
-                    /* padding: 5px; */
-                    padding-left: 5px;
-                    color: #7B2ABF;
-                    padding-right: 5px;
-                }
             </style>
-        `
-    }
-    render(){
-        this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
-    }
-    connectedCallback(){
-        this.render();
-        let categorySelected = this.shadowRoot.querySelectorAll('#categorySelected');
-        const key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
-        categorySelected.forEach((element) => {
-            element.addEventListener('click', async () => {
-                categorySelected.forEach((minCategory) => {
-                    if (
-                        minCategory.getAttribute('value') !=
-                        element.getAttribute('value')
-                    ) {
-                        minCategory.classList.remove('seleccionado');
-                    }
-                });
-                element.classList.add('seleccionado');
-                this.getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${element.value}`;
-                cargarPeliculas(this.getByCategory);
-            });
-        });
-    }
+        `;
+	}
+	render() {
+		this.shadowRoot.appendChild(
+			this.getTemplate().content.cloneNode(true)
+		);
+	}
+	connectedCallback() {
+		// GET CATEGORIES
+		this.getCategories();
+	}
 }
 
-customElements.define("category-sidebar", category);
+customElements.define('category-sidebar', category);

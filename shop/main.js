@@ -12,8 +12,7 @@ const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 const filtros = document.getElementById('filtros');
 const app = document.querySelector('#app');
-const searchURL =
-	'https://api.themoviedb.org/3/search/movie?api_key=d2b1df9d64af7fb2a0342bd9d23e1449';
+const API_KEY = 'd2b1df9d64af7fb2a0342bd9d23e1449';
 
 const historialBtn = document.getElementById('historial-btn');
 
@@ -46,9 +45,19 @@ templateNav.innerHTML = `
 	</footer>
 </div>
 `;
+const sParams = new URLSearchParams(window.location.search);
+// const active =
+// 	parseInt(sParams.get('category')) === id
+// 		? 'active-category'
+// 		: '';
 app.appendChild(templateNav.content);
-cargarPeliculas('');
-
+if (sParams.get('category')) {
+	const CATEGORY_ID = sParams.get('category');
+	const getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${CATEGORY_ID}`;
+	cargarPeliculas(getByCategory);
+} else {
+	cargarPeliculas('');
+}
 
 // Verifica si hay un usuario logueado y en dicho caso se renderiza su correo electrónico
 
@@ -56,8 +65,8 @@ cargarPeliculas('');
 // 	try {
 // 		let filt = '';
 
-// 		filt += `	
-	
+// 		filt += `
+
 // 		<input type="text" class="search" id="search" name="search" placeholder="Buscar">
 // 	`;
 // 		filtros.innerHTML = filt;
@@ -65,13 +74,6 @@ cargarPeliculas('');
 // 		console.log(error);
 // 	}
 // };
-
-
-
-
-
-
-
 
 // filtros.addEventListener('submit', (e) => {
 // 	e.preventDefault();
@@ -86,10 +88,7 @@ cargarPeliculas('');
 // 	}
 // });
 
-
-
 // cargarFiltros();
-
 
 // //--------------------------------------------------
 // // Configuracion del navbar para esta de la sesion
