@@ -3,7 +3,7 @@ import templateLogin from './index.html?raw';
 import * as HistoryComponent from '../history/main';
 const IconSrc = '../../../assets/icons';
 const user = new Object();
-const sesion = localStorage.getItem('iniciosesion');
+
 user.email = 'admin@admin.com';
 user.password = 'admin';
 
@@ -32,32 +32,37 @@ function Login() {
 	};
 }
 
-if (sesion){
-	console.log('sesion: ', sesion)
-	if (sesion === 'false') {
-		Login()
-	} else {
-		if(localStorage.getItem('statusback', 'cart')){
-			console.log('sesion: ', sesion)
-			HistoryComponent.render(app,readMovieList());
-			// renderHistory();
+
+
+
+function render(dom){
+	dom.innerHTML = templateLogin.replace('${IconSrc}', IconSrc);
+	document.addEventListener('load', Login())
+}
+
+
+export function logueo(dom, sesion){
+
+	if (sesion){
+		console.log('sesion: ', sesion)
+		if (sesion === 'false') {
+			render(dom);
 		} else {
-			console.log('sesion: ', sesion)
-			window.location = '../../../shop/index.html';
+			if(localStorage.getItem('statusback', 'cart')){
+				console.log('sesion: ', sesion)
+				HistoryComponent.render(dom,readMovieList());
+				// renderHistory();
+			} else {
+				console.log('sesion: ', sesion)
+				window.location = '../shop/index.html';
+			}
 		}
+	} else {
+		console.log('sesion: ', sesion)
+		localStorage.setItem('iniciosesion', false);
+		render(dom);
 	}
-} else {
-	console.log('sesion: ', sesion)
-	localStorage.setItem('iniciosesion', false);
-	Login()
+	
+
 }
-
-
-
-export function render(dom){
-    dom.innerHTML = templateLogin.replace('${IconSrc}', IconSrc);
-    document.addEventListener('load', Login())
-}
-
-
 

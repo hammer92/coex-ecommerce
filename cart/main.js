@@ -4,6 +4,7 @@ import { dbConection } from './lib/conection.js';
 import * as HistoryComponent from '../cart/component/history/main.js';
 import * as MyOrder from '../cart/component/myOrder/main.js';
 import * as LoginComponent from './component/login/main.js'
+const sesion = localStorage.getItem('iniciosesion');
 
 const app = document.querySelector('#app');
 
@@ -105,8 +106,10 @@ HistoryComponent.render(app,readMovieList());
 
  // Refactorizacion de componente login 
 
-function RenderLogin (app) {
+/* function RenderLogin (app) {
 	LoginComponent.render(app);
 }
 
-RenderLogin(app)
+RenderLogin(app) */
+
+LoginComponent.logueo(app,sesion);
