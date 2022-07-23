@@ -12,6 +12,7 @@ import { addMovieList, getData } from '../cart/lib/conection.js';
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 const app = document.querySelector('#app');
+const API_KEY = 'd2b1df9d64af7fb2a0342bd9d23e1449';
 
 const historialBtn = document.getElementById('historial-btn');
 
@@ -43,9 +44,19 @@ templateNav.innerHTML = `
 	</footer>
 </div>
 `;
+const sParams = new URLSearchParams(window.location.search);
+// const active =
+// 	parseInt(sParams.get('category')) === id
+// 		? 'active-category'
+// 		: '';
 app.appendChild(templateNav.content);
-cargarPeliculas('');
-
+if (sParams.get('category')) {
+	const CATEGORY_ID = sParams.get('category');
+	const getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${CATEGORY_ID}`;
+	cargarPeliculas(getByCategory);
+} else {
+	cargarPeliculas('');
+}
 
 
 

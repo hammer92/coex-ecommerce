@@ -18,6 +18,9 @@
     box-sizing: border-box;
 }
 
+body{
+    margin-top: 0 !important;
+}
 
 #app{
     min-height: 100vh;
@@ -55,11 +58,12 @@
 /* ---------------------------------MAIN */
 
 .s-content{
-    margin-top: 84px;
     padding: 30px 100px;
+    margin-top: 84px;
     /* FLEX */
     display: flex;
     flex-direction: column;
+    gap: 3rem;
 }
 
 .s-filter{
