@@ -24,7 +24,7 @@ class cardMovie extends HTMLElement {
         const template = document.createElement('template');
         template.innerHTML = /*html*/ `
             <div class="pelicula">
-                <div class="arr" onclick="redirectToProduct(${this.id})">
+                <div class="arr" onclick="${this.redirectToProduct(this.id)}">
                     <div class="hover">
                         <p>${this.overview}</p>  
                     </div>

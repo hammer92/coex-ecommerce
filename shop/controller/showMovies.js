@@ -1,5 +1,6 @@
 import '../components/movieCard/movieCardComponent.js';
 
+
 const showMovies = async (data) => {
 	const key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
 	try {
@@ -7,7 +8,7 @@ const showMovies = async (data) => {
 
 		//accedemos a los datos
 		const generos = await respuestaGeneros.json();
-		const templateMovies = document.createElement('div');
+		const templateMovies = document.getElementById('MovieGalery');
 		let peliculas = '';
 		data.forEach(pelicula => {
 			if (pelicula.overview === "") {
@@ -23,6 +24,7 @@ const showMovies = async (data) => {
 
 			peliculas +=  /*html*/ `
 				<movie-card 
+					id="${pelicula.id}"
 					title="${pelicula.title}" 
 					genre="${generoName}" 
 					overview="${pelicula.overview}" 
@@ -34,12 +36,15 @@ const showMovies = async (data) => {
 		});
 		
 		templateMovies.innerHTML = peliculas;
-		templateMovies.classList.add('app');
-		app.appendChild(templateMovies);
 
-		
+		const ELEMENTS = document.querySelectorAll('button.s-go-to-detail');
+		ELEMENTS.forEach((element) => {
+			element.addEventListener('click', () => {
+				window.location = `/product/index.html?movie=${element.getAttribute('id')}`
+			});
+		});
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 }
 export default showMovies;

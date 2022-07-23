@@ -53,16 +53,16 @@
             height: 100%;
         }
 
-    .s-card__cover:hover .s-card__overview{
+    .s-go-to-detail:hover .s-card__overview{
         transform: translateY(0);
     }
     
-    .s-card__cover:hover .s-card__title{
+    .s-go-to-detail:hover .s-card__title{
         height: 100%;
         background: transparent;
         align-items: flex-start;
     }
-    .s-card__cover:hover .s-go-to-detail{
+    .s-go-to-detail:hover .s-go-to-detail{
         display: flex;
     }
     

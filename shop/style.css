@@ -18,7 +18,85 @@
     box-sizing: border-box;
 }
 
+nav-bar {
+    width: 100%;
+}
 
+body{
+    margin-top: 0 !important;
+}
+
+#app{
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+}
+
+.s-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* FLEX */
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------------------------------HEADER */
+
+.s-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 54px;
+    width: 100%;
+    z-index: 6;
+    color: var(--white);
+    background-color: #02021C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* ---------------------------------MAIN */
+
+.s-content{
+    padding: 30px 100px;
+    margin-top: 84px;
+    /* FLEX */
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.s-filter{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.s-grid{
+    width: 100%;
+    /* GRID */
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 40px;
+}
+
+/* ---------------------------------FOOTER */
+
+.s-footer{
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    /* FLEX */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ----- */
 .btn{
     background-color: transparent;
     color: var(--white);
@@ -27,13 +105,6 @@
 
 .onMovieHover:hover{
     background: linear-gradient(0,0,0,0.7);
-}
-
-body{
-    width: 100%;
-    height: 100%;
-    letter-spacing: 0.03em;
-    line-height: 1.6;
 }
 
 .app {
@@ -258,11 +329,9 @@ li {
 
 .pagination{
     display:flex;
-    margin:10px 30px;
     align-items: center;
     justify-content: center;
     color:var(--white);
-    margin-top: -80px;
 }
 
 .page{ 

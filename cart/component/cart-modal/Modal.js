@@ -59,6 +59,10 @@ const throwError = (message) => {
 	}, 2000);
 }
 
+const redirectToProduct = (id) => {
+    window.location = `/product/index.html?movie=${id}`
+}
+
 //Obtengo las pelis de la lista numero 1
 
 //funcion para añadir una peli al shopping cart

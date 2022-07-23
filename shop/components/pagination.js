@@ -25,11 +25,9 @@ class pagination extends HTMLElement {
             <style>
                 .pagination{
                     display:flex;
-                    margin:10px 30px;
                     align-items: center;
                     justify-content: center;
                     color: white;
-                    margin-top: 200px;
                 }
 
                 .page{ 
@@ -84,9 +82,8 @@ class pagination extends HTMLElement {
     validation(){
         let prev = this.shadowRoot.getElementById('prev');
         let next = this.shadowRoot.getElementById('next');
-        let current = this.shadowRoot.getElementById('current');
-        let data = this.data() 
-        current.innerText = data.currentPage;
+        let data = this.data()
+        
         if (data.currentPage <= 1) {
             prev.classList.add('disabled');
             next.classList.remove('disabled')
@@ -99,22 +96,28 @@ class pagination extends HTMLElement {
         }
     }
     connectedCallback(){
-        this.render();
-        this.validation()
         let data = this.data();
-        let nextPage= data.currentPage+1
-        let prevPage= data.currentPage-1
+        this.render();
+        this.validation();
+        let Page = data.currentPage;
         let prev = this.shadowRoot.getElementById('prev');
         let next = this.shadowRoot.getElementById('next');
-        prev.addEventListener('click', ()=>{
-            if (data.nextPage <= totalPages) {
-                pageCall(nextPage);
+        let current = this.shadowRoot.getElementById('current');
+        
+        next.addEventListener('click', ()=>{
+            if (Page <= data.totalPages) {
+                Page++;
+                current.innerHTML = Page;
+                pageCall(Page);
             }
         })
         
-        next.addEventListener('click', ()=>{
-            if (data.prevPage > 0) {
-                pageCall(prevPage);
+        prev.addEventListener('click', ()=>{
+            if (Page > 1) {
+                --Page;
+                current.innerHTML = Page;
+                pageCall(Page);
+                
             }
         })
         
