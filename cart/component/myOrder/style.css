@@ -1,0 +1,15 @@
+.history__section--orders--items {
+    margin: 5px 2px;
+}
+
+.myorderDirection {
+    cursor: pointer;
+}
+
+.history_section-orders {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+    background-color: var(--purple-bg);
+    padding: 5px;
+}

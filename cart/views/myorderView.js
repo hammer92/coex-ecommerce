@@ -8,7 +8,6 @@ const TAGS = [];
 // const ORDER_DATE = '13.07.2022';
 
 function getData(data){
-
 	data.forEach((movie) => {
 		let gener = ''
 		movie.genres.forEach(genre=>{

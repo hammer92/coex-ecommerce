@@ -5,7 +5,8 @@ import templatelogin from './views/login.js';
 import { OrderList } from './views/myorderView.js';
 import './lib/conection.js';
 import { dbConection } from './lib/conection.js';
-
+import * as HistoryComponent from '../cart/component/history/main.js';
+import * as MyOrder from '../cart/component/myOrder/main.js';
 const Url = new URL(window.location);
 const urlParams = new URLSearchParams(Url.searchParams);
 
@@ -30,6 +31,7 @@ const readMovie = (e)=>{
 	IDBtransaction.oncomplete = ()=> {
 		console.log(data)
 		RenderMyOrder(data);
+		// MyOrder(app,data);
 	}
 }
 
@@ -66,7 +68,7 @@ function call_date(movies, keys) {
         `
         capa_contenedor.innerHTML += templateCart;
     }
-	
+	localStorage.setItem('fecha',output);
 	const ORDER_LIST = document.querySelectorAll('.myorderDirection');
 	for (let element of ORDER_LIST) {
 		element.addEventListener('click', readMovie);
@@ -92,6 +94,8 @@ const readMovieList = ()=>{
         });
         keyList.addEventListener('success', ()=>{
             key = keyList.result;
+			console.log(data);
+			console.log(key);
         });
         IDBtransaction.oncomplete = ()=>{
             return call_date(data, key);
@@ -103,8 +107,9 @@ const readMovieList = ()=>{
 
 
 function RenderMyOrder(data) {
-	const order = new OrderList(data);
-	app.innerHTML = order.myorderView;
+	// const order = new OrderList(data);
+	// app.innerHTML = order.myorderView;
+	MyOrder.render(app,data);
 	const BACK = document.getElementById('back-arrow');
 	BACK.addEventListener('click', () => {
 		window.location.reload();
@@ -113,11 +118,12 @@ function RenderMyOrder(data) {
 
 
 
-function renderHistory() {
-    app.innerHTML = templateHistory;
+// function renderHistory() {
+//     app.innerHTML = templateHistory;
 
-	document.addEventListener("load", readMovieList());
-}
+// 	document.addEventListener("load", readMovieList());
+// }
+HistoryComponent.render(app,readMovieList());
 
 function Login() {
 	app.innerHTML = templatelogin;
@@ -153,7 +159,8 @@ if (sesion){
 		Login();
 	} else {
 		if(localStorage.getItem('statusback', 'cart')){
-			renderHistory();
+			HistoryComponent.render(app,readMovieList());
+			// renderHistory();
 		} else {
 			window.location = '../shop/index.html';
 		}
