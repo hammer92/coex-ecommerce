@@ -74,7 +74,7 @@ export function turnOff(){
 }
 export function add(movie){
     console.log('se ejecuto add')
-    let event =  new CustomEvent('add2cart', {
+    let event =  new CustomEvent('  ', {
         bubbles: false,
         detail: { movie }
     })
