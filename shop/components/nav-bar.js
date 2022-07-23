@@ -75,9 +75,10 @@ class navBar extends HTMLElement {
                 
                 .derHeader{
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-around;
                     align-items: center;
-                    gap: 30px;
+                    gap: 20px;
+                    width:20%;
                 }
                 
                 .sesion{
