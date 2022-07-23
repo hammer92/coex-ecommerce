@@ -102,7 +102,7 @@ function RenderMyOrder(data) {
 	MyOrder.render(data);
 }
 
-HistoryComponent.render(app,readMovieList());
+HistoryComponent.render(app,localStorage.getItem('orders'));
 
  // Refactorizacion de componente login 
 

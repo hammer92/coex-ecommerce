@@ -22,6 +22,11 @@
     margin: 5px 2px;
 }
 
+.history__section--orders--word {
+    background-color: var(--purple-input);
+    float: inherit;
+}
+
 .myorderDirection {
     cursor: pointer;
 }
@@ -32,4 +37,15 @@
     margin: 10px 0px;
     background-color: var(--purple-bg);
     padding: 5px;
+}
+.history__section--orders--shopping {
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 10px;
+    margin: 40px 0px;
+    background-color: transparent;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px; */
 }
