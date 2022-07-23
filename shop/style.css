@@ -62,6 +62,12 @@
     flex-direction: column;
 }
 
+.s-filter{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
 .s-grid{
     width: 100%;
     /* GRID */

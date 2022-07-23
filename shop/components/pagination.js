@@ -24,10 +24,16 @@ class pagination extends HTMLElement {
         return /*html*/ `
             <style>
                 .pagination{
+                    position: fixed;
+                    bottom: 50px;
+                    left: 0;
+                    right: 0;
+                    margin: 0px auto;
                     display:flex;
                     align-items: center;
                     justify-content: center;
                     color: white;
+                    z-index: 6;
                 }
 
                 .page{ 
@@ -104,14 +110,14 @@ class pagination extends HTMLElement {
         let prevPage= data.currentPage-1
         let prev = this.shadowRoot.getElementById('prev');
         let next = this.shadowRoot.getElementById('next');
-        prev.addEventListener('click', ()=>{
-            if (data.nextPage <= totalPages) {
+        next.addEventListener('click', ()=>{
+            if (nextPage <= data.totalPages) {
                 pageCall(nextPage);
             }
         })
         
-        next.addEventListener('click', ()=>{
-            if (data.prevPage > 0) {
+        prev.addEventListener('click', ()=>{
+            if (prevPage > 0) {
                 pageCall(prevPage);
             }
         })
