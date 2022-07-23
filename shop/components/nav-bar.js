@@ -1,5 +1,10 @@
 import './category-sidebar.js';
 import './drop-menu.js';
+import * as shoppingCart from '../../cart/component/cart-modal/main.js'
+
+shoppingCart.render()
+shoppingCart.initialize()
+
 
 class navBar extends HTMLElement {
     constructor() {
@@ -29,7 +34,7 @@ class navBar extends HTMLElement {
                         </div> 
                     </div>
                     <drop-menu id="drop-menu" class="displayNone"></drop-menu>
-                    <a href="#" as="button" onclick="openCart()" >
+                    <a href="#" as="button" id="openButton" >
                         <img src="../../assets/icons/icon_shopping_cart_notification.svg" alt="" width="30px" heigth="27">
                     </a>
                 </div>
@@ -185,7 +190,10 @@ class navBar extends HTMLElement {
         buttonlogin.addEventListener('click', () => {
             window.location = '../cart/index.html';
         });
-    };
+
+        const openButton = this.shadowRoot.getElementById('openButton')
+            openButton.addEventListener('click', ()=> shoppingCart.open())
+        };
 }
 
 customElements.define('nav-bar', navBar);

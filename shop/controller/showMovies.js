@@ -1,5 +1,8 @@
 import '../components/movieCard/movieCardComponent.js';
+import * as shoppingCart from '../../cart/component/cart-modal/main.js'
 
+shoppingCart.render()
+shoppingCart.initialize()
 
 const showMovies = async (data, categoryId='') => {
 	const key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
@@ -49,6 +52,23 @@ const showMovies = async (data, categoryId='') => {
 				window.location = `/product/index.html?movie=${element.getAttribute('id')}`
 			});
 		});
+		const BUTTONS_ADD_TO_CART = document.querySelectorAll('div.s-table__btn--add')
+		BUTTONS_ADD_TO_CART.forEach(button => {
+			
+			button.addEventListener('click', ()=> {
+				const obj = data.filter(movie => movie.id === +button.id)
+				const genre = generos.genres.filter(genre => genre.id === obj[0].genre_ids[0])
+				const movie = {
+					id: obj[0].id,
+					name: obj[0].title,
+					raiting: obj[0].vote_average,
+					genre: genre[0].name,
+					img: obj[0].poster_path
+				}
+				console.log(movie)
+				shoppingCart.add(movie)
+			})
+		})
 	} catch (error) {
 		console.error(error);
 	}

@@ -63,7 +63,7 @@ class movieCardComponent extends HTMLElement {
                     <p class="s-table__genre">${this.genre}</p>
                     <star-rating rating="${this.vote_average}"></star-rating>
                 </div>
-                <div class="s-table__btn--add">Add To Cart</div>
+                <div class="s-table__btn--add" id="${this.id}">Add To Cart</div>
             </div>
         </div>
 		`;

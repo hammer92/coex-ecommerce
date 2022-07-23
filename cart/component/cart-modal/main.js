@@ -73,6 +73,7 @@ export function turnOff(){
     console.log('Shopping cart turned off')
 }
 export function add(movie){
+    console.log('se ejecuto add')
     let event =  new CustomEvent('add2cart', {
         bubbles: false,
         detail: { movie }
@@ -80,6 +81,7 @@ export function add(movie){
     node.dispatchEvent(event)
 }
 export function open(){
+    console.log('se ejecuto open')
     cartContainer.style.right = `0`
 }
 export function close(){

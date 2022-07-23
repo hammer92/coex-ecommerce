@@ -37,7 +37,7 @@ class cardMovie extends HTMLElement {
                         </div>
                     </div>
                     <div>
-                        <button class ="carrito" onclick="addToCart(${this.id})" id="carrito">Add to card</button>
+                        <button class ="carrito" onclick="addToCart(${this.id})" id="carrito">Add to cart</button>
                     </div>
                 </div>
             </div>
