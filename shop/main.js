@@ -5,7 +5,7 @@ import './components/nav-bar.js';
 import './components/pagination.js';
 import './components/filtro.js';
 import cargarPeliculas from './controller/loadMovie.js';
-import templatelogin from '../cart/views/login.js';
+/* import templatelogin from '../cart/views/login.js'; */
 
 import { addMovieList, getData } from '../cart/lib/conection.js';
 

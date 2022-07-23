@@ -1,15 +1,105 @@
-.history__section--orders--items {
-    margin: 5px 2px;
+:root {
+    --white: #fff;
+    --purple: #7b2abf;
+    --purple-dark: #02021C;
+    --purple-dark-shadow: rgba(2, 2, 28, .5);
+    --purple-bg: #030328;
+    --purple-input: #110E35;
+    --red-warning: #E45871;
+    --gray-primary: #C7C7C7;
+    --gray-secondary: #797979;
+    --purple-fil: invert(22%) sepia(83%) saturate(2189%) hue-rotate(260deg) brightness(87%) contrast(102%);
+    --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
 }
-
-.myorderDirection {
-    cursor: pointer;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
 }
-
-.history_section-orders {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0px;
+.myorder-view {
     background-color: var(--purple-bg);
-    padding: 5px;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.myorder-container {
+    padding-top: 84px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.icon-arrow {
+    cursor: pointer;
+    position: absolute;
+    right: calc(100% - 50% + 250px);
+    top: 25px;
+    background-color: transparent;
+    border: none;
+}
+
+.order {
+    margin: 30px auto;
+    padding: 30px 20px;
+    width: 445px;
+    background-color: var(--purple-input);
+    box-shadow: 10px 10px 20px var(--purple-dark);
+}
+
+.order,
+.order__info,
+.item__cover,
+.list__link {
+    border-radius: 10px;
+}
+.order__title {
+    color: var(--white);
+    font-size: 18px;
+}
+
+.order__info {
+    margin-top: 46px;
+    margin-bottom: 25px;
+    padding: 16px 20px;
+    background-color: var(--purple-dark);
+}
+
+.info__date {
+    font-size: 16px;
+    color: var(--gray-primary);
+}
+
+.info__articles {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--gray-secondary);
+    font-weight: 400;
+}
+
+.order__list,
+.list__item,
+.item__info,
+.item__stars,
+.item__genres {
+    display: flex;
+}
+.order__list {
+    gap: 24px;
+}
+
+.order__list,
+.item__info {
+    flex-direction: column;
+}
+
+.list__link {
+    position: relative;
+    text-decoration: none;
+    transition: all 150ms ease;
+}
+
+.list__link:hover {
+    background-color: var(--purple-dark);
+    opacity: .5;
 }

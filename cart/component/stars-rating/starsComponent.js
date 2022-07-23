@@ -1,4 +1,4 @@
-import '../style.css'
+import './style.css'
 
 class starsElement extends HTMLElement {
 	constructor() {

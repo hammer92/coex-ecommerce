@@ -1,4 +1,5 @@
-import './starsComponent.js';
+import '../stars-rating/starsComponent';
+import './style.css'
 
 class CartProduct extends HTMLElement {
 	constructor() {
