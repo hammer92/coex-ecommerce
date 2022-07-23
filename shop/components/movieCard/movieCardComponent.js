@@ -33,7 +33,6 @@ class movieCardComponent extends HTMLElement {
 					this.overview = newVal;
 					break;
 				case 'path':
-					console.log(newVal);
 					if (newVal !== 'null') {
 						this.urlImage = this.movieUrl + newVal;
 					} else {
