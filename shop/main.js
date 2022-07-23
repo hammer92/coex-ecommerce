@@ -1,5 +1,4 @@
 import 'normalize.css'
-import '../cart/component/cart-modal/style-cart.css'
 import '../style.css'
 import './style.css'
 import '../cart/component/starsComponent.js';
