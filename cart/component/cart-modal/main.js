@@ -215,7 +215,7 @@ function throwError(mssg){
 	errBar.style.display = 'block'
 	errBar.style.opacity = '1'
 	setTimeout(() => {
-	    errBar.style.display = 'none'
-	    errBar.style.opacity = '0'
+        errBar.style.display = 'none'
+        errBar.style.opacity = '0'
 	}, 2000)
 }
