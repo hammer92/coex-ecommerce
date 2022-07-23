@@ -73,8 +73,7 @@ export function turnOff(){
     console.log('Shopping cart turned off')
 }
 export function add(movie){
-    console.log('se ejecuto add')
-    let event =  new CustomEvent('  ', {
+    let event =  new CustomEvent('add2cart', {
         bubbles: false,
         detail: { movie }
     })
@@ -96,6 +95,7 @@ function eventHandler(event){
     /**
      * Sets the actions to do when 'add2cart' event is detected
      */
+    console.log(event)
     let movie = event.detail.movie
     if(storeMovie(movie)){
         renderMovie(movie)

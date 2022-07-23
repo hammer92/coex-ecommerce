@@ -63,7 +63,7 @@ const showMovies = async (data, categoryId='') => {
 					name: obj[0].title,
 					raiting: obj[0].vote_average,
 					genre: genre[0].name,
-					img: obj[0].poster_path
+					img: `https://image.tmdb.org/t/p/w500/${obj[0].poster_path}`
 				}
 				console.log(movie)
 				shoppingCart.add(movie)
