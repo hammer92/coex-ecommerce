@@ -480,3 +480,8 @@ li {
     background-color: var(--purple);
 }
 
+.genre-movies-shop{
+    display: flex;
+    width: 100%;
+}
+

@@ -1,27 +1,32 @@
 import '../components/movieCard/movieCardComponent.js';
 
 
-const showMovies = async (data) => {
+const showMovies = async (data, categoryId='') => {
 	const key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
 	try {
 		const respuestaGeneros = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}`);
-
 		//accedemos a los datos
 		const generos = await respuestaGeneros.json();
 		const templateMovies = document.getElementById('MovieGalery');
-		let peliculas = '';
+		const tituloGeneroContainer = document.getElementById('genre-movies-shop-container')
+		let tituloGenero = ``
+		let peliculas = ``
 		data.forEach(pelicula => {
 			if (pelicula.overview === "") {
 				pelicula.overview = "Dont have overview"
 			}
 			let generoId = pelicula.genre_ids[0];
 			let generoName = "";
+			let generoTitle = "";
 			generos.genres.forEach(genero => {
 				if (genero.id === generoId) {
 					generoName += genero.name;
 				}
+				if(genero.id === +categoryId){
+					generoTitle = genero.name
+				}
 			})
-
+			tituloGenero = `<h2 class="genre-movies-shop">${generoTitle}</h2>`
 			peliculas +=  /*html*/ `
 				<movie-card 
 					id="${pelicula.id}"
@@ -36,6 +41,7 @@ const showMovies = async (data) => {
 		});
 		
 		templateMovies.innerHTML = peliculas;
+		tituloGeneroContainer.innerHTML = tituloGenero
 
 		const ELEMENTS = document.querySelectorAll('button.s-go-to-detail');
 		ELEMENTS.forEach((element) => {

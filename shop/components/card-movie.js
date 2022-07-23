@@ -16,15 +16,11 @@ class cardMovie extends HTMLElement {
         }
     }
 
-    redirectToProduct(id){
-        window.location = `/product/index.html?movie=${id}`
-    }
-
     getTemplate(){
         const template = document.createElement('template');
         template.innerHTML = /*html*/ `
             <div class="pelicula">
-                <div class="arr" onclick="${this.redirectToProduct(this.id)}">
+                <div class="arr"">
                     <div class="hover">
                         <p>${this.overview}</p>  
                     </div>

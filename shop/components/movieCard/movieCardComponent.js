@@ -46,10 +46,6 @@ class movieCardComponent extends HTMLElement {
 		}
 	}
 
-	redirectToProduct(id) {
-		window.location = `/product/index.html?movie=${id}`;
-	}
-
 	connectedCallback() {
 		this.innerHTML = `
 		<div class="s-grid__card">

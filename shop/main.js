@@ -39,6 +39,7 @@ templateNav.innerHTML = `
 		<div class="s-filter">
 			<filter-bar></filter-bar>
 		</div>
+		<div id="genre-movies-shop-container"></div>
 		<section class="s-grid" id="MovieGalery"></section>
 	</main>
 	<footer class="s-footer">
@@ -51,7 +52,7 @@ app.appendChild(templateNav.content);
 if (sParams.get('category')) {
 	const CATEGORY_ID = sParams.get('category');
 	const getByCategory = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=${CATEGORY_ID}`;
-	cargarPeliculas(getByCategory);
+	cargarPeliculas(getByCategory, CATEGORY_ID);
 } else {
 	cargarPeliculas('');
 }
