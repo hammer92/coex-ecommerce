@@ -24,6 +24,8 @@ const historialBtn = document.getElementById('historial-btn');
 // 	window.location = '../cart/index.html';
 // });
 
+// historialBtn.style.display = 'flex';
+
 // document.getElementById('history-shop').addEventListener('click', () => {
 // 	localStorage.setItem('statusback', 'cart');
 // });
@@ -45,10 +47,6 @@ templateNav.innerHTML = `
 </div>
 `;
 const sParams = new URLSearchParams(window.location.search);
-// const active =
-// 	parseInt(sParams.get('category')) === id
-// 		? 'active-category'
-// 		: '';
 app.appendChild(templateNav.content);
 if (sParams.get('category')) {
 	const CATEGORY_ID = sParams.get('category');

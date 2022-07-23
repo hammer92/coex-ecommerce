@@ -48,19 +48,13 @@ class navBar extends HTMLElement {
                 }
                 
                 header{
-                    position: fixed;
-                    top: 0;
-                    left: 0;
                     width: 100%;
-                    z-index: 2;
                     color: white;
                     background-color: #02021C;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    height: 54px;
-                    padding-left: 30px;
-                    padding-right: 30px;
+                    height: 54px
                 }
                 
                 .logo{
@@ -75,9 +69,10 @@ class navBar extends HTMLElement {
                 
                 .derHeader{
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-around;
                     align-items: center;
-                    gap: 30px;
+                    gap: 20px;
+                    width:20%;
                 }
                 
                 .sesion{
