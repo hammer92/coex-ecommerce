@@ -98,6 +98,7 @@ const readMovieList = ()=>{
 }
 
 //Fin de las peticiones a la base de datos
+// LoginComponent.logueo(app,sesion);
 
 
 function RenderMyOrder(data) {
@@ -113,5 +114,6 @@ HistoryComponent.render(app,localStorage.getItem('orders'));
 }
 
 RenderLogin(app) */
-
-LoginComponent.logueo(app,sesion);
+if(sesion === 'false'){
+    LoginComponent.render(app);
+}
