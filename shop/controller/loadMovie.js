@@ -1,6 +1,6 @@
 import getMovies from "./getMovies.js";
 
-const cargarPeliculas = async (category) => {
+const cargarPeliculas = async (category, categoryId) => {
     const key = 'd2b1df9d64af7fb2a0342bd9d23e1449';
 	let lastUrl = category;
 	let allMovies = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
@@ -13,7 +13,7 @@ const cargarPeliculas = async (category) => {
 	}
 
     try {
-        getMovies(allMovies);
+        getMovies(allMovies, categoryId);
         return {
             getMovies: getMovies,
             allMovies: allMovies,

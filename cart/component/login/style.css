@@ -27,14 +27,14 @@
         margin-top: 84px;
         margin: auto;
     }
+    .container-login{
+        margin-top: 10%;
+    }
     .login{
-        
         max-width: 850px;
         width: 25%;
         position: relative;
         margin: auto;
-        margin-top: 15%;
-    
     }
     
     .text_login{

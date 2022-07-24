@@ -80,6 +80,7 @@ export function add(movie){
     node.dispatchEvent(event)
 }
 export function open(){
+    console.log('se ejecuto open')
     cartContainer.style.right = `0`
 }
 export function close(){
@@ -94,6 +95,7 @@ function eventHandler(event){
     /**
      * Sets the actions to do when 'add2cart' event is detected
      */
+    console.log(event)
     let movie = event.detail.movie
     if(storeMovie(movie)){
         renderMovie(movie)
