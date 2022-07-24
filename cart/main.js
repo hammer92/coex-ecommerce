@@ -107,6 +107,15 @@ function RenderMyOrder(data) {
 
 HistoryComponent.render(app,localStorage.getItem('orders'));
 
+const BACK = document.getElementById('back-arrow');
+const btns = document.querySelectorAll('.myorderDirection');
+// console.log(dbConection.result);
+btns.forEach(btn => {
+    btn.addEventListener('click', (e)=>{
+        MyOrder.render(e,app,localStorage.getItem('orders'));
+    })
+})
+
  // Refactorizacion de componente login 
 
 /* function RenderLogin (app) {

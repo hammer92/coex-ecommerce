@@ -8,10 +8,11 @@ class CartProduct extends HTMLElement {
 		this.genre;
 		this.rating;
 		this.cover;
+		this.id;
 	}
 
 	static get observedAttributes() {
-		return ['title', 'genre', 'rating', 'cover'];
+		return ['title', 'genre', 'rating', 'cover', 'id'];
 	}
 
 	attributeChangedCallback(attr, oldVal, newVal) {
@@ -29,12 +30,15 @@ class CartProduct extends HTMLElement {
 				case 'cover':
 					this.cover = newVal;
 					break;
+				case 'id':
+					this.id = newVal;
+					break;
 			}
 		}
 	}
 	connectedCallback() {
 		this.innerHTML = `
-        <a href="#" class="list__link" title="Go to ${this.title}">
+        <a href="/product/index.html?movie=${this.id}" class="list__link" title="Go to ${this.title}">
             <div class="list__item">
                 <figure class="item__cover">
                     <img src="${this.cover}" alt="${this.title}" class="item__img">
