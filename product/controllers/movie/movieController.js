@@ -2,6 +2,8 @@
 
 class MovieController{
     constructor(id){
+        this.url = 'https://api.themoviedb.org/3/movie/';
+        this.img_url = 'https://image.tmdb.org/t/p/w500';
         this.api_key = 'api_key=af2c420e596f08347a8c9d2b1d756b7e';
         this.id = id;
     }
@@ -9,7 +11,7 @@ class MovieController{
     
     async getInfo(){
         try {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${this.id}?`+this.api_key+
+            const response = await fetch(`${this.url}`+`${this.id}?`+this.api_key+
             '&append_to_response=releases', {
                 method: 'GET'
             });
@@ -35,7 +37,7 @@ class MovieController{
                 'synopsis':obJson.overview,
                 'certification':certificitacion,
                 'duration':`${obJson.runtime} min`,
-                'image':'https://image.tmdb.org/t/p/w500'+obJson.poster_path
+                'image': `${this.img_url}`+obJson.poster_path
             }
             return obj;
         } catch (error) {
@@ -45,7 +47,7 @@ class MovieController{
 
     async getRecommended(){
         try{
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${this.id}/recommendations?`
+            const response = await fetch(`${this.url}`+`${this.id}/recommendations?`
             + this.api_key,{
                 method:'GET'
             });
@@ -54,7 +56,7 @@ class MovieController{
             const obj = await response.json();
             for(let i = 0; i < obj.results.length; i++){
                 if(obj.results[i].backdrop_path != null){
-                    link = 'https://image.tmdb.org/t/p/w500'+obj.results[i].backdrop_path;
+                    link = `${this.img_url}`+obj.results[i].backdrop_path;
 
                     recommends.push({'name':obj.results[i].title
                                 ,'image_link':link,
@@ -71,7 +73,7 @@ class MovieController{
 
     async getCasting(){
         try{
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${this.id}/credits?`
+            const response = await fetch(`${this.url}`+`${this.id}/credits?`
             + this.api_key,{
                 method:'GET'
             });
@@ -81,7 +83,7 @@ class MovieController{
             for(let i = 0; i < arr.length; i++){
                 if(objCast.cast[i].profile_path != null){
                     actors.push({'name':objCast.cast[i].name,
-                                'image_link':'https://image.tmdb.org/t/p/w500'+objCast.cast[i].profile_path});
+                                'image_link':`${this.img_url}`+objCast.cast[i].profile_path});
                 }
 
                 if(actors.length == 12) break;
@@ -93,7 +95,7 @@ class MovieController{
     }
     async getTrailer(){
         try{
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${this.id}/videos?`
+            const response = await fetch(`${this.url}`+`${this.id}/videos?`
             + this.api_key)
             const result = await response.json();
             const trailer = {'hash_trailer':result.results[0].name,
