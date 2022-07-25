@@ -1,0 +1,51 @@
+:root {
+    --white: #fff;
+    --purple: #7b2abf;
+    --purple-dark: #02021C;
+    --purple-dark-shadow: rgba(2, 2, 28, .5);
+    --purple-bg: #030328;
+    --purple-input: #110E35;
+    --red-warning: #E45871;
+    --gray-primary: #C7C7C7;
+    --gray-secondary: #797979;
+    --purple-fil: invert(22%) sepia(83%) saturate(2189%) hue-rotate(260deg) brightness(87%) contrast(102%);
+    --purple-gray-fil: invert(17%) sepia(51%) saturate(842%) hue-rotate(207deg) brightness(94%) contrast(88%);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.history__section--orders--items {
+    margin: 5px 2px;
+}
+
+.history__section--orders--word {
+    background-color: var(--purple-input);
+    float: inherit;
+}
+
+.myorderDirection {
+    cursor: pointer;
+}
+
+.history_section-orders {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+    background-color: var(--purple-bg);
+    padding: 5px;
+}
+.history__section--orders--shopping {
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 10px;
+    margin: 40px 0px;
+    background-color: transparent;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px; */
+}

@@ -1,20 +1,19 @@
-//import '../style.css'
 import './style.css';
-import templateHistory from './views/history.js';
-import templatelogin from './views/login.js';
-import { OrderList } from './views/myorderView.js';
 import './lib/conection.js';
 import { dbConection } from './lib/conection.js';
-
-const Url = new URL(window.location);
-const urlParams = new URLSearchParams(Url.searchParams);
+import * as HistoryComponent from '../cart/component/history/main.js';
+import * as MyOrder from '../cart/component/myOrder/main.js';
+import * as LoginComponent from './component/login/main.js'
+import '../shop/components/nav-bar';
+const sesion = localStorage.getItem('iniciosesion');
 
 const app = document.querySelector('#app');
-const sesion = localStorage.getItem('iniciosesion');
+
 const user = new Object();
 user.email = 'admin@admin.com';
 user.password = 'admin';
-
+const topbar = document.getElementById('topbar');
+topbar.innerHTML = '<nav-bar></nav-bar>';
 //Peticiones a la base de datos 
 const readMovie = (e)=>{
 	let id = parseInt(e.target.id);
@@ -30,13 +29,11 @@ const readMovie = (e)=>{
 	IDBtransaction.oncomplete = ()=> {
 		console.log(data)
 		RenderMyOrder(data);
+		// MyOrder(app,data);
 	}
 }
 
-
 //Integracion entre la base de datos con la vista del historial de compras
-
-
 function call_date(movies, keys) {
     let array_date = [];
     const date = new Date();
@@ -61,12 +58,11 @@ function call_date(movies, keys) {
                 <h2 style="color: white;">${longitud_movies} movies</h2>
             </div>
             <img src="/assets/icons/angle-small-right-free-icon-font.svg" style="width: 20px;" id="${keys[i]}" class="myorderDirection">
-
             </div>         
         `
         capa_contenedor.innerHTML += templateCart;
     }
-	
+	localStorage.setItem('fecha',output);
 	const ORDER_LIST = document.querySelectorAll('.myorderDirection');
 	for (let element of ORDER_LIST) {
 		element.addEventListener('click', readMovie);
@@ -92,6 +88,8 @@ const readMovieList = ()=>{
         });
         keyList.addEventListener('success', ()=>{
             key = keyList.result;
+			console.log(data);
+			console.log(key);
         });
         IDBtransaction.oncomplete = ()=>{
             return call_date(data, key);
@@ -100,65 +98,31 @@ const readMovieList = ()=>{
 }
 
 //Fin de las peticiones a la base de datos
+// LoginComponent.logueo(app,sesion);
 
 
 function RenderMyOrder(data) {
-	const order = new OrderList(data);
-	app.innerHTML = order.myorderView;
-	const BACK = document.getElementById('back-arrow');
-	BACK.addEventListener('click', () => {
-		window.location.reload();
-	});
+	MyOrder.render(data);
 }
 
+HistoryComponent.render(app,localStorage.getItem('orders'));
 
+const BACK = document.getElementById('back-arrow');
+const btns = document.querySelectorAll('.myorderDirection');
+// console.log(dbConection.result);
+btns.forEach(btn => {
+    btn.addEventListener('click', (e)=>{
+        MyOrder.render(e,app,localStorage.getItem('orders'));
+    })
+})
 
-function renderHistory() {
-    app.innerHTML = templateHistory;
+ // Refactorizacion de componente login 
 
-	document.addEventListener("load", readMovieList());
+/* function RenderLogin (app) {
+	LoginComponent.render(app);
 }
 
-function Login() {
-	app.innerHTML = templatelogin;
-	var iniciosesion = false;
-	localStorage.setItem('iniciosesion', iniciosesion);
-	const form = document.getElementById('form_login');
-	form.onsubmit = () => {
-		const mail = document.getElementById('email');
-		const con = document.getElementById('password');
-		const correo = mail.value;
-		const contra = con.value;
-        console.log('entra a en submit')
-
-		if (correo == '' || contra == '') {
-			alert('Debe llenar todos los campos');
-		} else {
-			if (correo == user.email && contra == user.password) {
-                iniciosesion = true
-				localStorage.setItem('iniciosesion', iniciosesion);
-                alert('inicio de sesion correcto');
-				window.location.href ='../shop/index.html';
-			} else {
-				alert('Credenciales invalidas');
-			}
-			console.log(correo, contra);
-		}
-	};
-}
-
-if (sesion){
-	console.log('sesion: ', sesion)
-	if (sesion === 'false') {
-		Login();
-	} else {
-		if(localStorage.getItem('statusback', 'cart')){
-			renderHistory();
-		} else {
-			window.location = '../shop/index.html';
-		}
-	}
-} else {
-	localStorage.setItem('iniciosesion', false);
-	Login();
+RenderLogin(app) */
+if(sesion === 'false'){
+    LoginComponent.render(app);
 }

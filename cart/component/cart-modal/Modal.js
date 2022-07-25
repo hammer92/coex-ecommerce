@@ -86,6 +86,8 @@ const addToCart = async (id) => {
 	}
 };
 
+
+
 const cartList = document.querySelector('.cart-list');
 
 //renderizar moviesInCart
